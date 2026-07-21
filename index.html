@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Viettel Telecom - Cửa hàng trực tiếp Lê Văn Lương Thanh Xuân HNI</title>
-<meta name="description" content="Cửa hàng trực tiếp Viettel Telecom Lê Văn Lương — Tầng 1 tòa nhà Star City, số 23 Lê Văn Lương, Thanh Xuân, Hà Nội. Mở cửa 08:00–20:00 cả tuần." />
+<title>Viettel Telecom - Cửa hàng trực tiếp Thanh Xuân Hà Nội</title>
+<meta name="description" content="Viettel Telecom - Cửa hàng trực tiếp Thanh Xuân Hà Nội — Tầng 1 tòa nhà Star City, số 23 Lê Văn Lương, Thanh Xuân, Hà Nội. Mở cửa 08:00–20:00 cả tuần." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -60,7 +60,7 @@
   .brand{display:flex;align-items:center;gap:10px;white-space:nowrap;flex:none}
   .brand .mark{width:32px;height:32px;border-radius:9px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px}
   .brand .txt{font-weight:800;font-size:15px;line-height:1.05}
-  .brand .txt small{display:block;font-weight:500;font-size:11px;color:var(--muted);text-transform:none}
+  .brand .txt small{display:block;font-weight:500;font-size:10.5px;color:var(--muted);text-transform:none;white-space:nowrap;max-width:230px;overflow:hidden;text-overflow:ellipsis}
   .menu{display:flex;gap:1px;margin-left:auto}
   .menu a{padding:8px 11px;border-radius:9px;font-size:13.5px;font-weight:500;color:var(--muted);transition:.15s;white-space:nowrap}
   .menu a:hover{color:var(--ink);background:var(--bg-soft)}
@@ -153,9 +153,9 @@
   .pbanner .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .pbanner.t-red{background:var(--red)}.pbanner.t-dark{background:var(--bg-dark)}.pbanner.t-plum{background:linear-gradient(135deg,#7a0022,#c4002a)}
   .pbanner .media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.12),transparent 30%)}
-  .promo-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.92);border:none;cursor:pointer;display:grid;place-items:center;box-shadow:var(--shadow-lg);z-index:3;transition:.15s}
-  .promo-nav:hover{transform:translateY(-50%) scale(1.08)}
-  .promo-nav.prev{left:14px}.promo-nav.next{right:14px}
+  .promo-nav{position:absolute;bottom:20px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.95);border:none;cursor:pointer;display:grid;place-items:center;box-shadow:var(--shadow-lg);z-index:3;transition:.15s}
+  .promo-nav:hover{transform:scale(1.09)}
+  .promo-nav.prev{right:72px}.promo-nav.next{right:20px}
   .promo-nav svg{width:19px;height:19px;color:var(--ink)}
   .promo-dots{display:flex;gap:9px;justify-content:center;margin-top:20px}
   .promo-dots button{width:9px;height:9px;border-radius:999px;border:none;background:var(--line-2);cursor:pointer;transition:.25s;padding:0}
@@ -187,6 +187,7 @@
   .travel{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
   .travel .m{background:var(--bg-soft);border-radius:10px;padding:10px 12px}
   .travel .m .mt{font-size:18px;font-weight:800;letter-spacing:-.03em}
+  .travel .m .mt span{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:0}
   .travel .m .ml{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:5px}
   .travel .m .ml svg{width:14px;height:14px;color:var(--red);flex:none}
   .park{font-size:13px;display:flex;flex-direction:column;gap:7px}
@@ -198,59 +199,26 @@
   .amen-chip:hover{border-color:var(--red);background:#fff}
   .amen-chip svg{width:14px;height:14px;color:var(--red)}
 
-  /* ============ SERVICES ============ */
-  .svc-featured{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}
-  .svc-feat{background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:22px 22px 20px 26px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:.2s var(--ease);display:flex;flex-direction:column}
-  .svc-feat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--red),var(--red-2))}
-  .svc-feat:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .svc-feat .fh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  .svc-feat .ic{width:40px;height:40px;border-radius:11px;background:var(--red-soft);display:grid;place-items:center;flex:none}
-  .svc-feat .ic svg{width:20px;height:20px;color:var(--red)}
-  .svc-feat .pop{font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--red);background:var(--red-soft);padding:3px 9px;border-radius:999px;margin-left:auto}
-  .svc-feat h4{font-size:16.5px;margin-bottom:6px}
-  .svc-feat p{font-size:13.5px;color:var(--muted);margin-bottom:14px;flex:1}
-  .svc-feat .kv{display:flex;justify-content:space-between;gap:10px;font-size:12px;border-top:1px solid var(--line);padding-top:12px;margin-bottom:12px}
-  .svc-feat .kv b{color:var(--ink);font-weight:600}.svc-feat .kv .note{color:var(--red);font-weight:600;text-align:right}
-  .svc-feat .go{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--red)}
-  .svc-feat .go svg{width:15px;height:15px;transition:.15s}
-  .svc-feat:hover .go svg{transform:translateX(3px)}
-  .svc-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-  .svc-tabs button{font-family:inherit;font-size:13px;font-weight:500;padding:9px 15px;border-radius:999px;border:1px solid var(--line-2);background:#fff;color:var(--ink-2);cursor:pointer;transition:.15s}
-  .svc-tabs button:hover{border-color:var(--red)}
-  .svc-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .svc-block{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);transition:.22s var(--ease);display:flex;flex-direction:column}
-  .svc-block:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
-  .svc-block.hide{display:none}
-  .svc-block .no{font-size:11.5px;font-weight:700;color:var(--faint);margin-bottom:9px}
-  .svc-block h4{font-size:15.5px;margin-bottom:7px}
-  .svc-block p{font-size:13px;color:var(--muted);margin-bottom:13px;flex:1}
-  .svc-block .kv{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;border-top:1px solid var(--line);padding-top:11px}
-  .svc-block .kv b{color:var(--ink);font-weight:600}.svc-block .kv .note{color:var(--red);font-weight:600;text-align:right}
-  .svc-block .svc-go{margin-top:13px;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--red);align-self:flex-start}
-  .svc-block .svc-go svg{width:14px;height:14px;transition:.15s}
-  .svc-block:hover .svc-go svg{transform:translateX(3px)}
+  /* Sản phẩm & Dịch vụ — category cards */
+  .cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;align-items:stretch}
+  .cat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.2s var(--ease)}
+  .cat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+  .cat-card .cat-h{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+  .cat-card .ic{width:44px;height:44px;border-radius:12px;background:var(--red-soft);display:grid;place-items:center;flex:none}
+  .cat-card .ic svg{width:22px;height:22px;color:var(--red)}
+  .cat-card h4{font-size:15px;line-height:1.25}
+  .cat-card h4 a{color:inherit;transition:.15s}
+  .cat-card h4 a:hover{color:var(--red)}
+  .cat-list{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1;margin-bottom:16px}
+  .cat-list li{font-size:13.5px;color:var(--ink-2);display:flex;align-items:center;gap:9px}
+  .cat-list li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex:none}
+  .cat-list li a{color:inherit;transition:.15s}
+  .cat-list li a:hover{color:var(--red);text-decoration:underline;text-underline-offset:2px}
+  .cat-go{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--red);margin-top:auto}
+  .cat-go svg{width:14px;height:14px;transition:.15s}
+  .cat-card:hover .cat-go svg{transform:translateX(3px)}
   .usnote{margin-top:24px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:12px;padding:16px 20px;font-size:13.5px;color:var(--ink-2)}
   .usnote b{font-weight:600}.usnote code{background:var(--bg-soft);padding:1px 7px;border-radius:5px;font-size:12.5px}
-
-  /* ============ PRODUCTS ============ */
-  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  .prod{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.2s var(--ease);box-shadow:var(--shadow);display:flex;flex-direction:column}
-  .prod:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-  .prod .ph{aspect-ratio:5/4;overflow:hidden;position:relative;background:#f0f0f2}
-  .prod .ph img{width:100%;height:100%;object-fit:cover;transition:.5s var(--ease)}
-  .prod:hover .ph img{transform:scale(1.06)}
-  .prod .cat{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);font-size:11px;font-weight:600;color:var(--ink-2);padding:4px 10px;border-radius:999px;backdrop-filter:blur(4px)}
-  .prod .flag{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px}
-  .prod .bd{padding:16px 18px;display:flex;flex-direction:column;flex:1}
-  .prod .bd h3{font-size:15.5px;margin-bottom:6px}
-  .prod .rt{font-size:12px;color:var(--muted);margin-bottom:10px}.prod .rt b{color:#f5a623}
-  .prod .price{font-size:20px;font-weight:800;color:var(--red);letter-spacing:-.03em}
-  .prod .price .old{font-size:13px;color:var(--faint);text-decoration:line-through;font-weight:500;margin-left:6px}
-  .prod .price .per{font-size:13px;color:var(--muted);font-weight:500}
-  .prod .kv{font-size:12.5px;color:var(--muted);margin:10px 0 14px;display:flex;flex-direction:column;gap:3px}
-  .prod .kv b{color:var(--ink);font-weight:600}
-  .prod .bd .btn{margin-top:auto;width:100%}
 
   /* ============ OFFERS ============ */
   .off-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -364,7 +332,10 @@
   footer h5{color:#fff;font-size:14px;margin-bottom:16px;font-weight:600}
   footer ul{list-style:none;font-size:14px;display:grid;gap:10px}
   footer li a:hover,footer li:hover{color:#c9c9d4}
-  .hotlines{display:grid;gap:8px;font-size:13.5px}.hotlines div b{color:#fff;font-weight:600}
+  .hotlines{display:grid;gap:13px}
+  .hotlines div{display:flex;flex-direction:column;gap:1px;white-space:nowrap}
+  .hotlines b{color:#fff;font-weight:700;font-size:14px}
+  .hotlines span{color:#71717f;font-size:12px}
   .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:22px;font-size:13px;color:#5a5a64}
 
   /* ============ TAMMI floating widget ============ */
@@ -404,8 +375,7 @@
     .phone-mini{display:none}
     .hero-grid,.book-grid,.loc-grid,.rev-grid{grid-template-columns:1fr}
     .before3{grid-template-columns:1fr}
-    .prod-grid{grid-template-columns:1fr 1fr}
-    .svc-featured,.svc-grid{grid-template-columns:1fr 1fr}
+    .cat-grid{grid-template-columns:repeat(3,1fr)}
     .off-grid{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr}
     .hero h1{font-size:40px}
@@ -426,7 +396,7 @@
     .sec-head{flex-direction:column;align-items:flex-start}
     .sec-head .side{align-self:flex-start}
     .sec-head .ht h2{font-size:25px}
-    .prod-grid,.svc-featured,.svc-grid,.travel{grid-template-columns:1fr}
+    .cat-grid,.travel{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr}
     .cta-band{padding:32px 20px}.cta-band h2{font-size:23px}
     .award-txt h3{font-size:19px}
@@ -449,10 +419,10 @@
 <!-- ============ HEADER ============ -->
 <header>
   <div class="wrap nav">
-    <a href="#top" class="brand"><span class="mark">V</span><span class="txt">Viettel Telecom<small>CHTT Lê Văn Lương</small></span></a>
+    <a href="#top" class="brand"><span class="mark">V</span><span class="txt">Viettel Telecom<small>Cửa hàng trực tiếp Thanh Xuân Hà Nội</small></span></a>
     <nav class="menu" id="menu">
-      <a href="#promo">Khuyến mãi</a><a href="#before">Trước khi tới</a><a href="#services">Dịch vụ</a>
-      <a href="#products">Sản phẩm</a><a href="#offers">Ưu đãi</a><a href="#booking">Đặt lịch</a>
+      <a href="#promo">Khuyến mãi</a><a href="#before">Trước khi tới</a><a href="#services">Sản phẩm &amp; DV</a>
+      <a href="#offers">Ưu đãi</a><a href="#booking">Đặt lịch</a>
       <a href="#nearby">Gần đây</a><a href="#support">Hỗ trợ</a>
     </nav>
     <div class="head-cta">
@@ -468,20 +438,15 @@
   <div class="wrap hero-grid">
     <div class="reveal show">
       <div class="crumb"><span>Cửa hàng</span> / <b>Hà Nội</b> <span>/</span> <b>Thanh Xuân</b></div>
-      <h1>Cửa hàng trực tiếp<br><em>Viettel</em> Lê Văn Lương</h1>
+      <h1>Cửa hàng trực tiếp<br><em>Thanh Xuân</em> Hà Nội</h1>
+      <p class="sub">Cửa hàng trực tiếp của Viettel Telecom, ngay mặt đường Lê Văn Lương.</p>
       <div class="rate"><span class="stars">★★★★★</span><b data-count="4.6" data-dec="1">4,6</b><span>· <span data-count="312">312</span> đánh giá</span><span class="live"><i></i>Đang mở cửa</span></div>
       <p class="addr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Tầng 1 tòa nhà Star City, số 23 đường Lê Văn Lương, phường Thanh Xuân, Hà Nội</p>
-      <p class="sub">Cửa hàng trực tiếp của Viettel Telecom, ngay mặt đường Lê Văn Lương.</p>
-      <div class="tags">
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Cửa hàng trực tiếp</span>
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6 6 2 2 6-6a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2z"/></svg>Có kỹ thuật viên</span>
-        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V7l6-4 6 4v14M10 9h.01M14 9h.01M10 13h.01"/></svg>Hỗ trợ doanh nghiệp</span>
-      </div>
       <div class="hero-award">
         <img src="assets/tammi/thumb.png" alt="Tammi" loading="lazy">
         <div class="ha-txt">
           <span class="ha-badge">🏆 TOP 10 · 2026</span>
-          <p>Chi nhánh cung cấp <b>dịch vụ tốt nhất</b> khu vực Hà Nội — <span>được Viettel Telecom &amp; khách hàng ghi nhận.</span></p>
+          <p>Chi nhánh cung cấp <b>dịch vụ</b> khu vực Hà Nội — <span>được Viettel Telecom &amp; khách hàng ghi nhận.</span></p>
         </div>
       </div>
       <div class="hero-cta">
@@ -490,7 +455,7 @@
       </div>
     </div>
     <div class="gal reveal show d1">
-      <div class="gal-main"><img id="galMain" src="assets/store-2.png" alt="Mặt tiền cửa hàng Viettel Lê Văn Lương" /><span class="gal-cap" id="galCap">Mặt tiền cửa hàng · 23 Lê Văn Lương</span><div class="gal-badge"><span class="n">4,6★</span><small>312 đánh giá<br>trên Google</small></div></div>
+      <div class="gal-main"><img id="galMain" src="assets/store-2.png" alt="Mặt tiền cửa hàng Viettel Lê Văn Lương" /><span class="gal-cap" id="galCap">Mặt tiền cửa hàng · 23 Lê Văn Lương</span></div>
       <div class="gal-thumbs" id="thumbs">
         <button class="active" data-cap="Mặt tiền cửa hàng · 23 Lê Văn Lương"><img src="assets/store-2.png" alt="Mặt tiền"></button>
         <button data-cap="Quầy giao dịch · phục vụ trực tiếp"><img src="assets/store-1.png" alt="Quầy giao dịch"></button>
@@ -519,7 +484,7 @@
         <img class="tammi-ava sm" src="assets/tammi/celebrate.png" alt="Tammi" loading="lazy">
         <div class="ht"><h2>Khuyến mãi tại quầy</h2><p class="lead">Ưu đãi chỉ áp dụng khi làm trực tiếp tại quầy, không qua tổng đài.</p></div>
       </div>
-      <div class="side"><span class="eyebrow"><span class="idx">01 / 08</span></span></div>
+      <div class="side"><span class="eyebrow"><span class="idx">01 / 07</span></span></div>
     </div>
     <div class="promo-wrap reveal">
       <div class="promo-viewport"><div class="promo-track" id="ptrack">
@@ -542,7 +507,7 @@
         <img class="tammi-ava sm" src="assets/tammi/idea.png" alt="Tammi" loading="lazy">
         <div class="ht"><h2>Trước khi bạn tới</h2><p class="lead">Giờ mở cửa, giấy tờ cần mang và chỗ gửi xe — gói gọn tại đây.</p></div>
       </div>
-      <div class="side"><span class="eyebrow"><span class="idx">02 / 08</span></span></div>
+      <div class="side"><span class="eyebrow"><span class="idx">02 / 07</span></span></div>
     </div>
 
     <div class="before3">
@@ -578,10 +543,10 @@
       <div class="bcard reveal d2">
         <div class="bh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Đường đi &amp; gửi xe</div>
         <div class="travel">
-          <div class="m"><div class="mt">3'</div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8 17h6l2.5-5H19M13 12l-2-4h3"/></svg>Xe máy</div></div>
-          <div class="m"><div class="mt">5'</div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11l1.4-4h11.2L19 11M3 16h18v-3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><circle cx="7.5" cy="16.5" r="1.4"/><circle cx="16.5" cy="16.5" r="1.4"/></svg>Ô tô</div></div>
-          <div class="m"><div class="mt">12'</div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="4" r="1.8"/><path d="M13 8l-2 4 3 2 1 5M11 12l-3 1.5-1.5 4M14 9.5l3 1"/></svg>Đi bộ</div></div>
-          <div class="m"><div class="mt">6'</div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M4 11h16M8 4v7"/><circle cx="8" cy="19" r="1.4"/><circle cx="16" cy="19" r="1.4"/></svg>BRT 01</div></div>
+          <div class="m"><div class="mt">3 <span>phút</span></div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5.5" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8 17h6l2.5-5H19M13 12l-2-4h3"/></svg>Xe máy</div></div>
+          <div class="m"><div class="mt">5 <span>phút</span></div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11l1.4-4h11.2L19 11M3 16h18v-3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><circle cx="7.5" cy="16.5" r="1.4"/><circle cx="16.5" cy="16.5" r="1.4"/></svg>Ô tô</div></div>
+          <div class="m"><div class="mt">12 <span>phút</span></div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="4" r="1.8"/><path d="M13 8l-2 4 3 2 1 5M11 12l-3 1.5-1.5 4M14 9.5l3 1"/></svg>Đi bộ</div></div>
+          <div class="m"><div class="mt">6 <span>phút</span></div><div class="ml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M4 11h16M8 4v7"/><circle cx="8" cy="19" r="1.4"/><circle cx="16" cy="19" r="1.4"/></svg>BRT 01</div></div>
         </div>
         <div class="park">
           <div><span>Gửi xe máy</span><b class="free">Miễn phí · hầm B1</b></div>
@@ -605,61 +570,46 @@
   </div>
 </section>
 
-<!-- ============ SERVICES ============ -->
+<!-- ============ SẢN PHẨM & DỊCH VỤ (gộp) ============ -->
 <section class="sec" id="services">
   <div class="wrap">
     <div class="sec-head">
       <div class="t reveal">
         <img class="tammi-ava sm" src="assets/tammi/laptop.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Dịch vụ tại quầy</h2><p class="lead">Ba dịch vụ phổ biến nhất trên đầu, danh sách đầy đủ ở dưới.</p></div>
+        <div class="ht"><h2>Sản phẩm &amp; Dịch vụ</h2><p class="lead">Danh mục sản phẩm và dịch vụ Viettel — đăng ký ngay tại cửa hàng.</p></div>
       </div>
       <div class="side"><a href="#booking" class="btn btn-dark btn-sm">Đặt lịch hẹn</a></div>
     </div>
 
-    <!-- 3 featured -->
-    <div class="svc-featured">
-      <div class="svc-feat reveal"><div class="fh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><span class="pop">★ Phổ biến</span></div><h4>Hoà mạng &amp; đăng ký thuê bao</h4><p>Đăng ký trả trước/trả sau, chọn số theo yêu cầu, kích hoạt và cấu hình máy ngay tại quầy.</p><div class="kv"><span>Xử lý <b>5–10 phút</b></span><span class="note">CCCD gắn chip</span></div><a href="#booking" class="go">Đặt lịch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-feat reveal d1"><div class="fh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M12 20h.01"/></svg></span><span class="pop">★ Phổ biến</span></div><h4>Đổi SIM 5G · eSIM</h4><p>Giữ nguyên số khi đổi SIM vật lý sang 5G, chuyển sang eSIM bằng mã QR, hoặc cấp lại SIM mất/hỏng.</p><div class="kv"><span>Xử lý <b>10–15 phút</b></span><span class="note">CCCD &amp; SIM cũ</span></div><a href="#booking" class="go">Đặt lịch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-feat reveal d2"><div class="fh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><span class="pop">★ Phổ biến</span></div><h4>Viettel Money</h4><p>Mở tài khoản tiền di động, định danh eKYC tại quầy, liên kết ngân hàng, nạp và rút tiền mặt trực tiếp.</p><div class="kv"><span>Định danh <b>10 phút</b></span><span class="note">Rút tối thiểu 50k</span></div><a href="#booking" class="go">Đặt lịch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="cat-grid">
+      <div class="cat-card reveal">
+        <div class="cat-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20v-3M9 20v-7M14 20V9M19 20V5"/></svg></span><h4><a href="https://vietteltelecom.vn/vx/di-dong/" target="_blank" rel="noopener">Di động</a></h4></div>
+        <ul class="cat-list"><li><a href="https://vietteltelecom.vn/vx/di-dong/goi-data-1/" target="_blank" rel="noopener">Gói cước</a></li><li><a href="https://vietteltelecom.vn/vx/di-dong/dich-vu-quoc-te" target="_blank" rel="noopener">Dịch vụ quốc tế</a></li><li><a href="https://vietteltelecom.vn/vx/di-dong/sim-so/" target="_blank" rel="noopener">Sim số</a></li><li><a href="https://vietteltelecom.vn/chuyentrasau" target="_blank" rel="noopener">Chuyển trả sau</a></li><li><a href="https://vietteltelecom.vn/vx/di-dong/dich-vu-vas" target="_blank" rel="noopener">Dịch vụ GTGT</a></li><li><a href="https://vietteltelecom.vn/vx/5g/" target="_blank" rel="noopener">Viettel 5G</a></li></ul>
+        <a href="#booking" class="cat-go">Đăng ký tại quầy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="cat-card reveal d1">
+        <div class="cat-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M8.5 16.4a6 6 0 0 1 7 0M12 20h.01"/></svg></span><h4><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/" target="_blank" rel="noopener">Internet · TV360 · Camera</a></h4></div>
+        <ul class="cat-list"><li><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/toan-trinh/" target="_blank" rel="noopener">Internet</a></li><li><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/camera" target="_blank" rel="noopener">Camera</a></li><li><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/truyen-hinh" target="_blank" rel="noopener">Truyền hình TV360</a></li><li><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/combo" target="_blank" rel="noopener">Combo Internet</a></li><li><a href="https://vietteltelecom.vn/vx/internet-doanh-nghiep" target="_blank" rel="noopener">Internet Doanh nghiệp</a></li><li><a href="https://vietteltelecom.vn/vx/vt/ftth-online" target="_blank" rel="noopener">Internet toàn trình</a></li></ul>
+        <a href="#booking" class="cat-go">Đăng ký tại quầy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="cat-card reveal d2">
+        <div class="cat-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><h4><a href="https://vietteltelecom.vn/vx/dien-thoai-thiet-bi" target="_blank" rel="noopener">Điện thoại · Thiết bị</a></h4></div>
+        <ul class="cat-list"><li><a href="https://vietteltelecom.vn/vx/dien-thoai" target="_blank" rel="noopener">Điện thoại</a></li><li><a href="https://vietteltelecom.vn/vx/thiet-bi" target="_blank" rel="noopener">Thiết bị thông minh</a></li></ul>
+        <a href="#booking" class="cat-go">Đặt giữ máy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="cat-card reveal d1">
+        <div class="cat-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V7l6-4 6 4v14M10 9h.01M14 9h.01M10 13h.01"/></svg></span><h4><a href="https://vietteltelecom.vn/sme" target="_blank" rel="noopener">Khách hàng doanh nghiệp</a></h4></div>
+        <ul class="cat-list"><li><a href="https://vietteltelecom.vn/giai-phap/cntt" target="_blank" rel="noopener">Giải pháp CNTT</a></li><li><a href="https://vietteltelecom.vn/giai-phap/vien-thong" target="_blank" rel="noopener">Giải pháp Viễn thông</a></li><li><a href="https://vietteltelecom.vn/giai-phap/iot" target="_blank" rel="noopener">Giải pháp IoT</a></li><li><a href="https://sme.viettel.vn/landing-page?alias=TDO" target="_blank" rel="noopener">Giải pháp Quản lý bán hàng</a></li></ul>
+        <a href="#booking" class="cat-go">Nhận tư vấn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="cat-card reveal d2">
+        <div class="cat-h"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><h4><a href="https://vietteltelecom.vn/ung-dung-so" target="_blank" rel="noopener">Ứng dụng số Viettel</a></h4></div>
+        <ul class="cat-list"><li><a href="https://vietteltelecom.vn/vx/myviettel/" target="_blank" rel="noopener">My Viettel</a></li><li><a href="https://vietteltelecom.vn/ung-dung-so/tv360/QXJ0aWNs15e05e4e5d48c1" target="_blank" rel="noopener">Truyền hình TV360</a></li><li><a href="https://vietteltelecom.vn/ung-dung-so/imuzik/QXJ0aWNs15e070b96a8c35" target="_blank" rel="noopener">iMuzik</a></li></ul>
+        <a href="#booking" class="cat-go">Cài tại quầy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
     </div>
 
-    <div class="svc-tabs reveal" id="svcTabs">
-      <button class="on" data-f="all">Tất cả</button><button data-f="sim">SIM &amp; thuê bao</button><button data-f="goi">Gói cước</button><button data-f="fin">Tài chính số</button><button data-f="net">Internet &amp; TV</button><button data-f="dev">Thiết bị</button><button data-f="biz">Doanh nghiệp</button>
-    </div>
-    <div class="svc-grid" id="svcGrid">
-      <div class="svc-block reveal" data-cat="sim"><div class="no">01 · SIM &amp; thuê bao</div><h4>Hoà mạng &amp; đăng ký thuê bao</h4><p>Đăng ký trả trước/trả sau, chọn số theo yêu cầu, kích hoạt và cấu hình máy ngay tại quầy.</p><div class="kv"><span>Xử lý <b>5–10 phút</b></span><span class="note">CCCD gắn chip</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="sim"><div class="no">02 · SIM &amp; thuê bao</div><h4>Chuẩn hoá thông tin thuê bao</h4><p>Cập nhật ảnh chân dung, đối chiếu CCCD với CSDL quốc gia, đưa thuê bao về đúng chính chủ.</p><div class="kv"><span>Xử lý <b>5–10 phút</b></span><span class="note">Miễn phí</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="sim"><div class="no">03 · SIM &amp; thuê bao</div><h4>Đổi SIM 5G · eSIM · cấp lại SIM</h4><p>Giữ nguyên số khi đổi SIM vật lý sang 5G, chuyển sang eSIM bằng mã QR, hoặc cấp lại SIM mất/hỏng.</p><div class="kv"><span>Xử lý <b>10–15 phút</b></span><span class="note">CCCD &amp; SIM cũ</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="sim"><div class="no">04 · SIM &amp; thuê bao</div><h4>Chuyển mạng giữ số</h4><p>Chuyển từ nhà mạng khác sang Viettel mà vẫn giữ nguyên số. Thuê bao phải hoạt động hai chiều.</p><div class="kv"><span>Xử lý <b>2–5 ngày</b></span><span class="note">50k TT · 60k TS</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="sim"><div class="no">05 · SIM &amp; thuê bao</div><h4>Chuyển vùng quốc tế</h4><p>Mở chuyển vùng trước khi ra nước ngoài, đăng ký gói roaming theo quốc gia, khoá &amp; mở lại hai chiều.</p><div class="kv"><span>Xử lý <b>5 phút</b></span><span class="note">Làm trước 24h</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="goi"><div class="no">06 · Gói cước</div><h4>Đăng ký &amp; đổi gói cước</h4><p>Kích hoạt gói data, thoại, combo và gói 5G. Nhân viên tra cứu gói đang dùng và tư vấn gói phù hợp hơn.</p><div class="kv"><span>Xử lý <b>Hiệu lực ngay</b></span><span class="note">Hoặc gửi 191</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="goi"><div class="no">07 · Gói cước</div><h4>SIM số đẹp &amp; đổi điểm Viettel++</h4><p>Chọn số theo yêu cầu từ kho số tại quầy, đổi điểm Viettel++ lấy data, phút gọi hoặc voucher.</p><div class="kv"><span>Đổi từ <b>1.000 điểm</b></span><span class="note">Hết hạn 30.06</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="fin"><div class="no">08 · Tài chính số</div><h4>Thanh toán cước &amp; nạp tiền</h4><p>Đóng cước trả sau, Internet, truyền hình và nạp tiền cho nhiều thuê bao trong cùng một lần giao dịch.</p><div class="kv"><span>Xử lý <b>Dưới 3 phút</b></span><span class="note">TM · thẻ · VtMoney</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="fin"><div class="no">09 · Tài chính số</div><h4>Viettel Money</h4><p>Mở tài khoản tiền di động, định danh eKYC tại quầy, liên kết ngân hàng, nạp và rút tiền mặt trực tiếp.</p><div class="kv"><span>Định danh <b>10 phút</b></span><span class="note">Rút tối thiểu 50k</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="net"><div class="no">10 · Internet &amp; TV</div><h4>Internet cáp quang &amp; TV360</h4><p>Đăng ký Internet Home, truyền hình TV360, camera giám sát. Khảo sát hạ tầng và hẹn lịch thi công tận nhà.</p><div class="kv"><span>Thi công <b>24–48 giờ</b></span><span class="note">CCCD &amp; địa chỉ</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="dev"><div class="no">11 · Thiết bị</div><h4>Bảo hành &amp; thu cũ đổi mới</h4><p>Tiếp nhận bảo hành chính hãng, thay pin và màn hình, định giá máy cũ để lên đời máy mới.</p><div class="kv"><span>Định giá <b>15 phút</b></span><span class="note">Phiếu BH · hộp máy</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="svc-block reveal" data-cat="biz"><div class="no">12 · Doanh nghiệp</div><h4>Chữ ký số &amp; hoá đơn điện tử</h4><p>Đăng ký Viettel-CA để khai thuế, hải quan, BHXH và phát hành hoá đơn điện tử S-Invoice.</p><div class="kv"><span>Nên <b>đặt lịch trước</b></span><span class="note">GPKD &amp; CCCD</span></div><a class="svc-go" href="#booking">Đặt lịch<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-    </div>
     <div class="usnote reveal">Từ <b>13.05.2026</b> Viettel đã ngừng toàn bộ cú pháp USSD dạng <code>*101#</code>. Tra cứu và đăng ký gói nay thực hiện qua tin nhắn <b>191</b>, ứng dụng My Viettel hoặc trực tiếp tại quầy.</div>
-  </div>
-</section>
-
-<!-- ============ PRODUCTS ============ -->
-<section class="sec alt" id="products">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="t reveal">
-        <img class="tammi-ava sm" src="assets/tammi/phone.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Sản phẩm tại cửa hàng</h2><p class="lead">Giá &amp; tồn kho tại cửa hàng Lê Văn Lương, nhận máy trong ngày.</p></div>
-      </div>
-      <div class="side"><a href="#booking" class="btn btn-dark btn-sm">Đặt lịch hẹn</a></div>
-    </div>
-    <div class="prod-grid">
-      <div class="prod reveal"><div class="ph"><img src="assets/prod-iphone.jpg" alt="iPhone 15 Pro Max" loading="lazy"><span class="cat">Điện thoại</span><span class="flag">-3 triệu</span></div><div class="bd"><h3>iPhone 15 Pro Max</h3><div class="rt"><b>★ 4,5</b> · 182 đánh giá</div><div class="price">34.990.000đ<span class="old">37.990.000đ</span></div><div class="kv"><span>Tình trạng <b>Còn hàng tại quầy</b></span><span>Trả góp <b>0% · 2.916.000đ/th</b></span></div><a href="#booking" class="btn btn-primary btn-sm">Đặt giữ máy</a></div></div>
-      <div class="prod reveal d1"><div class="ph"><img src="assets/prod-samsung.jpg" alt="Samsung Galaxy S24 Ultra" loading="lazy"><span class="cat">Điện thoại</span></div><div class="bd"><h3>Samsung Galaxy S24 Ultra</h3><div class="rt"><b>★ 4,5</b> · 182 đánh giá</div><div class="price">29.990.000đ<span class="old">32.990.000đ</span></div><div class="kv"><span>Tình trạng <b>Còn 3 máy</b></span><span>Trả góp <b>0% · 2.499.000đ/th</b></span></div><a href="#booking" class="btn btn-primary btn-sm">Đặt giữ máy</a></div></div>
-      <div class="prod reveal d2"><div class="ph"><img src="assets/prod-simcard.jpg" alt="SIM 4G Viettel eSIM" loading="lazy"><span class="cat">SIM &amp; Gói cước</span><span class="flag">Mới</span></div><div class="bd"><h3>SIM 4G Viettel · eSIM</h3><div class="rt"><b>★ 5,0</b> · 1.205 đánh giá</div><div class="price">50.000đ</div><div class="kv"><span>Kích hoạt <b>Ngay tại quầy</b></span><span>Cần có <b>CCCD gắn chip</b></span></div><a href="#booking" class="btn btn-primary btn-sm">Đăng ký tại quầy</a></div></div>
-      <div class="prod reveal d3"><div class="ph"><img src="assets/prod-sim.jpg" alt="Gói cước V100" loading="lazy"><span class="cat">Gói cước 4G/5G</span></div><div class="bd"><h3>Gói cước V100</h3><div class="rt"><b>★ 4,5</b> · 887 đánh giá</div><div class="price">100.000đ<span class="per"> /tháng</span></div><div class="kv"><span>Data <b>30GB tốc độ cao</b></span><span>Chu kỳ <b>Gia hạn tự động</b></span></div><a href="#booking" class="btn btn-primary btn-sm">Đăng ký tại quầy</a></div></div>
-    </div>
   </div>
 </section>
 
@@ -671,7 +621,7 @@
         <img class="tammi-ava sm" src="assets/tammi/heart.png" alt="Tammi" loading="lazy">
         <div class="ht"><h2>Ưu đãi mới nhất</h2><p class="lead">Ưu đãi riêng cho khách giao dịch tại cửa hàng trong tháng này.</p></div>
       </div>
-      <div class="side"><span class="eyebrow"><span class="idx">05 / 08</span></span></div>
+      <div class="side"><span class="eyebrow"><span class="idx">04 / 07</span></span></div>
     </div>
     <div class="off-grid">
       <div class="off reveal"><div class="amt">30%</div><h3>Giảm cước ba tháng đầu</h3><p>Cho thuê bao chuyển từ trả trước sang trả sau, gói từ B200N trở lên.</p><div class="row"><span>Mã chương trình</span><b>VT-TS-0726</b></div><div class="row"><span>Điều kiện</span><b>Cam kết 6 tháng</b></div><div class="row"><span>Hết hạn</span><b class="exp">30.07 · còn 9 ngày</b></div><a href="#booking" class="btn btn-ghost btn-sm">Nhận ưu đãi</a></div>
@@ -689,7 +639,7 @@
         <img class="tammi-ava sm" src="assets/tammi/wave.png" alt="Tammi" loading="lazy">
         <div class="ht"><h2>Đặt lịch hẹn</h2><p class="lead">Chọn dịch vụ &amp; khung giờ, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
       </div>
-      <div class="side"><span class="eyebrow"><span class="idx">06 / 08</span></span></div>
+      <div class="side"><span class="eyebrow"><span class="idx">05 / 07</span></span></div>
     </div>
     <div class="book-grid">
       <form class="bk-panel reveal" id="bkForm" onsubmit="return submitBooking(event)">
@@ -792,12 +742,12 @@
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div><div class="brand" style="display:flex;align-items:center;gap:10px"><span class="mark">V</span><span class="txt">Viettel Telecom<small style="color:#71717f;display:block;font-weight:500;font-size:11px">Theo cách của bạn.</small></span></div><p class="fdesc">Cửa hàng trực tiếp Viettel Lê Văn Lương — Tầng 1 tòa nhà Star City, số 23 Lê Văn Lương, phường Thanh Xuân, Hà Nội.</p></div>
+      <div><div class="brand" style="display:flex;align-items:center;gap:10px"><span class="mark">V</span><span class="txt">Viettel Telecom<small style="color:#71717f;display:block;font-weight:500;font-size:11px">Theo cách của bạn.</small></span></div><p class="fdesc">Cửa hàng trực tiếp Viettel Telecom tại Thanh Xuân, Hà Nội — Tầng 1 tòa nhà Star City, số 23 Lê Văn Lương, phường Thanh Xuân, Hà Nội.</p></div>
       <div><h5>Cửa hàng</h5><ul><li><a href="#top">Thông tin cửa hàng</a></li><li><a href="#before">Giờ mở cửa</a></li><li><a href="#booking">Đặt lịch hẹn</a></li><li><a href="#nearby">Cửa hàng gần đây</a></li></ul></div>
-      <div><h5>Dịch vụ</h5><ul><li><a href="#services">Dịch vụ tại quầy</a></li><li><a href="#offers">Gói cước &amp; ưu đãi</a></li><li><a href="#products">Truyền hình TV360</a></li><li><a href="#support">Ứng dụng Tammi</a></li></ul></div>
-      <div><h5>Tổng đài</h5><div class="hotlines"><div><b>024 6675 9666</b> — cửa hàng Lê Văn Lương</div><div><b>198</b> — từ thuê bao Viettel, miễn phí</div><div><b>1800 8098</b> — mọi mạng, miễn phí</div><div><b>1800 8168</b> — TV360 bán hàng</div></div></div>
+      <div><h5>Sản phẩm &amp; Dịch vụ</h5><ul><li><a href="https://vietteltelecom.vn/vx/di-dong/" target="_blank" rel="noopener">Di động</a></li><li><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/" target="_blank" rel="noopener">Internet · TV360 · Camera</a></li><li><a href="https://vietteltelecom.vn/vx/dien-thoai-thiet-bi" target="_blank" rel="noopener">Điện thoại · Thiết bị</a></li><li><a href="https://vietteltelecom.vn/sme" target="_blank" rel="noopener">Khách hàng doanh nghiệp</a></li><li><a href="https://vietteltelecom.vn/ung-dung-so" target="_blank" rel="noopener">Ứng dụng số Viettel</a></li></ul></div>
+      <div><h5>Tổng đài</h5><div class="hotlines"><div><b>024 6675 9666</b><span>Cửa hàng Lê Văn Lương</span></div><div><b>198</b><span>Từ thuê bao Viettel · miễn phí</span></div><div><b>1800 8098</b><span>Mọi mạng · miễn phí</span></div><div><b>1800 8168</b><span>TV360 bán hàng</span></div></div></div>
     </div>
-    <div class="foot-bot"><span>© 2026 Viettel Telecom · Trang chi tiết cửa hàng Lê Văn Lương</span><span>Trang giới thiệu địa điểm — nội dung có thể chỉnh sửa</span></div>
+    <div class="foot-bot"><span>© 2026 Viettel Telecom · Cửa hàng trực tiếp Thanh Xuân Hà Nội</span><span>Trang giới thiệu địa điểm — nội dung có thể chỉnh sửa</span></div>
   </div>
 </footer>
 
@@ -838,8 +788,6 @@
   function restartPromo(){clearInterval(pTimer);pTimer=setInterval(function(){promoSet(pIndex+1)},6000);}
   restartPromo();
 
-  var svcTabs=document.getElementById('svcTabs'),svcGrid=document.getElementById('svcGrid');
-  svcTabs.querySelectorAll('button').forEach(function(t){t.addEventListener('click',function(){svcTabs.querySelector('.on').classList.remove('on');t.classList.add('on');var f=t.getAttribute('data-f');svcGrid.querySelectorAll('.svc-block').forEach(function(b){var show=(f==='all'||b.getAttribute('data-cat')===f);b.classList.toggle('hide',!show);if(show)b.classList.add('show');});});});
 
   function bindChips(id){var box=document.getElementById(id);if(!box)return;box.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){if(b.disabled)return;var on=box.querySelector('.on');if(on)on.classList.remove('on');b.classList.add('on');});});}
   bindChips('svcChips');bindChips('dayChips');bindChips('slots');
@@ -864,7 +812,7 @@
   var links=document.querySelectorAll('#menu a'),navmap={};
   links.forEach(function(a){navmap[a.getAttribute('href').slice(1)]=a;});
   var spy=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.remove('active')});var a=navmap[en.target.id];if(a)a.classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px'});
-  ['promo','before','services','products','offers','booking','nearby','support'].forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el)});
+  ['promo','before','services','offers','booking','nearby','support'].forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el)});
 </script>
 </body>
 </html>
