@@ -54,22 +54,51 @@
   .btn-white .rip,.btn-ghost .rip{background:rgba(238,0,51,.25)}
   @keyframes rip{from{width:0;height:0;opacity:.7}to{width:320px;height:320px;opacity:0}}
 
-  /* ============ HEADER ============ */
-  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:16px;height:64px}
-  .brand{display:flex;align-items:center;gap:10px;white-space:nowrap;flex:none}
-  .brand .mark{width:32px;height:32px;border-radius:9px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px}
-  .brand .txt{font-weight:800;font-size:15px;line-height:1.05}
-  .brand .txt small{display:block;font-weight:500;font-size:10.5px;color:var(--muted);text-transform:none;white-space:nowrap;max-width:230px;overflow:hidden;text-overflow:ellipsis}
-  .menu{display:flex;gap:1px;margin-left:auto}
-  .menu a{padding:8px 11px;border-radius:9px;font-size:13.5px;font-weight:500;color:var(--muted);transition:.15s;white-space:nowrap}
-  .menu a:hover{color:var(--ink);background:var(--bg-soft)}
-  .menu a.active{color:var(--red)}
-  .head-cta{display:inline-flex;gap:12px;align-items:center;flex:none}
-  .phone-mini{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:13.5px;color:var(--ink);white-space:nowrap}
-  .phone-mini svg{width:15px;height:15px;color:var(--red)}
+  /* ============ HEADER (Viettel Telecom style) ============ */
+  header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  .vt-nav{display:flex;align-items:center;gap:8px;height:70px}
+  .vt-logo{display:flex;flex-direction:column;line-height:.9;flex:none;padding-right:8px}
+  .vt-logo .v-red{font-size:26px;font-weight:800;color:var(--red);letter-spacing:-.02em}
+  .vt-logo .v-sub{font-size:11.5px;font-weight:600;color:#33333b;letter-spacing:.22em;margin-top:2px;padding-left:2px}
+  .vt-menu{display:flex;align-items:stretch;margin-left:12px}
+  .vt-item{position:relative;display:flex}
+  .vt-item>a{display:inline-flex;align-items:center;gap:5px;padding:0 13px;height:70px;font-size:15px;font-weight:600;color:var(--ink);white-space:nowrap;transition:color .15s}
+  .vt-item>a svg{width:12px;height:12px;transition:.2s}
+  .vt-item>a:hover{color:var(--red)}
+  .vt-item.has-drop:hover>a svg{transform:rotate(180deg)}
+  .vt-item::after{content:"";position:absolute;left:13px;right:13px;bottom:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:.2s;border-radius:3px 3px 0 0}
+  .vt-item:hover::after{transform:scaleX(1)}
+  .vt-drop{position:absolute;top:70px;left:0;min-width:250px;background:#fff;border:1px solid var(--line);border-top:2px solid var(--red);border-radius:0 0 12px 12px;box-shadow:var(--shadow-lg);padding:10px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transform:translateY(6px);transition:.2s;z-index:5}
+  .vt-item.has-drop:hover .vt-drop{opacity:1;visibility:visible;transform:none}
+  .vt-drop a{padding:11px 14px;border-radius:9px;font-size:14px;font-weight:500;color:var(--ink-2);white-space:nowrap;transition:.12s}
+  .vt-drop a:hover{background:var(--red-soft);color:var(--red)}
+  .vt-logo img{height:36px;width:auto;display:block}
+  .vt-drop.drop-right{left:auto;right:0}
+  /* mega menu (Sản phẩm dịch vụ) */
+  .vt-mega{left:50%;width:min(1080px,94vw);flex-direction:row;gap:4px;padding:26px 22px;transform:translate(-50%,6px)}
+  .vt-item.has-drop:hover .vt-mega{transform:translateX(-50%)}
+  .vt-mega .mcol{flex:1;display:flex;flex-direction:column;min-width:0;padding:0 8px}
+  .vt-mega .mcol .mimg{height:112px;border-radius:12px;overflow:hidden;margin-bottom:14px;background:var(--bg-soft)}
+  .vt-mega .mcol .mimg img{width:100%;height:100%;object-fit:cover}
+  .vt-mega .mcol .mtitle{font-size:16px;font-weight:800;color:var(--ink);padding:0 0 9px;white-space:normal}
+  .vt-mega .mcol .mtitle:hover{background:none;color:var(--red)}
+  .vt-mega .mcol a:not(.mtitle){padding:6px 0;font-size:14px;font-weight:500;color:var(--muted);white-space:normal}
+  .vt-mega .mcol a:not(.mtitle):hover{background:none;color:var(--red)}
+  /* multi-column dropdowns (Hỗ trợ, My Viettel) */
+  .vt-drop.cols2{min-width:540px;flex-direction:row;gap:34px;padding:18px 24px}
+  .vt-drop.cols3{min-width:740px;flex-direction:row;gap:28px;padding:20px 26px}
+  .vt-drop .dcol{display:flex;flex-direction:column;gap:1px;min-width:0}
+  .vt-drop.cols3 .dcol{flex:1}
+  .vt-drop .dcol .gtitle{font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--ink);padding:4px 14px 8px}
+  .vt-actions{display:flex;align-items:center;gap:14px;margin-left:auto;flex:none}
+  .vt-search{width:42px;height:42px;border-radius:50%;background:var(--bg-soft);border:none;cursor:pointer;display:grid;place-items:center;transition:.15s;color:var(--ink)}
+  .vt-search:hover{background:#eaeaec}
+  .vt-search svg{width:19px;height:19px}
+  .vt-login{background:var(--red);color:#fff;font-weight:700;font-size:15px;padding:11px 24px;border-radius:999px;white-space:nowrap;transition:.15s}
+  .vt-login:hover{background:var(--red-dark);transform:translateY(-1px)}
+  .vt-menu-mb{display:none}
   .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--ink)}
-  .nav-toggle svg{width:24px;height:24px}
+  .nav-toggle svg{width:26px;height:26px}
 
   /* ============ HERO ============ */
   .hero{padding:50px 0 24px;position:relative}
@@ -324,19 +353,33 @@
   .cta-band p{color:#c9c9d4;font-size:16px;margin-bottom:24px}
   .cta-band .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-  /* ============ FOOTER ============ */
-  footer{background:#08080c;color:#8a8a95;padding:52px 0 26px;margin-top:70px}
-  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:32px;padding-bottom:32px;border-bottom:1px solid #1c1c22}
-  footer .brand .txt{color:#fff}
-  footer .fdesc{font-size:14px;color:#71717f;max-width:280px;margin-top:14px}
-  footer h5{color:#fff;font-size:14px;margin-bottom:16px;font-weight:600}
-  footer ul{list-style:none;font-size:14px;display:grid;gap:10px}
-  footer li a:hover,footer li:hover{color:#c9c9d4}
-  .hotlines{display:grid;gap:13px}
-  .hotlines div{display:flex;flex-direction:column;gap:1px;white-space:nowrap}
-  .hotlines b{color:#fff;font-weight:700;font-size:14px}
-  .hotlines span{color:#71717f;font-size:12px}
-  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:22px;font-size:13px;color:#5a5a64}
+  /* ============ FOOTER (Viettel Telecom style) ============ */
+  .vt-footer{background:#f4f5f7;color:var(--ink-2);padding:54px 0 30px;margin-top:70px;border-top:1px solid var(--line)}
+  .vt-help{text-align:center;margin-bottom:38px}
+  .vt-help h2{font-size:30px;font-weight:800;color:var(--ink);margin-bottom:26px;letter-spacing:-.02em}
+  .vt-help-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px}
+  .vt-help-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 10px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;transition:.18s var(--ease)}
+  .vt-help-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--red)}
+  .vt-help-card .ic{width:40px;height:40px;color:var(--red)}
+  .vt-help-card .ic svg{width:100%;height:100%}
+  .vt-help-card h3{font-size:14px;font-weight:600;color:var(--ink);line-height:1.3}
+  .vt-intro{display:flex;gap:22px;align-items:flex-start;padding:26px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+  .vt-intro-logo{height:46px;width:auto;flex:none}
+  .vt-intro-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+  .vt-intro-desc{font-size:12.5px;color:var(--muted);line-height:1.6}
+  .vt-foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:30px 0}
+  .vt-foot-cols h5{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:14px}
+  .vt-foot-cols h5.mt{margin-top:24px}
+  .vt-foot-cols ul{list-style:none;display:grid;gap:9px}
+  .vt-foot-cols li a{font-size:13.5px;color:var(--muted);transition:.12s}
+  .vt-foot-cols li a:hover{color:var(--red)}
+  .vt-foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:24px;border-top:1px solid var(--line-2)}
+  .vt-social{display:flex;gap:11px}
+  .vt-social a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:.15s}
+  .vt-social a:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .vt-social .fb{background:#1877f2}.vt-social .yt{background:#ff0000}.vt-social .zl{background:#0068ff}
+  .vt-social svg{width:19px;height:19px}
+  .vt-copy{font-size:13px;color:var(--muted)}
 
   /* ============ TAMMI floating widget ============ */
   .tammi-fab{position:fixed;right:22px;bottom:22px;z-index:70;display:flex;align-items:center;gap:12px}
@@ -364,20 +407,23 @@
 
   /* ============ RESPONSIVE ============ */
   @media(max-width:1080px){
-    .menu a{padding:8px 8px;font-size:13px}
-    .nav{gap:12px}
+    .vt-item>a{padding:0 9px;font-size:14px}
+    .vt-nav{gap:4px}
   }
   @media(max-width:940px){
     .nav-toggle{display:block}
-    .menu{position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;padding:8px 20px;gap:0;display:none;box-shadow:var(--shadow-lg);margin:0}
-    .menu.open{display:flex}
-    .menu a{padding:13px 6px;font-size:15px;border-bottom:1px solid var(--line)}
-    .phone-mini{display:none}
+    .vt-menu{display:none}
+    .vt-menu-mb{position:absolute;top:70px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;padding:8px 20px;box-shadow:var(--shadow-lg)}
+    .vt-menu-mb.open{display:flex}
+    .vt-menu-mb a{padding:14px 6px;font-size:15px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line)}
+    .vt-menu-mb a:last-child{border-bottom:none}
+    .vt-help-grid{grid-template-columns:repeat(4,1fr)}
+    .vt-foot-cols{grid-template-columns:1fr 1fr}
+    .vt-intro{flex-direction:column;gap:14px}
     .hero-grid,.book-grid,.loc-grid,.rev-grid{grid-template-columns:1fr}
     .before3{grid-template-columns:1fr}
     .cat-grid{grid-template-columns:repeat(3,1fr)}
     .off-grid{grid-template-columns:1fr}
-    .foot-grid{grid-template-columns:1fr 1fr}
     .hero h1{font-size:40px}
     .stat-strip{grid-template-columns:1fr 1fr}
     .stat-strip .cell:nth-child(2){border-right:none}
@@ -397,7 +443,11 @@
     .sec-head .side{align-self:flex-start}
     .sec-head .ht h2{font-size:25px}
     .cat-grid,.travel{grid-template-columns:1fr}
-    .foot-grid{grid-template-columns:1fr}
+    .vt-help-grid{grid-template-columns:repeat(2,1fr)}
+    .vt-foot-cols{grid-template-columns:1fr}
+    .vt-help h2{font-size:24px}
+    .vt-login{padding:9px 18px;font-size:14px}
+    .vt-logo .v-red{font-size:22px}
     .cta-band{padding:32px 20px}.cta-band h2{font-size:23px}
     .award-txt h3{font-size:19px}
     .sec-head .ht .lead{white-space:normal;overflow:visible}
@@ -416,21 +466,33 @@
 <body>
 
 
-<!-- ============ HEADER ============ -->
+<!-- ============ HEADER (Viettel Telecom style) ============ -->
 <header>
-  <div class="wrap nav">
-    <a href="#top" class="brand"><span class="mark">V</span><span class="txt">Viettel Telecom<small>Cửa hàng trực tiếp Thanh Xuân Hà Nội</small></span></a>
-    <nav class="menu" id="menu">
-      <a href="#promo">Khuyến mãi</a><a href="#before">Trước khi tới</a><a href="#services">Sản phẩm &amp; DV</a>
-      <a href="#offers">Ưu đãi</a><a href="#booking">Đặt lịch</a>
-      <a href="#nearby">Gần đây</a><a href="#support">Hỗ trợ</a>
+  <div class="wrap vt-nav">
+    <a href="#top" class="vt-logo"><img src="assets/viettel-logo.png" alt="Viettel Telecom"></a>
+    <nav class="vt-menu">
+      <div class="vt-item has-drop"><a href="https://vietteltelecom.vn/vx/tin-tuc/" target="_blank" rel="noopener">Tin tức sự kiện <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="vt-drop"><a href="https://vietteltelecom.vn/vx/tin-tuc/" target="_blank" rel="noopener">Tin tức sự kiện</a><a href="https://vietteltelecom.vn/vx/gioi-thieu-viettel" target="_blank" rel="noopener">Giới thiệu Viettel</a><a href="https://vietteltelecom.vn/chat-luong-dich-vu/quan-ly-chat-luong-dich-vu" target="_blank" rel="noopener">Chất lượng dịch vụ</a></div></div>
+      <div class="vt-item has-drop"><a href="#services">Sản phẩm dịch vụ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="vt-drop vt-mega"><div class="mcol"><div class="mimg"><img src="assets/cat/didong.png" alt="Di động" loading="lazy"></div><a href="https://vietteltelecom.vn/vx/di-dong/" class="mtitle" target="_blank" rel="noopener">Di động</a><a href="https://vietteltelecom.vn/vx/di-dong/goi-data-1/" target="_blank" rel="noopener">Gói cước</a><a href="https://vietteltelecom.vn/vx/di-dong/dich-vu-quoc-te" target="_blank" rel="noopener">Dịch vụ quốc tế</a><a href="https://vietteltelecom.vn/vx/di-dong/sim-so/" target="_blank" rel="noopener">Sim số</a><a href="https://vietteltelecom.vn/chuyentrasau" target="_blank" rel="noopener">Chuyển trả sau</a><a href="https://vietteltelecom.vn/vx/di-dong/dich-vu-vas" target="_blank" rel="noopener">Dịch vụ GTGT</a><a href="https://vietteltelecom.vn/vx/5g/" target="_blank" rel="noopener">Viettel 5G</a></div><div class="mcol"><div class="mimg"><img src="assets/cat/internet.png" alt="Internet-TV360-Camera" loading="lazy"></div><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/" class="mtitle" target="_blank" rel="noopener">Internet-TV360-Camera</a><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/toan-trinh/" target="_blank" rel="noopener">Internet</a><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/camera" target="_blank" rel="noopener">Camera</a><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/truyen-hinh" target="_blank" rel="noopener">Truyền hình TV360</a><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/combo" target="_blank" rel="noopener">Combo Internet</a><a href="https://vietteltelecom.vn/vx/internet-doanh-nghiep" target="_blank" rel="noopener">Internet Doanh nghiệp</a><a href="https://vietteltelecom.vn/vx/vt/ftth-online" target="_blank" rel="noopener">Internet toàn trình</a></div><div class="mcol"><div class="mimg"><img src="assets/cat/dienthoai.png" alt="Điện thoại - Thiết bị" loading="lazy"></div><a href="https://vietteltelecom.vn/vx/dien-thoai-thiet-bi" class="mtitle" target="_blank" rel="noopener">Điện thoại - Thiết bị</a><a href="https://vietteltelecom.vn/vx/dien-thoai" target="_blank" rel="noopener">Điện thoại</a><a href="https://vietteltelecom.vn/vx/thiet-bi" target="_blank" rel="noopener">Thiết bị thông minh</a></div><div class="mcol"><div class="mimg"><img src="assets/cat/doanhnghiep.png" alt="Khách hàng doanh nghiệp" loading="lazy"></div><a href="https://vietteltelecom.vn/sme" class="mtitle" target="_blank" rel="noopener">Khách hàng doanh nghiệp</a><a href="https://vietteltelecom.vn/giai-phap/cntt" target="_blank" rel="noopener">Giải pháp CNTT</a><a href="https://vietteltelecom.vn/giai-phap/vien-thong" target="_blank" rel="noopener">Giải pháp Viễn thông</a><a href="https://vietteltelecom.vn/giai-phap/iot" target="_blank" rel="noopener">Giải pháp IoT</a><a href="https://sme.viettel.vn/landing-page?alias=TDO" target="_blank" rel="noopener">Giải pháp Quản lý bán hàng</a></div><div class="mcol"><div class="mimg"><img src="assets/cat/ungdung.png" alt="Ứng dụng số Viettel" loading="lazy"></div><a href="https://vietteltelecom.vn/ung-dung-so" class="mtitle" target="_blank" rel="noopener">Ứng dụng số Viettel</a><a href="https://vietteltelecom.vn/vx/myviettel/" target="_blank" rel="noopener">My Viettel</a><a href="https://vietteltelecom.vn/ung-dung-so/tv360/QXJ0aWNs15e05e4e5d48c1" target="_blank" rel="noopener">Truyền hình TV360</a><a href="https://vietteltelecom.vn/ung-dung-so/imuzik/QXJ0aWNs15e070b96a8c35" target="_blank" rel="noopener">iMuzik</a></div></div></div>
+      <div class="vt-item has-drop"><a href="https://vietteltelecom.vn/vx/viettelplus/" target="_blank" rel="noopener">Viettel++ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="vt-drop"><a href="https://vietteltelecom.vn/vx/viettelplus/gioi-thieu" target="_blank" rel="noopener">Giới thiệu Viettel++</a><a href="https://vietteltelecom.vn/viettelplus/trang-ca-nhan" target="_blank" rel="noopener">Thông tin hội viên</a><a href="https://vietteltelecom.vn/vx/viettelplus/uu-dai" target="_blank" rel="noopener">Ưu đãi Chương trình</a></div></div>
+      <div class="vt-item"><a href="https://vietteltelecom.vn/vx/shop/" target="_blank" rel="noopener">Viettel Shop</a></div>
+      <div class="vt-item has-drop"><a href="https://vietteltelecom.vn/vx/ho-tro-khach-hang/" target="_blank" rel="noopener">Hỗ trợ khách hàng <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="vt-drop cols2 drop-right"><div class="dcol"><a href="https://vietteltelecom.vn/vx/ho-tro/cau-hoi-thuong-gap" target="_blank" rel="noopener">Câu hỏi thường gặp</a><a href="https://vietteltelecom.vn/video-huong-dan-cskh" target="_blank" rel="noopener">Video hướng dẫn</a><a href="https://vietteltelecom.vn/vx/cua-hang" target="_blank" rel="noopener">Cửa hàng Viettel</a><a href="https://vietteltelecom.vn/vx/gop-y-san-pham-dich-vu" target="_blank" rel="noopener">Góp ý sản phẩm dịch vụ</a><a href="https://www.facebook.com/messages/t/Vietteltelecom" target="_blank" rel="noopener">Chat online với CSKH</a><a href="https://www.facebook.com/Vietteltelecom/" target="_blank" rel="noopener">Cộng đồng Viettel giải đáp Online</a></div><div class="dcol"><a href="https://vietteltelecom.vn/vx/bao-hanh" target="_blank" rel="noopener">Tra cứu bảo hành</a><a href="https://vietteltelecom.vn/vx/tra-cuu-ma-don-hang" target="_blank" rel="noopener">Tra cứu đơn hàng</a><a href="https://vietteltelecom.vn/vx/ho-tro/xac-minh-tbc" target="_blank" rel="noopener">Đặt lịch hẹn xác minh</a><a href="https://vietteltelecom.vn/vx/ho-tro-dich-vu" target="_blank" rel="noopener">Hỗ trợ dịch vụ</a><a href="https://vietteltelecom.vn/tra-cuu-thong-tin-thue-bao" target="_blank" rel="noopener">Tra cứu chuẩn hoá theo nghị định 49</a></div></div></div>
+      <div class="vt-item has-drop"><a href="https://vietteltelecom.vn/vx/thong-tin-tai-khoan/" target="_blank" rel="noopener">My Viettel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="vt-drop cols3 drop-right"><div class="dcol"><span class="gtitle">Quản lý cước</span><a href="https://vietteltelecom.vn/vx/tra-cuoc" target="_blank" rel="noopener">Tra cứu cước</a><a href="https://vietteltelecom.vn/vx/tra-cuu-thong-bao-cuoc" target="_blank" rel="noopener">Tra cứu thông báo cước</a><a href="https://vietteltelecom.vn/vx/pay" target="_blank" rel="noopener">Thanh toán Online</a><a href="https://vietteltelecom.vn/vx/chi-tiet-hoa-don-ban-hang" target="_blank" rel="noopener">Hoá đơn bán hàng</a><a href="https://vietteltelecom.vn/nap-the" target="_blank" rel="noopener">Mua thẻ cào</a></div><div class="dcol"><span class="gtitle">Tiện ích</span><a href="https://vietteltelecom.vn/vx/thong-tin-thue-bao" target="_blank" rel="noopener">Thông tin thuê bao</a><a href="https://vietteltelecom.vn/vx/quan-ly-tai-khoan" target="_blank" rel="noopener">Dịch vụ đang sử dụng</a><a href="https://vietteltelecom.vn/vx/viettelplus/uu-dai" target="_blank" rel="noopener">Khuyến mại dành cho bạn</a><a href="https://vietteltelecom.vn/vx/chuyenmanggiuso" target="_blank" rel="noopener">Chuyển mạng giữ số</a><a href="https://vietteltelecom.vn/vx/xac-nhan-thue-bao" target="_blank" rel="noopener">Xác nhận thuê bao</a><a href="https://vietteltelecom.vn/vx/dat-hang-ftth" target="_blank" rel="noopener">Hoàn thiện đơn hàng Internet</a><a href="https://vietteltelecom.vn/vx/lay-danh-sach-thue-bao" target="_blank" rel="noopener">Quản lý multi-sim</a><a href="https://vietteltelecom.vn/doi-sim" target="_blank" rel="noopener">Đổi eSim</a></div><div class="dcol"><span class="gtitle">Lan tỏa</span><a href="https://vietteltelecom.vn/vx/lan-toa" target="_blank" rel="noopener">Lan tỏa Di động</a><a href="https://vietteltelecom.vn/vx/lan-toa" target="_blank" rel="noopener">Lan tỏa Cố định</a><a href="https://vietteltelecom.vn/vx/lan-toa" target="_blank" rel="noopener">Lan tỏa Thanh toán cước</a><a href="https://vietteltelecom.vn/vx/lan-toa" target="_blank" rel="noopener">Lan tỏa dịch vụ doanh nghiệp</a></div></div></div>
     </nav>
-    <div class="head-cta">
-      <a href="tel:02466759666" class="phone-mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>024 6675 9666</a>
-      <a href="#booking" class="btn btn-primary btn-sm">Đặt lịch hẹn</a>
-      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu"><svg id="burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <div class="vt-actions">
+      <a class="vt-search" href="https://vietteltelecom.vn/vx/ket-qua-tim-kiem" target="_blank" rel="noopener" aria-label="Tìm kiếm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
+      <a href="https://vietteltelecom.vn/vx/dang-nhap" target="_blank" rel="noopener" class="vt-login">Đăng nhập</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </div>
+  <nav class="vt-menu-mb" id="vtMenuMb">
+    <a href="#services">Sản phẩm dịch vụ</a>
+    <a href="https://vietteltelecom.vn/vx/tin-tuc/" target="_blank" rel="noopener">Tin tức sự kiện</a>
+    <a href="https://vietteltelecom.vn/vx/viettelplus/" target="_blank" rel="noopener">Viettel++</a>
+    <a href="https://vietteltelecom.vn/vx/shop/" target="_blank" rel="noopener">Viettel Shop</a>
+    <a href="https://vietteltelecom.vn/vx/ho-tro-khach-hang/" target="_blank" rel="noopener">Hỗ trợ khách hàng</a>
+    <a href="https://vietteltelecom.vn/vx/thong-tin-tai-khoan/" target="_blank" rel="noopener">My Viettel</a>
+    <a href="https://vietteltelecom.vn/vx/dang-nhap" target="_blank" rel="noopener" style="color:var(--red);font-weight:700">Đăng nhập</a>
+  </nav>
 </header>
 
 <!-- ============ HERO ============ -->
@@ -738,16 +800,34 @@
 <!-- ============ CTA BAND ============ -->
 <div class="wrap"><div class="cta-band reveal"><div class="in"><h2>Đến đúng giờ, mang đúng giấy tờ,<br>xong việc trong một lần</h2><p>Đặt lịch trước để cửa hàng giữ quầy và chuẩn bị sẵn hồ sơ cho bạn.</p><div class="btns"><a href="#booking" class="btn btn-primary">Đặt lịch hẹn</a><a href="tel:02466759666" class="btn btn-light">Gọi 024 6675 9666</a></div></div></div></div>
 
-<!-- ============ FOOTER ============ -->
-<footer>
+<!-- ============ FOOTER (Viettel Telecom style) ============ -->
+<footer class="vt-footer">
   <div class="wrap">
-    <div class="foot-grid">
-      <div><div class="brand" style="display:flex;align-items:center;gap:10px"><span class="mark">V</span><span class="txt">Viettel Telecom<small style="color:#71717f;display:block;font-weight:500;font-size:11px">Theo cách của bạn.</small></span></div><p class="fdesc">Cửa hàng trực tiếp Viettel Telecom tại Thanh Xuân, Hà Nội — Tầng 1 tòa nhà Star City, số 23 Lê Văn Lương, phường Thanh Xuân, Hà Nội.</p></div>
-      <div><h5>Cửa hàng</h5><ul><li><a href="#top">Thông tin cửa hàng</a></li><li><a href="#before">Giờ mở cửa</a></li><li><a href="#booking">Đặt lịch hẹn</a></li><li><a href="#nearby">Cửa hàng gần đây</a></li></ul></div>
-      <div><h5>Sản phẩm &amp; Dịch vụ</h5><ul><li><a href="https://vietteltelecom.vn/vx/di-dong/" target="_blank" rel="noopener">Di động</a></li><li><a href="https://vietteltelecom.vn/vx/internet-truyenhinh/" target="_blank" rel="noopener">Internet · TV360 · Camera</a></li><li><a href="https://vietteltelecom.vn/vx/dien-thoai-thiet-bi" target="_blank" rel="noopener">Điện thoại · Thiết bị</a></li><li><a href="https://vietteltelecom.vn/sme" target="_blank" rel="noopener">Khách hàng doanh nghiệp</a></li><li><a href="https://vietteltelecom.vn/ung-dung-so" target="_blank" rel="noopener">Ứng dụng số Viettel</a></li></ul></div>
-      <div><h5>Tổng đài</h5><div class="hotlines"><div><b>024 6675 9666</b><span>Cửa hàng Lê Văn Lương</span></div><div><b>198</b><span>Từ thuê bao Viettel · miễn phí</span></div><div><b>1800 8098</b><span>Mọi mạng · miễn phí</span></div><div><b>1800 8168</b><span>TV360 bán hàng</span></div></div></div>
+    <div class="vt-help reveal">
+      <h2>Bạn cần trợ giúp?</h2>
+      <div class="vt-help-grid"><a class="vt-help-card" href="https://vietteltelecom.vn/vx/gioi-thieu-viettel" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h8a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-8a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h8z"/></svg></span><h3>Giới thiệu Viettel</h3></a><a class="vt-help-card" href="https://vietteltelecom.vn/chat-luong-dich-vu/quan-ly-chat-luong-dich-vu" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2.5l8 4.4v8.9L12 20l-8-4.2V6.9z"/><path d="M8.5 11l2.3 2.3L15.5 9"/></svg></span><h3>Chất lượng dịch vụ</h3></a><a class="vt-help-card" href="https://vietteltelecom.vn/vx/ho-tro/cau-hoi-thuong-gap" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.4 2.4 0 0 1 4.6 1c0 1.6-2.2 2-2.2 3.4"/><path d="M12 17h.01"/></svg></span><h3>Câu hỏi thường gặp</h3></a><a class="vt-help-card" href="https://vietteltelecom.vn/video-huong-dan-cskh" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.2l4 2.8-4 2.8z" fill="currentColor" stroke="none"/></svg></span><h3>Video hướng dẫn</h3></a><a class="vt-help-card" href="https://vietteltelecom.vn/vx/cua-hang" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 9l1.6-4.5h12.8L20 9M5 9v10h14V9M4 9h16M10 19v-5h4v5"/></svg></span><h3>Tìm kiếm cửa hàng</h3></a><a class="vt-help-card" href="https://vietteltelecom.vn/vx/gop-y-san-pham-dich-vu" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 11v8H4.5A1.5 1.5 0 0 1 3 17.5v-5A1.5 1.5 0 0 1 4.5 11zM7 11l3.4-7.2A1.8 1.8 0 0 1 13 5v3.5h5a2 2 0 0 1 2 2.3l-1.1 5.5A2 2 0 0 1 16.9 19H7z"/></svg></span><h3>Phản ánh góp ý</h3></a><a class="vt-help-card" href="https://www.facebook.com/messages/t/Vietteltelecom" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a7.5 7.5 0 0 1-10.8 6.7L4 20l1.8-5A7.5 7.5 0 1 1 21 11.5z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span><h3>Chat với CSKH</h3></a></div>
     </div>
-    <div class="foot-bot"><span>© 2026 Viettel Telecom · Cửa hàng trực tiếp Thanh Xuân Hà Nội</span><span>Trang giới thiệu địa điểm — nội dung có thể chỉnh sửa</span></div>
+    <div class="vt-intro">
+      <img class="vt-intro-logo" src="assets/viettel-logo.png" alt="Viettel Telecom">
+      <div>
+        <p class="vt-intro-title">Website mua sắm online chính thức của Viettel Telecom.</p>
+        <p class="vt-intro-desc">Cơ quan chủ quản: Tổng Công ty Viễn thông Viettel (Viettel Telecom) - Chi nhánh Tập đoàn Công nghiệp - Viễn thông Quân đội. Cửa hàng trực tiếp Lê Văn Lương — Tầng 1 tòa nhà Star City, số 23 Lê Văn Lương, phường Thanh Xuân, Hà Nội. Điện thoại: 024 6675 9666.</p>
+      </div>
+    </div>
+    <div class="vt-foot-cols">
+      <div><h5>Sản phẩm dịch vụ</h5><ul><li><a href="https://vietteltelecom.vn/vx/di-dong/" target="_blank" rel="noopener">Dịch vụ Di động</a></li><li><a href="https://vietteltelecom.vn/vx/internet-truyenhinh" target="_blank" rel="noopener">Internet - Truyền hình</a></li><li><a href="https://vietteltelecom.vn/vx/dien-thoai-thiet-bi" target="_blank" rel="noopener">Điện thoại - Thiết bị thông minh</a></li><li><a href="https://vietteltelecom.vn/vx/di-dong/dich-vu-quoc-te" target="_blank" rel="noopener">Dịch vụ quốc tế</a></li><li><a href="https://vietteltelecom.vn/sme" target="_blank" rel="noopener">Dịch vụ KH SME</a></li><li><a href="https://vietteltelecom.vn/ung-dung-so" target="_blank" rel="noopener">Ứng dụng số Viettel</a></li></ul></div>
+      <div><h5>Tiện ích My Viettel</h5><ul><li><a href="https://vietteltelecom.vn/vx/thong-tin-tai-khoan" target="_blank" rel="noopener">Quản lý thông tin tài khoản</a></li><li><a href="https://vietteltelecom.vn/chuyentrasau" target="_blank" rel="noopener">Chuyển sang trả sau</a></li><li><a href="https://vietteltelecom.vn/doi-sim" target="_blank" rel="noopener">Đổi sim</a></li><li><a href="https://vietteltelecom.vn/vx/lan-toa" target="_blank" rel="noopener">Lan tỏa dịch vụ</a></li><li><a href="https://vietteltelecom.vn/vx/cua-hang" target="_blank" rel="noopener">Tìm kiếm cửa hàng Viettel</a></li><li><a href="https://vietteltelecom.vn/vx/chuan-hoa-thong-tin" target="_blank" rel="noopener">Chuẩn hóa thông tin</a></li><li><a href="https://vietteltelecom.vn/tra-cuu-thong-tin-thue-bao" target="_blank" rel="noopener">Tra cứu Nghị định 49</a></li><li><a href="https://vietteltelecom.vn/vx/tra-cuu-ma-don-hang" target="_blank" rel="noopener">Đơn hàng của bạn</a></li></ul></div>
+      <div><h5>Tiện ích thanh toán</h5><ul><li><a href="https://vietteltelecom.vn/vx/pay" target="_blank" rel="noopener">Thanh toán cước/ Nạp tiền</a></li><li><a href="https://vietteltelecom.vn/vx/tra-cuu-hoa-don-dien-tu" target="_blank" rel="noopener">Tra cứu Hóa đơn điện tử</a></li><li><a href="https://vietteltelecom.vn/nap-the" target="_blank" rel="noopener">Nạp thẻ cào</a></li></ul><h5 class="mt">Viettel++</h5><ul><li><a href="https://vietteltelecom.vn/vx/viettelplus/gioi-thieu" target="_blank" rel="noopener">Giới thiệu Viettel++</a></li><li><a href="https://vietteltelecom.vn/viettelplus/trang-ca-nhan" target="_blank" rel="noopener">Thông tin hội viên</a></li><li><a href="https://vietteltelecom.vn/vx/viettelplus/uu-dai" target="_blank" rel="noopener">Ưu đãi chương trình</a></li></ul></div>
+      <div><h5>Điều khoản &amp; Điều kiện sử dụng</h5><ul><li><a href="https://vietteltelecom.vn/vx/dieu-khoan-su-dung?root=register-1" target="_blank" rel="noopener">Điều khoản sử dụng</a></li><li><a href="https://vietteltelecom.vn/vx/dieu-khoan-su-dung?root=register-2" target="_blank" rel="noopener">Điều khoản mua hàng</a></li><li><a href="https://vietteltelecom.vn/vx/dieu-khoan-su-dung?root=register-4" target="_blank" rel="noopener">Chính sách thanh toán</a></li><li><a href="https://vietteltelecom.vn/vx/dieu-khoan-su-dung?root=register-0" target="_blank" rel="noopener">Chính sách bảo vệ dữ liệu cá nhân</a></li><li><a href="https://vietteltelecom.vn/chat-luong-dich-vu/quan-ly-chat-luong-dich-vu" target="_blank" rel="noopener">Quản lí chất lượng dịch vụ</a></li><li><a href="https://vietteltelecom.vn/vx/dieu-khoan-su-dung?root=register-3" target="_blank" rel="noopener">Quy chế hoạt động TMĐT</a></li></ul></div>
+    </div>
+    <div class="vt-foot-bottom">
+      <div class="vt-social">
+        <a class="fb" href="https://www.facebook.com/Vietteltelecom/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.5-1.5h1.7V4.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V14h2.8v8z"/></svg></a>
+        <a class="yt" href="https://www.youtube.com/user/Viettelchannels" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.3 5.2 12 5.2 12 5.2s-7.3 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.7 1.7c1.6.4 8.9.4 8.9.4s7.3 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+        <a class="zl" href="http://zalo.me/1814378069399742003" target="_blank" rel="noopener" aria-label="Zalo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7l-5 3.5V17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M8.4 8.2h4v.9L9.9 12.6h2.6v1H8.2v-.9l2.4-3.5H8.4zM13.6 7.6h1.1v6h-1.1zM17 9.3c.9 0 1.6.7 1.6 1.7s-.7 1.7-1.6 1.7-1.6-.7-1.6-1.7.7-1.7 1.6-1.7z" fill="#0068ff"/></svg></a>
+      </div>
+      <span class="vt-copy">© Viettel Telecom 2015. All rights reserved.</span>
+    </div>
   </div>
 </footer>
 
@@ -773,8 +853,8 @@
 <div class="mbar"><a class="btn btn-ghost" href="tel:02466759666">📞 Gọi</a><a class="btn btn-primary" href="#booking">📅 Đặt lịch</a></div>
 
 <script>
-  function toggleMenu(){document.getElementById('menu').classList.toggle('open');}
-  document.querySelectorAll('#menu a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('menu').classList.remove('open')});});
+  function toggleMenu(){document.getElementById('vtMenuMb').classList.toggle('open');}
+  document.querySelectorAll('#vtMenuMb a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('vtMenuMb').classList.remove('open')});});
 
   document.querySelectorAll('img[loading="lazy"]').forEach(function(im){if(im.complete)im.classList.add('imgloaded');else im.addEventListener('load',function(){im.classList.add('imgloaded')});});
 
@@ -809,10 +889,6 @@
   document.querySelectorAll('.reveal,[data-count],#peak').forEach(function(el){io.observe(el)});
   document.querySelectorAll('.hero [data-count]').forEach(countUp);
 
-  var links=document.querySelectorAll('#menu a'),navmap={};
-  links.forEach(function(a){navmap[a.getAttribute('href').slice(1)]=a;});
-  var spy=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.remove('active')});var a=navmap[en.target.id];if(a)a.classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px'});
-  ['promo','before','services','offers','booking','nearby','support'].forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el)});
 </script>
 </body>
 </html>
