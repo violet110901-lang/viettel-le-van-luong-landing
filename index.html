@@ -480,10 +480,10 @@
     .cat-grid,.travel{grid-template-columns:1fr}
     /* Sản phẩm mobile: chỉ nút, bỏ nhãn + mô tả, tách lưới 2 cột */
     #services .sec-head .lead{display:none}
-    .svc-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .svc-row{display:contents}
+    .svc-groups{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+    .svc-row{display:flex;flex-direction:column;padding:0;border-bottom:none}
     .svc-row .g-label{display:none}
-    .svc-row .g-btns{display:contents}
+    .svc-row .g-btns{display:flex;flex-direction:column;gap:12px;margin-left:0;width:100%}
     .svc-tab{min-width:0;padding:16px 10px}
     /* Hero CTA ngắn gọn, nằm ngang */
     .hero-cta{flex-wrap:nowrap;gap:10px}
@@ -592,7 +592,7 @@
     <div class="sec-head">
       <div class="t reveal">
         <img class="tammi-ava sm" src="assets/tammi/laptop.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Sản phẩm &amp; Dịch vụ</h2><p class="lead">Danh mục sản phẩm và dịch vụ Viettel — đăng ký ngay tại cửa hàng.</p></div>
+        <div class="ht"><h2>Sản phẩm &amp; Dịch vụ</h2><p class="lead">Danh mục sản phẩm và dịch vụ Viettel — đăng ký ngay.</p></div>
       </div>
       <div class="side"></div>
     </div>
@@ -608,7 +608,7 @@
       </div>
     </div>
 
-    <div class="usnote reveal">Từ <b>13.05.2026</b> Viettel đã ngừng toàn bộ cú pháp USSD dạng <code>*101#</code>. Tra cứu và đăng ký gói nay thực hiện qua tin nhắn <b>191</b>, ứng dụng My Viettel hoặc trực tiếp tại quầy.</div>
+    <div class="usnote reveal">Từ <b>13.05.2026</b> Viettel đã ngừng toàn bộ cú pháp USSD dạng <code>*101#</code>. Tra cứu và đăng ký gói nay thực hiện qua tin nhắn <b>191</b>, ứng dụng My Viettel hoặc trực tiếp.</div>
   </div>
 </section>
 
@@ -618,7 +618,7 @@
     <div class="sec-head">
       <div class="t reveal">
         <img class="tammi-ava sm" src="assets/tammi/heart.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Ưu đãi mới nhất</h2><p class="lead">Ưu đãi riêng cho khách giao dịch tại cửa hàng trong tháng này.</p></div>
+        <div class="ht"><h2>Ưu đãi mới nhất</h2><p class="lead">Ưu đãi riêng cho khách giao dịch trong tháng này.</p></div>
       </div>
       <div class="side"><span class="eyebrow"><span class="idx">02 / 07</span></span></div>
     </div>
@@ -726,7 +726,7 @@
     </div>
 
     <div class="amen-strip reveal">
-      <span class="lbl">Tiện ích tại cửa hàng:</span>
+      <span class="lbl">Tiện ích:</span>
       <span class="amen-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14 0M12 20h.01"/></svg>Wi-Fi miễn phí</span>
       <span class="amen-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18v-6a8 8 0 0 1 16 0v6M2 18h20"/></svg>24 ghế chờ có sạc</span>
       <span class="amen-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/></svg>Trà &amp; cà phê free</span>
@@ -800,7 +800,7 @@
       <details><summary>Gửi xe ở đâu, có mất phí không?</summary><p>Xe máy gửi miễn phí tại hầm B1 của toà Star City, lối xuống nằm bên phải mặt tiền Lê Văn Lương. Ô tô gửi tại hầm B2 với phí 30.000đ mỗi lượt.</p></details>
       <details><summary>Đặt lịch rồi nhưng đến muộn thì sao?</summary><p>Cửa hàng giữ quầy trong 15 phút kể từ giờ hẹn. Quá 15 phút, lịch hẹn tự huỷ và bạn sẽ được phục vụ theo thứ tự chờ thông thường. Nếu biết trước sẽ muộn, gọi 1800 8098 để dời lịch.</p></details>
       <details><summary>Chuyển mạng giữ số mất bao lâu và phí bao nhiêu?</summary><p>Phí 50.000đ với thuê bao trả trước và 60.000đ với trả sau. Thời gian xử lý thường 2–5 ngày làm việc. Điều kiện: thuê bao đang hoạt động hai chiều và không nợ cước ở nhà mạng cũ.</p></details>
-      <details><summary>Cửa hàng nhận thanh toán bằng hình thức nào?</summary><p>Tiền mặt, thẻ nội địa và quốc tế, Viettel Money, và chuyển khoản qua mã QR tại quầy. Với thiết bị trả góp, hồ sơ duyệt trong khoảng 15 phút.</p></details>
+      <details><summary>Cửa hàng nhận thanh toán bằng hình thức nào?</summary><p>Tiền mặt, thẻ nội địa và quốc tế, Viettel Money, và chuyển khoản qua mã QR. Với thiết bị trả góp, hồ sơ duyệt trong khoảng 15 phút.</p></details>
     </div>
   </div>
 </section>
@@ -845,10 +845,10 @@
 <div class="tammi-panel" id="tammiPanel">
   <div class="tp-head"><img class="ava" src="assets/tammi/ok.png" alt="Tammi"><div><h4>Tammi</h4><small><i></i>Trợ lý cửa hàng Lê Văn Lương</small></div><button class="x" onclick="toggleTammi()" aria-label="Đóng">×</button></div>
   <div class="tp-body">
-    <div class="tp-msg" id="tammiMsg">Chào bạn 👋 Mình là Tammi. Bạn muốn mình giúp gì tại cửa hàng Lê Văn Lương?</div>
+    <div class="tp-msg" id="tammiMsg">Chào bạn 👋 Mình là Tammi. Bạn muốn mình giúp gì nào?</div>
     <div class="tp-quick">
       <button onclick="tammiSay('Cửa hàng mở 08:00–20:00 cả 7 ngày trong tuần nhé. Ngày lễ/Tết có thể đổi, bạn gọi 024 6675 9666 để chắc chắn.')">🕒 Giờ mở cửa hôm nay?</button>
-      <button onclick="tammiSay('Đổi SIM 5G bạn mang CCCD gắn chip bản gốc + SIM cũ. Xử lý khoảng 10–15 phút tại quầy.')">📶 Đổi SIM 5G cần gì?</button>
+      <button onclick="tammiSay('Đổi SIM 5G bạn mang CCCD gắn chip bản gốc + SIM cũ. Xử lý khoảng 10–15 phút.')">📶 Đổi SIM 5G cần gì?</button>
       <button onclick="tammiSay('Xe máy gửi miễn phí ở hầm B1 toà Star City. Ô tô gửi hầm B2, 30.000đ/lượt.')">🅿️ Gửi xe ở đâu?</button>
       
     </div>
