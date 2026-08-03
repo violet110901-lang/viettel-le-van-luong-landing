@@ -116,7 +116,7 @@
   .hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:52px;align-items:center}
   .crumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:500;flex-wrap:wrap}
   .crumb b{color:var(--ink)}.crumb span{color:var(--line-2)}
-  .hero h1{font-size:37px;font-weight:800;margin-bottom:16px;line-height:1.18;text-wrap:balance}
+  .hero h1{font-size:26px;font-weight:800;margin-bottom:16px;line-height:1.25}
   .hero h1 em{font-style:normal;color:var(--red)}
   .rate{display:inline-flex;align-items:center;gap:9px;margin-bottom:16px;flex-wrap:wrap}
   .rate .stars{color:#f5a623;font-size:15px;letter-spacing:1px}
@@ -149,8 +149,8 @@
   .stat-strip .cell:last-child{border-right:none}
   .stat-strip .k{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:7px}
   .stat-strip .k svg{width:14px;height:14px;color:var(--red)}
-  .stat-strip .v{font-size:21px;font-weight:800;letter-spacing:-.03em}
-  .stat-strip .v small{font-size:13px;font-weight:500;color:var(--muted)}
+  .stat-strip .v{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+  .stat-strip .v small{font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap}
   .stat-strip .v.ok{color:#16a34a}
 
   /* ============ AWARD SEAL BAND ============ */
@@ -431,7 +431,8 @@
   .tp-quick button{text-align:left;font-family:inherit;font-size:13.5px;font-weight:500;padding:11px 14px;border:1px solid var(--line-2);border-radius:11px;background:#fff;cursor:pointer;transition:.15s;color:var(--ink)}
   .tp-quick button:hover{border-color:var(--red);color:var(--red)}
   .tp-foot{padding:14px 20px;border-top:1px solid var(--line);font-size:11.5px;color:var(--faint);text-align:center}
-  .mbar{display:none}
+  .mbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:66;gap:10px;padding:11px 16px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-top:1px solid var(--line);box-shadow:0 -4px 20px rgba(16,16,24,.06)}
+  .mbar .btn{flex:1;min-width:0;padding:12px 6px;font-size:13.5px}
 
   /* ============ RESPONSIVE ============ */
   @media(max-width:1080px){
@@ -455,7 +456,7 @@
     .before3{grid-template-columns:1fr}
     .cat-grid{grid-template-columns:repeat(2,1fr)}
     .off-grid{grid-template-columns:1fr}
-    .hero h1{font-size:30px}
+    .hero h1{font-size:26px}
     .stat-strip{grid-template-columns:1fr 1fr}
     .stat-strip .cell:nth-child(2){border-right:none}
     .stat-strip .cell:nth-child(1),.stat-strip .cell:nth-child(2){border-bottom:1px solid var(--line)}
@@ -468,7 +469,7 @@
   @media(max-width:600px){
     .wrap{padding:0 18px}
     .hero{padding:30px 0 18px}
-    .hero h1{font-size:23px}
+    .hero h1{font-size:21px}
     .hero .addr{font-size:13px;gap:8px}
     .hero .addr svg{width:16px;height:16px}
     .sec{padding:48px 0}
@@ -502,10 +503,10 @@
     .tammi-ava.sm{height:60px;width:auto;margin-top:-6px}
     .bk-illus .big-t{height:270px;width:auto}
     .tammi-fab .btn-t{width:74px;height:74px}
-    .mbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:65;gap:10px;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
-    .mbar .btn{flex:1;min-width:0;padding:12px 8px}
-    .tammi-fab{bottom:82px;right:16px;gap:0}.tammi-panel{bottom:150px;right:16px}
+    .mbar{display:flex;padding:9px 12px;gap:8px}
+    .mbar .btn{padding:11px 4px;font-size:12.5px}
     body{padding-bottom:64px}
+    .tammi-fab{bottom:82px;right:14px;gap:0}.tammi-panel{bottom:150px;right:14px}
     .promo-nav{display:none}
   }
 </style>
@@ -547,7 +548,7 @@
   <div class="wrap"><div class="crumb reveal show"><span>Cửa hàng</span> / <b>Hà Nội</b> <span>/</span> <b>Thanh Xuân</b></div></div>
   <div class="wrap hero-grid">
     <div class="reveal show">
-      <h1>Viettel Telecom - Cửa hàng trực tiếp <em>Lê Văn Lương</em> Thanh Xuân Hà Nội</h1>
+      <h1>Viettel Telecom - Cửa hàng trực tiếp<br><em>Lê Văn Lương</em> Thanh Xuân Hà Nội</h1>
       <p class="sub">Cửa hàng trực tiếp của Viettel Telecom, ngay mặt đường Lê Văn Lương.</p>
       <div class="rate"><span class="stars">★★★★★</span><b data-count="4.6" data-dec="1">4,6</b><span>· <span data-count="312">312</span> đánh giá</span><span class="live"><i></i>Đang mở cửa</span></div>
       <p class="addr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Tầng 1 tòa nhà Star City, số 23 đường Lê Văn Lương, phường Thanh Xuân, Hà Nội</p>
@@ -855,7 +856,11 @@
   <div class="tp-foot">Bản demo — trả lời theo kịch bản dựng sẵn, chưa nối AI thật.</div>
 </div>
 
-<div class="mbar"><a class="btn btn-ghost" href="tel:02466759666">📞 Gọi</a><a class="btn btn-primary" href="https://www.google.com/maps/place/?q=place_id:ChIJGwHrQrStNTERNSA9-a5hJKc" target="_blank" rel="noopener">📍 Chỉ đường</a></div>
+<div class="mbar">
+  <a class="btn btn-ghost" href="tel:02466759666"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Gọi</a>
+  <a class="btn btn-dark" href="#services">Đăng ký ngay</a>
+  <a class="btn btn-primary" href="#booking">Đặt lịch hẹn</a>
+</div>
 
 <script>
   function toggleMenu(){document.getElementById('vtMenuMb').classList.toggle('open');}
