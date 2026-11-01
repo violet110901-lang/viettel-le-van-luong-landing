@@ -19,7 +19,7 @@ assets/tammi/       # bộ nhân vật Tammi (nhiều pose, nền trong suốt)
 
 ## Các phần chính
 
-Hero (gallery ảnh + thành tích Top 10) · Đặt lịch hẹn (chỉ trong ngày) · Hỗ trợ online
+Hero (gallery ảnh + thành tích Top 10) · Đặt lịch hẹn (chọn 1 trong 3 ngày tới) · Hỗ trợ online
 (14 nghiệp vụ, bấm để chuyển tới form đặt lịch) · Trước khi bạn tới (giờ mở cửa, giấy tờ) ·
 Cửa hàng gần đây (bản đồ) · Câu hỏi thường gặp · Trợ lý Tammi.
 

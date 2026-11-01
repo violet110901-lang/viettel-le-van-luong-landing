@@ -308,29 +308,25 @@
   .book-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
   .bk-panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow-lg)}
   .bk-panel h3{font-size:20px;margin-bottom:16px}
-  .bk-day{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:22px}
-  .bk-day .bd-ic{width:38px;height:38px;border-radius:10px;background:var(--red);color:#fff;display:grid;place-items:center;flex:none}
-  .bk-day .bd-ic svg{width:19px;height:19px}
-  .bk-day .bd-lb{display:block;font-size:11.5px;font-weight:600;color:var(--muted)}
-  .bk-day b{font-size:15.5px;font-weight:700}
-  .bk-day .bd-tag{margin-left:auto;font-size:11.5px;font-weight:600;color:var(--red);background:var(--red-soft);padding:4px 10px;border-radius:999px}
-  .chips-sel button.flash{animation:chipFlash .9s ease 2}
-  @keyframes chipFlash{50%{box-shadow:0 0 0 5px rgba(238,0,51,.18)}}
-  .slot-empty{font-size:13.5px;color:var(--ink-2);background:var(--red-soft);border-radius:12px;padding:14px 16px;line-height:1.5}
-  .slot-empty b{color:var(--red)}
   #bkSubmit:disabled{opacity:.45;cursor:not-allowed}
   .fgroup{margin-bottom:20px}
   .fgroup>label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:10px}
-  .chips-sel{display:flex;flex-wrap:wrap;gap:8px}
-  .chips-sel button{font-family:inherit;font-size:13px;font-weight:500;padding:8px 14px;border-radius:999px;border:1px solid var(--line-2);background:#fff;color:var(--ink-2);cursor:pointer;transition:.15s}
-  .chips-sel button:hover{border-color:var(--red)}.chips-sel button.on{background:var(--red);color:#fff;border-color:var(--red)}
-  .slots{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-  .slots button{font-family:inherit;font-size:13.5px;font-weight:600;padding:10px;border-radius:10px;border:1px solid var(--line-2);background:#fff;cursor:pointer;transition:.15s}
-  .slots button:hover:not(:disabled){border-color:var(--red);color:var(--red)}.slots button.on{background:var(--red);color:#fff;border-color:var(--red)}
-  .slots button:disabled{color:var(--faint);text-decoration:line-through;cursor:not-allowed;background:var(--bg-soft)}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .fld input{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;transition:.15s}
-  .fld input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(238,0,51,.1)}
+  .fld input,.fld select{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff;transition:.15s}
+  .fld select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EE0033' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/16px}
+  .fld select:disabled{color:var(--faint);cursor:not-allowed;background-color:var(--bg-soft)}
+  .bk-panel>.fld{margin-bottom:18px}
+  .bk-row{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:18px;align-items:start}
+  .days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .days button{font-family:inherit;border:1px solid var(--line-2);background:#fff;border-radius:11px;padding:6px 4px;cursor:pointer;line-height:1.25;color:var(--ink);transition:.15s}
+  .days button b{display:block;font-size:13.5px;font-weight:600}
+  .days button small{font-size:11.5px;color:var(--muted)}
+  .days button:hover:not(:disabled){border-color:var(--red)}
+  .days button.on{background:var(--red);border-color:var(--red);color:#fff}.days button.on small{color:rgba(255,255,255,.85)}
+  .days button:disabled{background:var(--bg-soft);color:var(--faint);cursor:not-allowed}.days button:disabled small{color:var(--faint)}
+  .fld select.flash{animation:selFlash .9s ease 2}
+  @keyframes selFlash{50%{box-shadow:0 0 0 5px rgba(238,0,51,.18);border-color:var(--red)}}
+  .fld input:focus,.fld select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(238,0,51,.1)}
   .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:8px}
   .bk-side{position:sticky;top:84px}
   .bk-illus{text-align:center;margin-bottom:20px}
@@ -505,9 +501,8 @@
     .sec-head .ht .lead{white-space:normal;overflow:visible}
     .tammi-ava.sm{height:60px;width:auto;margin-top:-6px}
     .bk-illus .big-t{height:270px;width:auto}
-    .slots{grid-template-columns:repeat(4,1fr)}
-    .bk-day .bd-tag{margin-left:0}
-    .hs-box{margin-top:20px}
+    .bk-row{grid-template-columns:1fr;gap:16px}
+        .hs-box{margin-top:20px}
     .hs-ask{padding:18px 16px;gap:14px}
     .hs-ic{width:48px;height:48px}.hs-ic svg{width:24px;height:24px}
     .hs-q{font-size:17px}
@@ -601,16 +596,14 @@
     <div class="sec-head">
       <div class="t reveal">
         <img class="tammi-ava sm" src="assets/tammi/wave.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Đặt lịch hẹn</h2><p class="lead">Chọn nghiệp vụ &amp; khung giờ trong hôm nay, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
+        <div class="ht"><h2>Đặt lịch hẹn</h2><p class="lead">Chọn nghiệp vụ, ngày &amp; giờ hẹn trong 3 ngày tới, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
       </div>
       <div class="side"><span class="eyebrow"><span class="idx">01 / 03</span></span></div>
     </div>
     <div class="book-grid">
       <form class="bk-panel reveal" id="bkForm" onsubmit="return submitBooking(event)">
-        <div class="bk-day"><span class="bd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><div><span class="bd-lb">Ngày hẹn</span><b id="bkDate">Hôm nay</b></div><span class="bd-tag">Chỉ nhận đặt lịch trong ngày</span></div>
-        <h3>Bạn cần làm gì?</h3>
-        <div class="fgroup"><div class="chips-sel" id="svcChips"><button type="button" class="on">Mua SIM Trả trước</button><button type="button">Mua SIM Trả sau</button><button type="button">Đăng ký gói Di động</button><button type="button">Chuyển đổi thuê bao Trả trước sang Trả sau</button><button type="button">Đổi SIM chính chủ</button><button type="button">Đổi SIM MultiSIM</button><button type="button">Gạch nợ cước</button><button type="button">Xác thực đổi máy</button><button type="button">Cập nhật giấy tờ</button><button type="button">Chặn thuê bao</button><button type="button">Đăng ký Internet</button><button type="button">Đăng ký Truyền hình</button><button type="button">Đóng cước trước Internet</button><button type="button">Nâng cấp gói cước Internet</button></div></div>
-        <div class="fgroup"><label>Khung giờ hôm nay <span style="font-weight:400;color:var(--faint)">· gạch ngang là giờ đã qua</span></label><div class="slots" id="slots"></div><p class="slot-empty" id="slotEmpty" hidden>Hôm nay đã hết khung giờ đặt lịch (cửa hàng đóng cửa lúc 20:00). Bạn quay lại đặt vào ngày mai, hoặc gọi <b>1800 8098</b> để được hỗ trợ.</p></div>
+        <div class="fld"><label for="svcSel">Bạn cần làm gì?</label><select id="svcSel" required><optgroup label="Di động"><option>Mua SIM Trả trước</option><option>Mua SIM Trả sau</option><option>Đăng ký gói Di động</option><option>Chuyển đổi thuê bao Trả trước sang Trả sau</option><option>Đổi SIM chính chủ</option><option>Đổi SIM MultiSIM</option><option>Gạch nợ cước</option><option>Xác thực đổi máy</option><option>Cập nhật giấy tờ</option><option>Chặn thuê bao</option></optgroup><optgroup label="Internet &amp; Truyền hình"><option>Đăng ký Internet</option><option>Đăng ký Truyền hình</option><option>Đóng cước trước Internet</option><option>Nâng cấp gói cước Internet</option></optgroup></select></div>
+        <div class="bk-row"><div class="fld"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Giờ hẹn</label><select id="slotSel" required></select></div></div>
         <div class="two"><div class="fld"><label>Họ và tên</label><input required placeholder="Nguyễn Văn A" /></div><div class="fld"><label>Số điện thoại</label><input required type="tel" placeholder="09xx xxx xxx" /></div></div>
         <button type="submit" id="bkSubmit" class="btn btn-primary" style="width:100%;margin-top:20px">Xác nhận đặt lịch</button>
         <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:12px">Đây là bản demo — chưa có lịch hẹn nào được gửi đi thật.</p>
@@ -849,34 +842,31 @@
   var thumbs=document.getElementById('thumbs'),galMain=document.getElementById('galMain'),galCap=document.getElementById('galCap');
   thumbs.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){thumbs.querySelector('.active').classList.remove('active');b.classList.add('active');galMain.style.opacity=0;setTimeout(function(){galMain.src=b.querySelector('img').src;galMain.style.opacity=1;},180);galCap.innerHTML=b.getAttribute('data-cap');});});
 
-  function bindChips(id){var box=document.getElementById(id);if(!box)return;box.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;var on=box.querySelector('.on');if(on)on.classList.remove('on');b.classList.add('on');});}
-  bindChips('svcChips');bindChips('slots');
-  function selVal(id){var e=document.querySelector('#'+id+' .on');return e?e.textContent.trim():'';}
-
-  // Đặt lịch chỉ trong ngày: giờ tính theo múi giờ Việt Nam, khung 30 phút từ 08:00 đến 19:30, giờ đã qua thì khoá
-  var OPEN_MIN=8*60,LAST_SLOT_MIN=19*60+30,STEP=30;
-  function vnNow(){var p={};new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Ho_Chi_Minh',weekday:'short',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return p;}
-  var VN_DAYS={Mon:'Thứ Hai',Tue:'Thứ Ba',Wed:'Thứ Tư',Thu:'Thứ Năm',Fri:'Thứ Sáu',Sat:'Thứ Bảy',Sun:'Chủ Nhật'};
+  // Đặt lịch: chọn 1 trong 3 ngày (hôm nay + 2 ngày tới), giờ theo múi giờ Việt Nam, khung 30 phút 08:00–19:30; hôm nay chỉ hiện giờ chưa qua
+  var OPEN_MIN=8*60,LAST_SLOT_MIN=19*60+30,STEP=30,DAYS_AHEAD=3,dayIdx=0;
+  function vnNow(){var p={};new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return p;}
+  var VN_DAYS=['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'],VN_SHORT=['CN','T2','T3','T4','T5','T6','T7'];
   function pad(n){return (n<10?'0':'')+n;}
-  function renderSlots(){
-    var p=vnNow(),nowMin=(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10);
-    document.getElementById('bkDate').textContent='Hôm nay, '+VN_DAYS[p.weekday]+' '+p.day+'.'+p.month;
-    var td=document.querySelector('.hrs li.today span');if(td)td.textContent='Hôm nay ('+VN_DAYS[p.weekday]+')';
-    var box=document.getElementById('slots'),keep=selVal('slots'),html='',firstFree='';
-    for(var m=OPEN_MIN;m<=LAST_SLOT_MIN;m+=STEP){var t=pad(Math.floor(m/60))+':'+pad(m%60),past=m<=nowMin;if(!past&&!firstFree)firstFree=t;html+='<button type="button"'+(past?' disabled':'')+'>'+t+'</button>';}
-    box.innerHTML=html;
-    var pick=[].filter.call(box.querySelectorAll('button:not(:disabled)'),function(b){return b.textContent===keep})[0]||box.querySelector('button:not(:disabled)');
-    if(pick)pick.classList.add('on');
-    var none=!firstFree;box.style.display=none?'none':'';document.getElementById('slotEmpty').hidden=!none;document.getElementById('bkSubmit').disabled=none;
+  function dayList(p){var base=Date.UTC(+p.year,+p.month-1,+p.day),out=[];for(var i=0;i<DAYS_AHEAD;i++){var d=new Date(base+i*864e5),wd=d.getUTCDay();out.push({name:i===0?'Hôm nay':i===1?'Ngày mai':VN_DAYS[wd],date:VN_SHORT[wd]+' '+pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1),full:VN_DAYS[wd]+' '+pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1),wd:wd});}return out;}
+  function freeSlots(i,nowMin){var out=[];for(var m=OPEN_MIN;m<=LAST_SLOT_MIN;m+=STEP){if(i===0&&m<=nowMin)continue;out.push(pad(Math.floor(m/60))+':'+pad(m%60));}return out;}
+  var DAYS=[];
+  function renderBooking(){
+    var p=vnNow(),nowMin=(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10);DAYS=dayList(p);
+    var td=document.querySelector('.hrs li.today span');if(td)td.textContent='Hôm nay ('+VN_DAYS[DAYS[0].wd]+')';
+    var todayFull=!freeSlots(0,nowMin).length;if(todayFull&&dayIdx===0)dayIdx=1;
+    document.getElementById('dayChips').innerHTML=DAYS.map(function(d,i){var off=i===0&&todayFull;return '<button type="button" data-i="'+i+'"'+(i===dayIdx?' class="on"':'')+(off?' disabled title="Hôm nay đã hết giờ nhận lịch"':'')+'><b>'+d.name+'</b><small>'+(off?'Hết giờ':d.date)+'</small></button>';}).join('');
+    var sel=document.getElementById('slotSel'),keep=sel.value,list=freeSlots(dayIdx,nowMin);
+    sel.innerHTML=list.map(function(t){return '<option'+(t===keep?' selected':'')+'>'+t+'</option>';}).join('');
   }
-  renderSlots();setInterval(renderSlots,60000);
-  function submitBooking(e){e.preventDefault();if(!selVal('slots'))return false;alert('Cảm ơn bạn! (Bản demo)\n\nNghiệp vụ: '+selVal('svcChips')+'\nThời gian: '+document.getElementById('bkDate').textContent+' · '+selVal('slots')+'\nCửa hàng sẽ gọi xác nhận và giữ quầy 15 phút.');return false;}
+  document.getElementById('dayChips').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;dayIdx=+b.getAttribute('data-i');renderBooking();});
+  renderBooking();setInterval(renderBooking,60000);
+  function submitBooking(e){e.preventDefault();var d=DAYS[dayIdx];alert('Cảm ơn bạn! (Bản demo)\n\nNghiệp vụ: '+document.getElementById('svcSel').value+'\nThời gian: '+d.full+' · '+document.getElementById('slotSel').value+'\nCửa hàng sẽ gọi xác nhận và giữ quầy 15 phút.');return false;}
 
   // Hỗ trợ online: bấm câu hỏi để sổ danh sách; chọn nghiệp vụ thì chuyển tới form đặt lịch, chọn sẵn nghiệp vụ đó
   function toggleHs(){var box=document.getElementById('hsBox'),open=box.classList.toggle('open');document.getElementById('hsAsk').setAttribute('aria-expanded',open);}
   document.querySelectorAll('.hs-item').forEach(function(it){it.addEventListener('click',function(){
-    var name=it.getAttribute('data-svc'),chips=document.getElementById('svcChips');
-    chips.querySelectorAll('button').forEach(function(b){var hit=b.textContent.trim()===name;b.classList.toggle('on',hit);b.classList.remove('flash');if(hit){void b.offsetWidth;b.classList.add('flash');}});
+    var sel=document.getElementById('svcSel');sel.value=it.getAttribute('data-svc');
+    sel.classList.remove('flash');void sel.offsetWidth;sel.classList.add('flash');
     document.getElementById('booking').scrollIntoView({behavior:'smooth'});
   });});
 
