@@ -256,16 +256,14 @@
   .cat-go svg{width:14px;height:14px;transition:.15s}
   .cat-card:hover .cat-go svg{transform:translateX(3px)}
   /* Sản phẩm & Dịch vụ — nhãn trái, button phải (không bọc card) */
-  .svc-groups{display:flex;flex-direction:column;gap:0}
-  .svc-row{display:flex;align-items:center;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
-  .svc-row:first-child{padding-top:10px}
-  .svc-row:last-child{border-bottom:none;padding-bottom:10px}
-  .svc-row .g-label{display:flex;align-items:center;gap:13px;flex:none;min-width:210px}
-  .svc-row .g-label .ic{width:44px;height:44px;border-radius:12px;background:var(--red-soft);display:grid;place-items:center;flex:none}
-  .svc-row .g-label .ic svg{width:22px;height:22px;color:var(--red)}
-  .svc-row .g-label h4{font-size:18px;font-weight:800;color:var(--ink)}
+  .svc-groups{display:flex;flex-direction:column;gap:16px}
+  .svc-row{display:flex;align-items:center;gap:28px;padding:20px 22px 20px 26px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:20px;box-shadow:var(--shadow)}
+  .svc-row .g-label{display:flex;align-items:center;gap:14px;flex:none;min-width:210px}
+  .svc-row .g-label .ic{width:50px;height:50px;border-radius:14px;background:var(--red);display:grid;place-items:center;flex:none;box-shadow:0 6px 14px rgba(238,0,51,.25)}
+  .svc-row .g-label .ic svg{width:24px;height:24px;color:#fff}
+  .svc-row .g-label h4{font-size:20px;font-weight:800;color:var(--ink)}
   .svc-row .g-btns{display:flex;gap:16px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
-  .svc-tab{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:148px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;box-shadow:var(--shadow);transition:.2s var(--ease)}
+  .svc-tab{background:var(--bg-soft);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:148px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;box-shadow:var(--shadow);transition:.2s var(--ease)}
   .svc-tab:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--red)}
   .svc-tab .tic{width:50px;height:50px;border-radius:14px;background:var(--red-soft);display:grid;place-items:center;transition:.2s}
   .svc-tab:hover .tic{background:var(--red)}
@@ -305,8 +303,8 @@
   .usnote b{font-weight:600}.usnote code{background:var(--bg-soft);padding:1px 7px;border-radius:5px;font-size:12.5px}
 
   /* ============ BOOKING ============ */
-  .book-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
-  .bk-panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow-lg)}
+  .book-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:stretch}
+  .bk-panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;justify-content:center}
   .bk-panel h3{font-size:20px;margin-bottom:16px}
   #bkSubmit:disabled{opacity:.45;cursor:not-allowed}
   .fgroup{margin-bottom:20px}
@@ -328,9 +326,9 @@
   @keyframes selFlash{50%{box-shadow:0 0 0 5px rgba(238,0,51,.18);border-color:var(--red)}}
   .fld input:focus,.fld select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(238,0,51,.1)}
   .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:8px}
-  .bk-side{position:sticky;top:84px}
-  .bk-illus{text-align:center;margin-bottom:20px}
-  .bk-illus .big-t{height:360px;width:auto;margin:0 auto;animation:tFloat 3.6s ease-in-out infinite}
+  .bk-side{position:static}
+  .bk-illus{text-align:center;margin-bottom:14px}
+  .bk-illus .big-t{height:210px;width:auto;margin:0 auto;animation:tFloat 3.6s ease-in-out infinite}
   .bk-illus .hi{font-size:15px;font-weight:500;color:var(--ink-2);margin:6px auto 0;max-width:320px}
   .bk-illus .hi b{color:var(--red);font-weight:600}
   .bk-hotline{font-size:13px;color:var(--muted);margin-top:22px;padding-top:18px;border-top:1px solid var(--line);text-align:center;line-height:1.5}
@@ -483,7 +481,8 @@
     /* Sản phẩm mobile: chỉ nút, bỏ nhãn + mô tả, tách lưới 2 cột */
     #services .sec-head .lead{display:none}
     .svc-groups{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
-    .svc-row{display:flex;flex-direction:column;padding:0;border-bottom:none}
+    .svc-row{display:flex;flex-direction:column;padding:0;background:none;border:none;box-shadow:none;border-radius:0}
+    .svc-tab{background:#fff}
     .svc-row .g-label{display:none}
     .svc-row .g-btns{display:flex;flex-direction:column;gap:12px;margin-left:0;width:100%}
     .svc-tab{min-width:0;padding:16px 10px}
@@ -500,7 +499,7 @@
     .award-txt h3{font-size:19px}
     .sec-head .ht .lead{white-space:normal;overflow:visible}
     .tammi-ava.sm{height:60px;width:auto;margin-top:-6px}
-    .bk-illus .big-t{height:270px;width:auto}
+    .bk-illus .big-t{height:200px;width:auto}
     .bk-row{grid-template-columns:1fr;gap:16px}
         .hs-box{margin-top:20px}
     .hs-ask{padding:18px 16px;gap:14px}
@@ -596,7 +595,7 @@
     <div class="sec-head">
       <div class="t reveal">
         <img class="tammi-ava sm" src="assets/tammi/wave.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Đặt lịch hẹn</h2><p class="lead">Chọn nghiệp vụ, ngày &amp; giờ hẹn trong 3 ngày tới, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
+        <div class="ht"><h2>Đặt lịch hẹn</h2><p class="lead">Chọn nghiệp vụ, ngày &amp; giờ hẹn, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
       </div>
       <div class="side"><span class="eyebrow"><span class="idx">01 / 03</span></span></div>
     </div>
