@@ -1,6 +1,6 @@
-# Viettel Telecom — Cửa hàng trực tiếp Lê Văn Lương
+# Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội
 
-Landing page giới thiệu địa điểm cửa hàng **Viettel Telecom - Cửa hàng trực tiếp Lê Văn Lương Thanh Xuân HNI**.
+Landing page giới thiệu địa điểm cửa hàng **Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội**.
 
 - **Địa chỉ:** Tầng 1 tòa nhà Star City, số 23 đường Lê Văn Lương, phường Thanh Xuân, Hà Nội
 - **Điện thoại:** 024 6675 9666
