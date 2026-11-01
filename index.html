@@ -564,7 +564,7 @@
         </div>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="https://www.google.com/maps/place/?q=place_id:ChIJGwHrQrStNTERNSA9-a5hJKc" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg><span class="btxt-full">Chỉ đường Google Maps</span><span class="btxt-short">Chỉ đường</span></a>
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/qVs4Lp6UrsgHif4v8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg><span class="btxt-full">Chỉ đường Google Maps</span><span class="btxt-short">Chỉ đường</span></a>
         <a class="btn btn-ghost" href="tel:02466759666"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="btxt-full">Gọi 024 6675 9666</span><span class="btxt-short">Liên hệ</span></a>
       </div>
     </div>
@@ -743,7 +743,7 @@
       <div class="side"><a href="https://viettel.vn/he-thong-cua-hang" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Xem tất cả cửa hàng</a></div>
     </div>
     <div class="loc-grid reveal">
-      <div class="map-box"><iframe id="nearMap" title="Bản đồ cửa hàng Viettel Lê Văn Lương" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Viettel+23+L%C3%AA+V%C4%83n+L%C6%B0%C6%A1ng+Star+City+Thanh+Xu%C3%A2n+H%C3%A0+N%E1%BB%99i&output=embed"></iframe></div>
+      <div class="map-box"><iframe id="nearMap" title="Bản đồ Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?cid=12043858707629285429&amp;output=embed"></iframe></div>
       <div>
         <div class="near-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/><path d="M17.6 6.4A9 9 0 1 0 6.4 17.6"/></svg>Bấm vào cửa hàng bên dưới để xem đường đi trên bản đồ.</div>
         <div class="near-list" id="nearList">
@@ -870,7 +870,7 @@
   });});
 
   // nearby map jump
-  var storeQ=encodeURIComponent('Viettel 23 Lê Văn Lương Star City Thanh Xuân Hà Nội');
+  var storeQ=encodeURIComponent('Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội, Starcity, 23 Đ. Lê Văn Lương, Thanh Xuân, Hà Nội');
   document.querySelectorAll('#nearList .near').forEach(function(n){n.addEventListener('click',function(){document.querySelectorAll('#nearList .near').forEach(function(x){x.classList.remove('on')});n.classList.add('on');var d=encodeURIComponent(n.getAttribute('data-d'));document.getElementById('nearMap').src='https://maps.google.com/maps?saddr='+storeQ+'&daddr='+d+'&output=embed';});});
 
   function toggleTammi(){document.getElementById('tammiPanel').classList.toggle('open');}
