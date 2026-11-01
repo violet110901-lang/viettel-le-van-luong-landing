@@ -255,8 +255,25 @@
   .cat-go{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--red);margin-top:auto}
   .cat-go svg{width:14px;height:14px;transition:.15s}
   .cat-card:hover .cat-go svg{transform:translateX(3px)}
+  /* Sản phẩm & Dịch vụ — nhãn trái, button phải (không bọc card) */
+  .svc-groups{display:flex;flex-direction:column;gap:0}
+  .svc-row{display:flex;align-items:center;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
+  .svc-row:first-child{padding-top:10px}
+  .svc-row:last-child{border-bottom:none;padding-bottom:10px}
+  .svc-row .g-label{display:flex;align-items:center;gap:13px;flex:none;min-width:210px}
+  .svc-row .g-label .ic{width:44px;height:44px;border-radius:12px;background:var(--red-soft);display:grid;place-items:center;flex:none}
+  .svc-row .g-label .ic svg{width:22px;height:22px;color:var(--red)}
+  .svc-row .g-label h4{font-size:18px;font-weight:800;color:var(--ink)}
+  .svc-row .g-btns{display:flex;gap:16px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+  .svc-tab{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:148px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;box-shadow:var(--shadow);transition:.2s var(--ease)}
+  .svc-tab:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--red)}
+  .svc-tab .tic{width:50px;height:50px;border-radius:14px;background:var(--red-soft);display:grid;place-items:center;transition:.2s}
+  .svc-tab:hover .tic{background:var(--red)}
+  .svc-tab .tic svg{width:25px;height:25px;color:var(--red);transition:.2s}
+  .svc-tab:hover .tic svg{color:#fff}
+  .svc-tab span:last-child{font-size:14px;font-weight:700;color:var(--ink)}
   /* Hỗ trợ online — câu hỏi có icon động, bấm sổ danh sách nghiệp vụ */
-  .hs-box{max-width:920px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+  .hs-box{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
   .hs-ask{width:100%;display:flex;align-items:center;gap:18px;padding:22px 26px;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;color:var(--ink)}
   .hs-ic{position:relative;width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;flex:none}
   .hs-ic::before,.hs-ic::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--red);animation:hsRing 2.2s ease-out infinite}
@@ -284,7 +301,7 @@
   .hs-item .hi-go{width:16px;height:16px;color:var(--faint);flex:none;transition:.15s}
   .hs-item:hover .hi-go{color:var(--red);transform:translateX(3px)}
   @media(prefers-reduced-motion:reduce){.hs-ic::before,.hs-ic::after,.hs-ic svg{animation:none}}
-  .usnote{max-width:920px;margin:24px auto 0;background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:12px;padding:16px 20px;font-size:13.5px;color:var(--ink-2)}
+  .usnote{margin-top:24px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:12px;padding:16px 20px;font-size:13.5px;color:var(--ink-2)}
   .usnote b{font-weight:600}.usnote code{background:var(--bg-soft);padding:1px 7px;border-radius:5px;font-size:12.5px}
 
   /* ============ BOOKING ============ */
@@ -467,6 +484,13 @@
     .sec-head .side{align-self:flex-start}
     .sec-head .ht h2{font-size:25px}
     .cat-grid{grid-template-columns:1fr}
+    /* Sản phẩm mobile: chỉ nút, bỏ nhãn + mô tả, tách lưới 2 cột */
+    #services .sec-head .lead{display:none}
+    .svc-groups{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+    .svc-row{display:flex;flex-direction:column;padding:0;border-bottom:none}
+    .svc-row .g-label{display:none}
+    .svc-row .g-btns{display:flex;flex-direction:column;gap:12px;margin-left:0;width:100%}
+    .svc-tab{min-width:0;padding:16px 10px}
     /* Hero CTA ngắn gọn, nằm ngang */
     .hero-cta{flex-wrap:nowrap;gap:10px}
     .hero-cta .btn{flex:1;min-width:0;padding:13px 10px;font-size:14.5px}
@@ -483,6 +507,7 @@
     .bk-illus .big-t{height:270px;width:auto}
     .slots{grid-template-columns:repeat(4,1fr)}
     .bk-day .bd-tag{margin-left:0}
+    .hs-box{margin-top:20px}
     .hs-ask{padding:18px 16px;gap:14px}
     .hs-ic{width:48px;height:48px}.hs-ic svg{width:24px;height:24px}
     .hs-q{font-size:17px}
@@ -613,10 +638,21 @@
     <div class="sec-head">
       <div class="t reveal">
         <img class="tammi-ava sm" src="assets/tammi/laptop.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Hỗ trợ online</h2><p class="lead">Chọn nghiệp vụ bạn cần, Tammi đưa bạn tới đặt lịch giữ quầy ngay.</p></div>
+        <div class="ht"><h2>Hỗ trợ online</h2><p class="lead">Danh mục sản phẩm và dịch vụ Viettel — đăng ký ngay.</p></div>
       </div>
       <div class="side"><span class="eyebrow"><span class="idx">02 / 03</span></span></div>
     </div>
+    <div class="svc-groups">
+      <div class="svc-row reveal">
+        <div class="g-label"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><h4>Di động</h4></div>
+        <div class="g-btns"><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/goi-data-1/" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20v-3M9 20v-7M14 20V9M19 20V5"/></svg></span><span>Gói cước</span></a><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/dich-vu-quoc-te" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg></span><span>Dịch vụ quốc tế</span></a><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/sim-so/" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l4 4v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><rect x="8.5" y="12" width="7" height="6" rx="1"/><path d="M12 12v6M8.5 15h7"/></svg></span><span>Sim số</span></a></div>
+      </div>
+      <div class="svc-row reveal">
+        <div class="g-label"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M8.5 16.4a6 6 0 0 1 7 0M12 20h.01"/></svg></span><h4>Internet · TV360 · Camera</h4></div>
+        <div class="g-btns"><a class="svc-tab" href="https://vietteltelecom.vn/vx/internet-truyenhinh/toan-trinh/" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M8.5 16.4a6 6 0 0 1 7 0M12 20h.01"/></svg></span><span>Internet</span></a><a class="svc-tab" href="https://vietteltelecom.vn/vx/internet-truyenhinh/camera" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="2"/><path d="M16 10l5-2.5v9L16 14z"/></svg></span><span>Camera</span></a><a class="svc-tab" href="https://vietteltelecom.vn/vx/internet-truyenhinh/truyen-hinh" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span><span>Truyền hình TV360</span></a></div>
+      </div>
+    </div>
+
     <div class="hs-box reveal" id="hsBox">
       <button type="button" class="hs-ask" id="hsAsk" aria-expanded="false" aria-controls="hsList" onclick="toggleHs()">
         <span class="hs-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.5"/><rect x="17.5" y="13" width="4" height="6" rx="1.5"/><path d="M19.5 19a3 3 0 0 1-3 3H13"/></svg></span>
