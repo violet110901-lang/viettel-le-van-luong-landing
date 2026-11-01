@@ -8,7 +8,7 @@ Landing page giới thiệu địa điểm cửa hàng **Viettel Telecom - Cửa
 
 ## Cách xem / chỉnh sửa
 
-Đây là trang tĩnh **1 file tự chứa** (`index.html`, CSS/JS inline, font Google + bản đồ Google Maps nhúng).
+Đây là trang tĩnh **1 file tự chứa** (`index.html`, CSS/JS inline, font FS PF BeauSans Pro trong `assets/fonts/` + bản đồ Google Maps nhúng).
 Chỉ cần mở `index.html` bằng trình duyệt là chạy, không cần cài đặt.
 
 ```
@@ -19,8 +19,11 @@ assets/tammi/       # bộ nhân vật Tammi (nhiều pose, nền trong suốt)
 
 ## Các phần chính
 
-Hero (gallery ảnh + thành tích Top 10) · Khuyến mãi tại quầy (banner) · Trước khi tới ·
-Dịch vụ tại quầy · Sản phẩm · Ưu đãi · Đặt lịch hẹn · Cửa hàng gần đây (bản đồ) ·
-Đánh giá · Câu hỏi thường gặp · Trợ lý Tammi.
+Hero (gallery ảnh + thành tích Top 10) · Đặt lịch hẹn (chỉ trong ngày) · Hỗ trợ online
+(14 nghiệp vụ, bấm để chuyển tới form đặt lịch) · Trước khi bạn tới (giờ mở cửa, giấy tờ) ·
+Cửa hàng gần đây (bản đồ) · Câu hỏi thường gặp · Trợ lý Tammi.
+
+Nhận diện: đỏ Viettel `#EE0033`, font FS PF BeauSans Pro (file trong `assets/fonts/`).
+Phase 1 chưa có phần đánh giá và thông tin gửi xe (giao diện dùng chung cho mọi cửa hàng).
 
 > Nội dung khuyến mãi/sản phẩm/đánh giá hiện là dữ liệu mẫu, có thể chỉnh sửa trực tiếp trong `index.html`.
