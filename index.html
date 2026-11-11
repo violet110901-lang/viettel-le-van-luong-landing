@@ -28,7 +28,7 @@
   :root{
     /* Đỏ Viettel #EE0033 (RGB 238/0/51) và đen #000000 theo file "Logo Viettel chuẩn"; xám ghi trung tính, không ngả xanh */
     /* Khách yêu cầu: chỉ đỏ thương hiệu + trắng/xám, không gradient, không hồng nhạt; --red-soft giờ là xám nhạt trung tính */
-    --red:#EE0033; --red-dark:#c4002a; --red-soft:#f2f2f2;
+    --red:#EE0033; --red-soft:#f2f2f2;
     --gold:#e8a83a; --gold-2:#ffd76a;
     --ink:#000000; --ink-2:#3a3a3a; --muted:#6e6e6e; --faint:#a0a0a0;
     --line:#ebebeb; --line-2:#dedede;
@@ -61,7 +61,7 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;border:1px solid transparent;transition:.18s var(--ease);white-space:nowrap;font-family:inherit;position:relative;overflow:hidden}
   .btn svg{width:17px;height:17px}
   .btn-primary{background:var(--red);color:#fff}
-  .btn-primary:hover{background:var(--red-dark);transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
   .btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:#000;transform:translateY(-1px)}
   .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-2)}.btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
   .btn-white{background:#fff;color:var(--ink)}.btn-white:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(0,0,0,.18)}
@@ -113,7 +113,7 @@
   .vt-search:hover{background:#ebebeb}
   .vt-search svg{width:19px;height:19px}
   .vt-login{background:var(--red);color:#fff;font-weight:700;font-size:15px;padding:11px 24px;border-radius:999px;white-space:nowrap;transition:.15s}
-  .vt-login:hover{background:var(--red-dark);transform:translateY(-1px)}
+  .vt-login:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.16)}
   .vt-menu-mb{display:none}
   .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--ink)}
   .nav-toggle svg{width:26px;height:26px}
