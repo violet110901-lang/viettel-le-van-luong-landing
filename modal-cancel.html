@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hủy lịch thành công — Viettel Telecom</title>
+<style>
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Regular.otf') format('opentype');font-weight:400;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bbook.otf') format('opentype');font-weight:500;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-SemiBold.otf') format('opentype');font-weight:600;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bold.otf') format('opentype');font-weight:700 900;font-display:swap}
+  :root{
+    --red:#EE0033;
+    --ink:#000000;--ink-2:#3a3a3a;--muted:#6e6e6e;--faint:#a0a0a0;
+    --line:#ebebeb;--line-2:#dedede;
+    --bg:#ffffff;--bg-soft:#f5f5f5;
+    --radius:18px;
+    --shadow-lg:0 24px 60px rgba(0,0,0,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'FS PF BeauSans Pro',-apple-system,sans-serif;background:var(--bg-soft);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 16px 56px;-webkit-font-smoothing:antialiased;color:var(--ink);letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+
+  .vt-logo-strip{display:flex;align-items:center;gap:10px;margin-bottom:24px;width:100%;max-width:480px}
+  .v-red{font-size:22px;font-weight:800;color:var(--red);letter-spacing:-.02em;line-height:1}
+  .v-sub{font-size:10px;font-weight:600;color:#3a3a3a;letter-spacing:.22em;margin-top:2px;padding-left:2px}
+
+  .modal-card{width:100%;max-width:480px;background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);overflow:hidden}
+
+  .cancel-head{background:#fef2f2;padding:28px 24px 24px;text-align:center;border-bottom:1px solid #fecaca}
+  .cancel-icon{width:56px;height:56px;border-radius:50%;background:var(--red);display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .cancel-icon svg{width:28px;height:28px;color:#fff}
+  .cancel-head h2{font-size:20px;font-weight:800;color:var(--red);margin-bottom:6px}
+  .cancel-head p{font-size:13.5px;color:var(--muted);max-width:36ch;margin:0 auto;line-height:1.5}
+
+  .info-section{padding:20px 24px;border-bottom:1px solid var(--line)}
+  .info-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:14px}
+  .info-row:not(:last-child){border-bottom:1px dashed var(--line-2)}
+  .info-row .lbl{color:var(--muted);font-weight:500;flex:0 0 100px;padding-top:1px;font-size:13px}
+  .info-row .val{color:var(--ink);font-weight:600;flex:1;line-height:1.45}
+  .strike{text-decoration:line-through;color:var(--faint)}
+
+  .notice-section{padding:16px 24px;border-bottom:1px solid var(--line);background:var(--bg-soft);display:flex;gap:12px;align-items:flex-start}
+  .notice-section svg{width:16px;height:16px;color:var(--red);flex:none;margin-top:2px}
+  .notice-section p{font-size:13px;color:var(--ink-2);line-height:1.5}
+
+  .btn-section{padding:20px 24px;display:flex;flex-direction:column;gap:10px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:600;font-size:14.5px;cursor:pointer;border:1px solid transparent;font-family:inherit;text-decoration:none;transition:.15s;line-height:1}
+  .btn svg{width:16px;height:16px;flex:none}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{box-shadow:0 8px 20px rgba(238,0,51,.3);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-2)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<div class="vt-logo-strip">
+  <div>
+    <div class="v-red">Viettel</div>
+    <div class="v-sub">TELECOM</div>
+  </div>
+</div>
+
+<div class="modal-card">
+
+  <div class="cancel-head">
+    <div class="cancel-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <h2>Lịch hẹn đã được hủy</h2>
+    <p>Quý khách có thể đặt lại lịch hẹn bất kỳ lúc nào. Trân trọng.</p>
+  </div>
+
+  <div class="info-section">
+    <div class="info-row">
+      <span class="lbl">Cửa hàng</span>
+      <span class="val strike">Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl">Nghiệp vụ</span>
+      <span class="val strike" id="infoSvc">Đổi SIM chính chủ</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl">Thời gian</span>
+      <span class="val strike" id="infoTime">14:30 · Thứ 6, 14/11/2026</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl">Mã đặt lịch</span>
+      <span class="val strike" id="infoCode">ABCD1234</span>
+    </div>
+  </div>
+
+  <div class="notice-section">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <p>Mã đặt lịch <strong id="codeRef">ABCD1234</strong> đã bị vô hiệu hóa. Quý khách không thể dùng mã này để tra cứu hoặc kích hoạt STT nữa.</p>
+  </div>
+
+  <div class="btn-section">
+    <a href="index.html" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Đặt lịch hẹn mới
+    </a>
+    <a href="index.html" class="btn btn-ghost">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Về trang chủ
+    </a>
+  </div>
+
+</div>
+
+<script>
+  (function(){
+    var p = new URLSearchParams(location.search);
+    if(p.get('svc')){
+      document.getElementById('infoSvc').textContent = p.get('svc');
+    }
+    if(p.get('time')){
+      document.getElementById('infoTime').textContent = p.get('time');
+    }
+    if(p.get('code')){
+      var c = p.get('code');
+      document.getElementById('infoCode').textContent = c;
+      document.getElementById('codeRef').textContent = c;
+    }
+  })();
+</script>
+</body>
+</html>
