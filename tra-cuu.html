@@ -260,6 +260,12 @@
 
   // Enter để tra cứu
   document.addEventListener('keydown', e => { if(e.key==='Enter') doSearch(); });
+
+  // preview=1: auto hiển thị kết quả mock cho flow diagram
+  if(new URLSearchParams(location.search).get('preview')==='1'){
+    document.getElementById('inputCode').value='ABCD1234';
+    doSearch();
+  }
 </script>
 </body>
 </html>

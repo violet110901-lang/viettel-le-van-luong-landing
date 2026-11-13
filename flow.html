@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Luồng tính năng — Viettel Telecom LVL</title>
+<style>
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Regular.otf') format('opentype');font-weight:400;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bold.otf') format('opentype');font-weight:700 900;font-display:swap}
+  :root{--red:#EE0033;--ink:#111;--muted:#6e6e6e;--faint:#b0b0b0;--line:#ddd;--bg:#eef0f4}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'FS PF BeauSans Pro',-apple-system,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+  /* ---- header ---- */
+  header{background:#fff;border-bottom:1px solid var(--line);padding:12px 24px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  .hmark{width:28px;height:28px;border-radius:7px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+  header h1{font-size:14px;font-weight:800}
+  header h1 small{font-size:11px;font-weight:500;color:var(--muted);display:block}
+  header .sp{margin-left:auto}
+  .hbtn{font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:8px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:#fff}
+  .hbtn.red{background:var(--red);color:#fff;border-color:var(--red)}
+
+  /* ---- canvas ---- */
+  .canvas{padding:36px 40px 60px;overflow-x:auto}
+  .flow{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;min-width:600px}
+  /* align mũi tên dọc theo center của phone (162px) */
+  .down{margin-left:0}
+
+  /* ---- phone ---- */
+  .step{display:flex;align-items:flex-start;gap:0}
+  .phone-col{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .plabel{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:center;max-width:160px;line-height:1.3}
+  .pmock{width:162px;padding:8px;background:#111;border-radius:28px;box-shadow:0 12px 36px rgba(0,0,0,.22);overflow:hidden;position:relative;flex:none}
+  .pmock::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:60px;height:12px;background:#111;border-radius:0 0 8px 8px;z-index:2}
+  .pscreen{width:146px;height:296px;overflow:hidden;border-radius:20px;background:#fff;position:relative}
+  .pscreen iframe{position:absolute;top:0;left:0;width:390px;height:790px;border:0;transform:scale(.374);transform-origin:top left;pointer-events:none}
+
+  /* missing */
+  .pmock.miss{background:#c8c8c8;box-shadow:0 6px 18px rgba(0,0,0,.1)}
+  .pmock.miss::before{background:#c8c8c8}
+  .pscreen.miss{background:#f4f4f4;border:2px dashed #ccc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
+  .pscreen.miss .mi{font-size:28px}
+  .pscreen.miss .mt{font-size:11px;font-weight:600;color:var(--faint);text-align:center;line-height:1.4;padding:0 10px}
+  .miss-badge{font-size:10px;font-weight:700;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;padding:2px 10px;border-radius:999px}
+
+  /* ---- connectors ---- */
+  .down{display:flex;flex-direction:column;align-items:center;width:162px}
+  .down .vline{width:2px;background:var(--line);height:16px}
+  .down .albl{font-size:11px;font-weight:700;color:var(--red);background:#fff;border:1px solid #f8c0cc;border-radius:999px;padding:3px 11px;white-space:nowrap;margin:2px 0}
+  .down .vhead{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:8px solid var(--line)}
+
+  /* horizontal branch */
+  .branch{display:flex;align-items:center;gap:0;margin-left:81px}
+  .branch .hline{height:2px;background:var(--line);flex:none}
+  .branch .hlbl{font-size:11px;font-weight:700;color:var(--red);background:#fff;border:1px solid #f8c0cc;border-radius:999px;padding:3px 10px;white-space:nowrap;margin:0 4px;flex:none}
+  .branch .hhead{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid var(--line);flex:none}
+
+  /* ---- legend ---- */
+  .legend{display:flex;gap:18px;flex-wrap:wrap;padding:0 40px 24px;align-items:center}
+  .leg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .ldot{width:10px;height:10px;border-radius:50%}
+  .ldot.r{background:var(--red)}.ldot.g{background:#c8c8c8}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="hmark">V</span>
+  <h1>Luồng tính năng<small>Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội</small></h1>
+  <span class="sp"></span>
+  <a class="hbtn" href="preview.html">← Preview</a>
+  <a class="hbtn red" href="index.html" target="_blank">Trang chính ↗</a>
+</header>
+
+<div class="legend">
+  <span class="leg"><span class="ldot r"></span>Màn đã dựng</span>
+  <span class="leg"><span class="ldot g"></span>Màn chưa có</span>
+</div>
+
+<div class="canvas"><div class="flow">
+
+  <!-- 01 Form đặt lịch -->
+  <div class="step">
+    <div class="phone-col">
+      <div class="plabel">01 · Form đặt lịch</div>
+      <div class="pmock">
+        <div class="pscreen">
+          <iframe src="index.html#booking" title="Form" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="down"><div class="vline"></div><div class="albl">Xác nhận đặt lịch</div><div class="vline"></div><div class="vhead"></div></div>
+
+  <!-- 02 Thành công + nhánh Hủy -->
+  <div class="step">
+    <div class="phone-col">
+      <div class="plabel">02 · Đặt lịch thành công</div>
+      <div class="pmock">
+        <div class="pscreen">
+          <iframe src="modal-success.html" title="Thành công" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:flex-start;padding-top:148px">
+      <div class="branch">
+        <div class="hline" style="width:16px"></div>
+        <div class="hlbl">Hủy lịch</div>
+        <div class="hline" style="width:16px"></div>
+        <div class="hhead"></div>
+        <div style="width:12px"></div>
+        <div class="phone-col">
+          <div class="plabel" style="color:var(--faint)">Hủy thành công</div>
+          <div class="pmock miss">
+            <div class="pscreen miss"><span class="mi">🚫</span><span class="mt">Màn xác nhận<br>hủy lịch</span></div>
+          </div>
+          <span class="miss-badge">Chưa dựng</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="down"><div class="vline"></div><div class="albl">Tra cứu lịch hẹn</div><div class="vline"></div><div class="vhead"></div></div>
+
+  <!-- 03 Tra cứu + nhánh Hủy -->
+  <div class="step">
+    <div class="phone-col">
+      <div class="plabel">03 · Tra cứu lịch hẹn</div>
+      <div class="pmock">
+        <div class="pscreen">
+          <iframe src="tra-cuu.html?preview=1" title="Tra cứu" loading="lazy" onload="this.contentWindow.document.querySelector('.result-wrap')&&(this.contentWindow.scrollTo(0,120))"></iframe>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:flex-start;padding-top:148px">
+      <div class="branch">
+        <div class="hline" style="width:16px"></div>
+        <div class="hlbl">Hủy lịch</div>
+        <div class="hline" style="width:16px"></div>
+        <div class="hhead"></div>
+        <div style="width:12px"></div>
+        <div class="phone-col">
+          <div class="plabel" style="color:var(--faint)">Hủy thành công</div>
+          <div class="pmock miss">
+            <div class="pscreen miss"><span class="mi">🚫</span><span class="mt">Màn xác nhận<br>hủy lịch</span></div>
+          </div>
+          <span class="miss-badge">Chưa dựng</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="down"><div class="vline"></div><div class="albl">Xác nhận đến</div><div class="vline"></div><div class="vhead"></div></div>
+
+  <!-- 04 STT -->
+  <div class="step">
+    <div class="phone-col">
+      <div class="plabel">04 · Số thứ tự (STT)</div>
+      <div class="pmock">
+        <div class="pscreen">
+          <iframe src="modal-activate.html" title="STT" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+</body>
+</html>
