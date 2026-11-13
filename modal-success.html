@@ -108,11 +108,11 @@
     </div>
     <div class="info-row">
       <span class="lbl">Nghiệp vụ</span>
-      <span class="val">Đổi SIM chính chủ</span>
+      <span class="val" id="infoSvc">Đổi SIM chính chủ</span>
     </div>
     <div class="info-row">
       <span class="lbl">Thời gian</span>
-      <span class="val">14:30 · Thứ 6, 14/11/2026</span>
+      <span class="val" id="infoTime">14:30 · Thứ 6, 14/11/2026</span>
     </div>
   </div>
 
@@ -167,6 +167,8 @@
 </div>
 
 <script>
+  (function(){var p=new URLSearchParams(location.search);if(p.get('svc'))document.getElementById('infoSvc').textContent=p.get('svc');if(p.get('time'))document.getElementById('infoTime').textContent=p.get('time');})();
+
   new QRCode(document.getElementById('qr-code'), {
     text: 'VIETTEL-APPT-ABCD1234',
     width: 100, height: 100,
