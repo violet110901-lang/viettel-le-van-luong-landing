@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Đặt lịch thành công — Viettel Telecom</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bbook.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-SemiBold.otf') format('opentype');font-weight:600;font-style:normal;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bold.otf') format('opentype');font-weight:700 900;font-style:normal;font-display:swap}
+  :root{
+    --red:#EE0033;
+    --ink:#000000;--ink-2:#3a3a3a;--muted:#6e6e6e;--faint:#a0a0a0;
+    --line:#ebebeb;--line-2:#dedede;
+    --bg:#ffffff;--bg-soft:#f5f5f5;
+    --green:#16a34a;--green-soft:#e9f9ef;
+    --radius:18px;
+    --shadow-lg:0 24px 60px rgba(0,0,0,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'FS PF BeauSans Pro','Be Vietnam Pro',-apple-system,sans-serif;background:var(--bg-soft);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 16px 56px;-webkit-font-smoothing:antialiased;color:var(--ink);letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+
+  .vt-logo-strip{display:flex;align-items:center;gap:10px;margin-bottom:24px;width:100%;max-width:480px}
+  .v-red{font-size:22px;font-weight:800;color:var(--red);letter-spacing:-.02em;line-height:1}
+  .v-sub{font-size:10px;font-weight:600;color:#3a3a3a;letter-spacing:.22em;margin-top:2px;padding-left:2px}
+
+  .modal-card{width:100%;max-width:480px;background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);overflow:hidden}
+
+  /* ---- Success head ---- */
+  .success-head{background:var(--green-soft);padding:28px 24px 24px;text-align:center;border-bottom:1px solid #d1f2dc}
+  .success-icon{width:56px;height:56px;border-radius:50%;background:var(--green);display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .success-icon svg{width:28px;height:28px;color:#fff}
+  .success-head h2{font-size:20px;font-weight:800;color:var(--green);margin-bottom:6px}
+  .success-head p{font-size:13.5px;color:var(--muted);max-width:36ch;margin:0 auto;line-height:1.5}
+
+  /* ---- Info rows ---- */
+  .info-section{padding:20px 24px;border-bottom:1px solid var(--line)}
+  .info-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:14px}
+  .info-row:not(:last-child){border-bottom:1px dashed var(--line-2)}
+  .info-row .lbl{color:var(--muted);font-weight:500;flex:0 0 100px;padding-top:1px;font-size:13px}
+  .info-row .val{color:var(--ink);font-weight:600;flex:1;line-height:1.45}
+
+  /* ---- Mã + QR ---- */
+  .code-section{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:20px}
+  .code-left{flex:1;min-width:0}
+  .code-label{font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .code-value{font-size:38px;font-weight:800;letter-spacing:.12em;color:var(--red);line-height:1}
+  .code-note{font-size:12px;color:var(--muted);margin-top:7px;line-height:1.4}
+  #qr-code{flex:none;width:100px;height:100px}
+  #qr-code img,#qr-code canvas{width:100px!important;height:100px!important;border-radius:8px!important}
+
+  /* ---- Giấy tờ ---- */
+  .docs-section{padding:16px 24px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .docs-title{font-size:12px;font-weight:700;color:var(--ink-2);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .docs-title svg{width:14px;height:14px;color:var(--red);flex:none}
+  .doc-item{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink-2);padding:6px 0;font-weight:500}
+  .doc-item::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);flex:none}
+  .doc-badge{font-size:11px;font-weight:700;color:#fff;background:var(--red);padding:2px 8px;border-radius:999px;margin-left:auto}
+  .doc-note{font-size:12px;color:var(--faint);margin-top:2px;padding-left:16px}
+
+  /* ---- Buttons ---- */
+  .btn-section{padding:20px 24px;display:flex;flex-direction:column;gap:10px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:600;font-size:14.5px;cursor:pointer;border:1px solid transparent;font-family:inherit;text-decoration:none;transition:.15s;line-height:1}
+  .btn svg{width:16px;height:16px;flex:none}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{box-shadow:0 8px 20px rgba(238,0,51,.3);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-2)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .btn-danger{background:#fff;color:#ef4444;border-color:#fecaca}
+  .btn-danger:hover{background:#fef2f2;transform:translateY(-1px)}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+  /* ---- Tammi CTA ---- */
+  .tammi-strip{margin:0 24px 24px;background:var(--bg-soft);border:1px solid var(--line-2);border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px}
+  .tammi-txt{flex:1;min-width:0}
+  .tammi-txt strong{font-size:13.5px;font-weight:700;color:var(--ink);display:block;margin-bottom:4px}
+  .tammi-txt p{font-size:12px;color:var(--muted);line-height:1.4}
+  .tammi-btn{font-size:13px;font-weight:700;color:var(--red);white-space:nowrap;border:1.5px solid var(--red);padding:7px 14px;border-radius:999px;flex:none;font-family:inherit;cursor:pointer;background:#fff;transition:.15s}
+  .tammi-btn:hover{background:var(--red);color:#fff}
+</style>
+</head>
+<body>
+
+<div class="vt-logo-strip">
+  <div>
+    <div class="v-red">Viettel</div>
+    <div class="v-sub">TELECOM</div>
+  </div>
+</div>
+
+<div class="modal-card">
+
+  <div class="success-head">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Đặt lịch hẹn thành công!</h2>
+    <p>Quý khách vui lòng đến Cửa hàng đúng lịch hẹn. Trân trọng.</p>
+  </div>
+
+  <div class="info-section">
+    <div class="info-row">
+      <span class="lbl">Cửa hàng</span>
+      <span class="val">Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl">Nghiệp vụ</span>
+      <span class="val">Đổi SIM chính chủ</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl">Thời gian</span>
+      <span class="val">14:30 · Thứ 6, 14/11/2026</span>
+    </div>
+  </div>
+
+  <div class="code-section">
+    <div class="code-left">
+      <div class="code-label">Mã đặt lịch</div>
+      <div class="code-value">ABCD1234</div>
+      <div class="code-note">Xuất trình mã này tại quầy<br>hoặc quét mã QR bên cạnh</div>
+    </div>
+    <div id="qr-code"></div>
+  </div>
+
+  <div class="docs-section">
+    <div class="docs-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Giấy tờ cần mang theo
+    </div>
+    <div class="doc-item">CCCD gắn chip bản gốc <span class="doc-badge">Bắt buộc</span></div>
+    <div class="doc-note">Không chấp nhận bản photo, ảnh chụp</div>
+    <div class="doc-item" style="margin-top:4px">SIM cũ</div>
+  </div>
+
+  <div class="btn-section">
+    <a href="https://maps.app.goo.gl/qVs4Lp6UrsgHif4v8" target="_blank" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      Chỉ đường đến cửa hàng
+    </a>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="addToCalendar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Thêm vào lịch
+      </button>
+      <a href="tra-cuu.html" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Tra cứu lịch
+      </a>
+    </div>
+    <button class="btn btn-danger" onclick="confirmCancel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      Hủy lịch hẹn này
+    </button>
+  </div>
+
+  <div class="tammi-strip">
+    <div class="tammi-txt">
+      <strong>Tải app Viettel Tammi</strong>
+      <p>Nhận thông báo khi sắp đến lượt, theo dõi trạng thái lịch hẹn.</p>
+    </div>
+    <button class="tammi-btn">Tải ngay</button>
+  </div>
+
+</div>
+
+<script>
+  new QRCode(document.getElementById('qr-code'), {
+    text: 'VIETTEL-APPT-ABCD1234',
+    width: 100, height: 100,
+    colorDark: '#000000', colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  function addToCalendar(){
+    const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      + '&text=' + encodeURIComponent('Lịch hẹn Viettel Telecom LVL')
+      + '&dates=20261114T143000/20261114T150000'
+      + '&details=' + encodeURIComponent('Mã đặt lịch: ABCD1234\nNghiệp vụ: Đổi SIM chính chủ')
+      + '&location=' + encodeURIComponent('Tầng 1 tòa nhà Star City, số 23 Lê Văn Lương, Thanh Xuân, Hà Nội');
+    window.open(url, '_blank');
+  }
+
+  function confirmCancel(){
+    if(confirm('Bạn có chắc muốn hủy lịch hẹn ABCD1234 lúc 14:30 ngày 14/11/2026?')){
+      alert('Lịch hẹn đã được hủy thành công.');
+    }
+  }
+</script>
+</body>
+</html>

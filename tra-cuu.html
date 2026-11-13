@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tra cứu lịch hẹn — Viettel Telecom</title>
+<style>
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bbook.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-SemiBold.otf') format('opentype');font-weight:600;font-style:normal;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bold.otf') format('opentype');font-weight:700 900;font-style:normal;font-display:swap}
+  :root{
+    --red:#EE0033;
+    --ink:#000000;--ink-2:#3a3a3a;--muted:#6e6e6e;--faint:#a0a0a0;
+    --line:#ebebeb;--line-2:#dedede;
+    --bg:#ffffff;--bg-soft:#f5f5f5;
+    --green:#16a34a;--green-soft:#e9f9ef;
+    --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05);
+    --shadow-lg:0 24px 60px rgba(0,0,0,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'FS PF BeauSans Pro','Be Vietnam Pro',-apple-system,sans-serif;background:var(--bg-soft);min-height:100vh;-webkit-font-smoothing:antialiased;color:var(--ink);letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+
+  /* Header */
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  .nav{display:flex;align-items:center;gap:12px;height:64px;max-width:1160px;margin:0 auto;padding:0 24px}
+  .nav-back{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--ink-2);cursor:pointer;border:none;background:none;font-family:inherit;padding:8px 0;transition:color .15s}
+  .nav-back:hover{color:var(--red)}
+  .nav-back svg{width:18px;height:18px}
+  .nav-title{font-size:16px;font-weight:700;color:var(--ink)}
+  .nav-logo{margin-left:auto;display:flex;flex-direction:column;line-height:.9}
+  .nav-logo .v-red{font-size:20px;font-weight:800;color:var(--red);letter-spacing:-.02em}
+  .nav-logo .v-sub{font-size:9px;font-weight:600;color:#3a3a3a;letter-spacing:.22em;padding-left:1px}
+
+  /* Page wrap */
+  .page{max-width:560px;margin:0 auto;padding:32px 16px 56px}
+
+  /* Search card */
+  .search-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);padding:28px 24px;margin-bottom:24px}
+  .search-card h2{font-size:18px;font-weight:800;margin-bottom:6px}
+  .search-card .sub{font-size:13.5px;color:var(--muted);margin-bottom:22px;line-height:1.5}
+
+  /* Tab switch */
+  .tab-row{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;margin-bottom:20px}
+  .tab-btn{padding:11px;font-size:13.5px;font-weight:600;color:var(--muted);background:#fff;border:none;cursor:pointer;font-family:inherit;transition:.15s;line-height:1}
+  .tab-btn.active{background:var(--red);color:#fff}
+
+  /* Form */
+  .fld{margin-bottom:14px}
+  .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px;letter-spacing:.02em}
+  .fld input{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff;transition:.15s;outline:none}
+  .fld input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(238,0,51,.08)}
+  .fld .hint{font-size:12px;color:var(--faint);margin-top:5px}
+  .fld-code{text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+
+  .btn-search{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;border:none;font-family:inherit;background:var(--red);color:#fff;transition:.15s;margin-top:4px}
+  .btn-search:hover{box-shadow:0 8px 20px rgba(238,0,51,.3);transform:translateY(-1px)}
+  .btn-search svg{width:17px;height:17px}
+
+  /* Result card */
+  .result-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden;display:none}
+  .result-card.show{display:block}
+
+  /* Result header */
+  .result-head{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px}
+  .status-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px}
+  .status-pill.booked{background:var(--green-soft);color:var(--green)}
+  .status-pill.booked::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+  .status-pill.waiting{background:#fff7ed;color:#d97706}
+  .status-pill.waiting::before{content:"";width:7px;height:7px;border-radius:50%;background:#f59e0b}
+  .status-pill.cancelled{background:#fef2f2;color:#ef4444}
+  .status-pill.cancelled::before{content:"";width:7px;height:7px;border-radius:50%;background:#ef4444}
+  .result-code{margin-left:auto;font-size:14px;font-weight:800;color:var(--red);letter-spacing:.08em}
+
+  /* Result body */
+  .result-body{padding:0}
+  .detail-row{display:flex;align-items:flex-start;gap:10px;padding:12px 24px;font-size:14px;border-bottom:1px solid var(--line)}
+  .detail-row:last-child{border-bottom:none}
+  .detail-row .dl{color:var(--muted);font-weight:500;flex:0 0 100px;font-size:13px;padding-top:1px}
+  .detail-row .dv{color:var(--ink);font-weight:600;flex:1;line-height:1.45}
+
+  /* Actions */
+  .result-actions{padding:20px 24px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:600;font-size:14px;cursor:pointer;border:1px solid transparent;font-family:inherit;text-decoration:none;transition:.15s;line-height:1}
+  .btn svg{width:16px;height:16px;flex:none}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{box-shadow:0 8px 20px rgba(238,0,51,.3);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-2)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .btn-danger{background:#fff;color:#ef4444;border-color:#fecaca}
+  .btn-danger:hover{background:#fef2f2;transform:translateY(-1px)}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+  /* Empty state */
+  .empty-state{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);padding:48px 24px;text-align:center;display:none}
+  .empty-state.show{display:block}
+  .empty-icon{width:52px;height:52px;border-radius:50%;background:var(--bg-soft);display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .empty-icon svg{width:24px;height:24px;color:var(--faint)}
+  .empty-state h3{font-size:16px;font-weight:700;margin-bottom:6px}
+  .empty-state p{font-size:13.5px;color:var(--muted);line-height:1.5}
+
+  @media(max-width:480px){
+    .btn-row{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <button class="nav-back" onclick="history.back()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Quay lại
+    </button>
+    <span class="nav-title">Tra cứu lịch hẹn</span>
+    <div class="nav-logo">
+      <div class="v-red">Viettel</div>
+      <div class="v-sub">TELECOM</div>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- Search form -->
+  <div class="search-card">
+    <h2>Tra cứu lịch hẹn</h2>
+    <p class="sub">Nhập mã đặt lịch hoặc số điện thoại để xem thông tin và trạng thái lịch hẹn.</p>
+
+    <div class="tab-row">
+      <button class="tab-btn active" id="tabCode" onclick="switchTab('code')">Mã đặt lịch</button>
+      <button class="tab-btn" id="tabPhone" onclick="switchTab('phone')">Số điện thoại</button>
+    </div>
+
+    <div id="formCode">
+      <div class="fld">
+        <label for="inputCode">Mã đặt lịch (8 ký tự)</label>
+        <input type="text" id="inputCode" class="fld-code" placeholder="ABCD1234" maxlength="8" oninput="this.value=this.value.toUpperCase()"/>
+        <div class="hint">Mã có trong SMS xác nhận hoặc màn hình đặt lịch thành công.</div>
+      </div>
+    </div>
+
+    <div id="formPhone" style="display:none">
+      <div class="fld">
+        <label for="inputPhone">Số điện thoại Viettel</label>
+        <input type="tel" id="inputPhone" placeholder="Nhập số điện thoại" maxlength="11"/>
+      </div>
+      <div class="fld">
+        <label for="inputOtp">Mã OTP</label>
+        <input type="text" id="inputOtp" placeholder="Nhập mã OTP" maxlength="6"/>
+        <div class="hint">Mã OTP được gửi đến số điện thoại trên.</div>
+      </div>
+    </div>
+
+    <button class="btn-search" onclick="doSearch()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Tra cứu
+    </button>
+  </div>
+
+  <!-- Kết quả: có lịch hẹn -->
+  <div class="result-card" id="resultCard">
+    <div class="result-head">
+      <span class="status-pill booked" id="statusPill">Đã đặt lịch</span>
+      <span class="result-code" id="resultCode">ABCD1234</span>
+    </div>
+    <div class="result-body">
+      <div class="detail-row">
+        <span class="dl">Cửa hàng</span>
+        <span class="dv">Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội</span>
+      </div>
+      <div class="detail-row">
+        <span class="dl">Nghiệp vụ</span>
+        <span class="dv">Đổi SIM chính chủ</span>
+      </div>
+      <div class="detail-row">
+        <span class="dl">Thời gian</span>
+        <span class="dv">14:30 · Thứ 6, 14/11/2026</span>
+      </div>
+      <div class="detail-row">
+        <span class="dl">Số thứ tự</span>
+        <span class="dv" id="sttInfo">Chưa kích hoạt · <a href="modal-activate.html" style="color:var(--red);font-weight:700">Xác nhận đến →</a></span>
+      </div>
+    </div>
+    <div class="result-actions">
+      <a href="modal-activate.html" class="btn btn-primary" id="btnActivate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Xác nhận đến — nhận số thứ tự
+      </a>
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="doReschedule()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Đổi lịch
+        </button>
+        <button class="btn btn-danger" onclick="doCancel()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Hủy lịch hẹn
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kết quả: không tìm thấy -->
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </div>
+    <h3>Không tìm thấy lịch hẹn</h3>
+    <p>Vui lòng kiểm tra lại mã đặt lịch hoặc số điện thoại và thử lại.</p>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(t){
+    document.getElementById('tabCode').classList.toggle('active', t==='code');
+    document.getElementById('tabPhone').classList.toggle('active', t==='phone');
+    document.getElementById('formCode').style.display = t==='code' ? 'block' : 'none';
+    document.getElementById('formPhone').style.display = t==='phone' ? 'block' : 'none';
+  }
+
+  function doSearch(){
+    const code = document.getElementById('inputCode').value.trim().toUpperCase();
+    const phone = document.getElementById('inputPhone').value.trim();
+    const isCode = document.getElementById('formCode').style.display !== 'none';
+    const val = isCode ? code : phone;
+
+    document.getElementById('resultCard').classList.remove('show');
+    document.getElementById('emptyState').classList.remove('show');
+
+    if(!val){ return; }
+
+    // Mock: "ABCD1234" hoặc "0987654321" trả về kết quả
+    setTimeout(()=>{
+      if(val === 'ABCD1234' || val === '0987654321'){
+        document.getElementById('resultCode').textContent = 'ABCD1234';
+        document.getElementById('resultCard').classList.add('show');
+        document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+      } else {
+        document.getElementById('emptyState').classList.add('show');
+        document.getElementById('emptyState').scrollIntoView({behavior:'smooth',block:'nearest'});
+      }
+    }, 400);
+  }
+
+  function doCancel(){
+    if(confirm('Bạn có chắc muốn hủy lịch hẹn ABCD1234 lúc 14:30 ngày 14/11/2026?')){
+      document.getElementById('statusPill').className = 'status-pill cancelled';
+      document.getElementById('statusPill').textContent = 'Đã hủy';
+      document.getElementById('btnActivate').style.display = 'none';
+      document.getElementById('sttInfo').textContent = '—';
+    }
+  }
+
+  function doReschedule(){
+    alert('Để đổi lịch, hệ thống sẽ hủy lịch cũ và chuyển bạn đến trang đặt lịch mới.');
+    window.location.href = 'index.html#booking';
+  }
+
+  // Enter để tra cứu
+  document.addEventListener('keydown', e => { if(e.key==='Enter') doSearch(); });
+</script>
+</body>
+</html>
