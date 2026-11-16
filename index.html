@@ -73,7 +73,8 @@
   @keyframes rip{from{width:0;height:0;opacity:.7}to{width:320px;height:320px;opacity:0}}
 
   /* ============ HEADER (Viettel Telecom style) ============ */
-  header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.04);padding-top:env(safe-area-inset-top)}
+  header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.04);padding-top:max(env(safe-area-inset-top,0px),0px)}
+  @media(max-width:430px){header{padding-top:44px}}
   .vt-nav{display:flex;align-items:center;gap:8px;height:70px}
   .vt-logo{display:flex;flex-direction:column;line-height:.9;flex:none;padding-right:8px}
   .vt-logo .v-red{font-size:26px;font-weight:800;color:var(--red);letter-spacing:-.02em}
