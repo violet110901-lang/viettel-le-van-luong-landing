@@ -288,10 +288,15 @@
   .fgroup>label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:10px}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .fld input,.fld select{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff;transition:.15s}
+  .time-box .fld select,.time-box select{width:100%;border:none;border-radius:0;padding:13px 36px 13px 12px;box-shadow:none;outline:none}
   .fld select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EE0033' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/16px}
   .fld select:disabled{color:var(--faint);cursor:not-allowed;background-color:var(--bg-soft)}
   .bk-panel>.fld{margin-bottom:18px}
-  .bk-row{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:18px;align-items:start}
+  .bk-row{display:block;margin-bottom:18px}
+  .time-box{display:flex;align-items:stretch;border:1px solid var(--line-2);border-radius:11px;overflow:hidden;background:#fff;transition:.15s}
+  .time-box:focus-within{border-color:var(--red)}
+  .time-prefix{padding:13px 14px;font-size:14.5px;font-weight:600;color:var(--ink);border-right:1px solid var(--line-2);flex:none;white-space:nowrap;background:#fff;display:flex;align-items:center}
+  .time-box select{border:none;border-radius:0;flex:1;padding:13px 36px 13px 12px;min-width:0;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EE0033' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/16px;appearance:none;-webkit-appearance:none;font-family:inherit;font-size:14.5px;color:var(--ink)}
   .days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
   .days button{font-family:inherit;border:1px solid var(--line-2);background:#fff;border-radius:11px;padding:6px 4px;cursor:pointer;line-height:1.25;color:var(--ink);transition:.15s}
   .days button b{display:block;font-size:13.5px;font-weight:600}
@@ -597,7 +602,7 @@
           <button type="button" class="svc-chip" data-svc="Chuyển trả trước → trả sau">Chuyển trả trước → trả sau</button>
         </div>
         <div class="fld"><label for="svcSel">Bạn cần làm gì?</label><select id="svcSel" required><optgroup label="Di động"><option>Đổi SIM chính chủ</option><option>Mua SIM</option><option>Chuẩn hóa thông tin</option><option>Chuyển trả trước → trả sau</option><option>Chuyển trả sau → trả trước</option><option>Thay đổi giấy tờ</option><option>Chuyển chủ quyền trả trước</option><option>Chuyển chủ quyền trả sau</option><option>Chặn/mở thuê bao</option><option>Thay đổi gói cước</option><option>Đăng ký thông tin</option><option>Thay đổi thông tin hợp đồng</option><option>Chấm dứt thuê bao</option><option>Chuyển mạng giữ số</option><option>Mua thiết bị</option></optgroup><optgroup label="Internet &amp; Truyền hình"><option>Chuyển đổi công nghệ</option><option>Chuyển đổi gói cước</option><option>Đổi thiết bị Internet</option><option>Chặn/mở thuê bao Internet</option><option>Thay đổi địa chỉ lắp đặt</option><option>Thanh toán cước/gạch nợ</option><option>Chấm dứt thuê bao Internet</option><option>Đóng cước trước</option><option>Đổi chương trình khuyến mại</option></optgroup></select></div>
-        <div class="bk-row"><div class="fld" style="display:none"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Giờ hẹn hôm nay</label><select id="slotSel" required></select></div></div>
+        <div class="bk-row" style="margin-bottom:18px"><div class="fld" style="display:none"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix">Hôm nay</span><select id="slotSel" required></select></div></div></div>
         <div class="two"><div class="fld"><label>Họ và tên</label><input required placeholder="Nguyễn Văn A" /></div><div class="fld"><label>Số điện thoại</label><input required type="tel" placeholder="09xx xxx xxx" /></div></div>
         <button type="submit" id="bkSubmit" class="btn btn-primary" style="width:100%;margin-top:20px">Xác nhận đặt lịch</button>
         <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:12px">Đây là bản demo — chưa có lịch hẹn nào được gửi đi thật.</p>
