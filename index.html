@@ -300,6 +300,11 @@
   .days button.on{background:var(--red);border-color:var(--red);color:#fff}.days button.on small{color:rgba(255,255,255,.85)}
   .days button:disabled{background:var(--bg-soft);color:var(--faint);cursor:not-allowed}.days button:disabled small{color:var(--faint)}
   .fld select.flash{animation:selFlash .9s ease 2}
+  .svc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .svc-chips .chip-lbl{width:100%;font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.03em;margin-bottom:2px}
+  .svc-chip{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--line-2);background:#fff;color:var(--ink-2);cursor:pointer;transition:.15s;font-family:inherit;white-space:nowrap}
+  .svc-chip:hover{border-color:var(--red);color:var(--red)}
+  .svc-chip.on{background:var(--red);color:#fff;border-color:var(--red)}
   @keyframes selFlash{50%{box-shadow:0 0 0 2px var(--red);border-color:var(--red)}}
   .fld input:focus,.fld select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
   .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:8px}
@@ -582,6 +587,15 @@
     </div>
     <div class="book-grid">
       <form class="bk-panel reveal" id="bkForm" onsubmit="return submitBooking(event)">
+        <div class="svc-chips" id="svcChips">
+          <span class="chip-lbl">Chọn nhanh nghiệp vụ</span>
+          <button type="button" class="svc-chip" data-svc="Đổi SIM chính chủ">Đổi SIM chính chủ</button>
+          <button type="button" class="svc-chip" data-svc="Chuẩn hóa thông tin">Chuẩn hóa thông tin</button>
+          <button type="button" class="svc-chip" data-svc="Thay đổi gói cước">Thay đổi gói cước</button>
+          <button type="button" class="svc-chip" data-svc="Chuyển mạng giữ số">Chuyển mạng giữ số</button>
+          <button type="button" class="svc-chip" data-svc="Mua SIM">Mua SIM</button>
+          <button type="button" class="svc-chip" data-svc="Chuyển trả trước → trả sau">Chuyển trả trước → trả sau</button>
+        </div>
         <div class="fld"><label for="svcSel">Bạn cần làm gì?</label><select id="svcSel" required><optgroup label="Di động"><option>Đổi SIM chính chủ</option><option>Mua SIM</option><option>Chuẩn hóa thông tin</option><option>Chuyển trả trước → trả sau</option><option>Chuyển trả sau → trả trước</option><option>Thay đổi giấy tờ</option><option>Chuyển chủ quyền trả trước</option><option>Chuyển chủ quyền trả sau</option><option>Chặn/mở thuê bao</option><option>Thay đổi gói cước</option><option>Đăng ký thông tin</option><option>Thay đổi thông tin hợp đồng</option><option>Chấm dứt thuê bao</option><option>Chuyển mạng giữ số</option><option>Mua thiết bị</option></optgroup><optgroup label="Internet &amp; Truyền hình"><option>Chuyển đổi công nghệ</option><option>Chuyển đổi gói cước</option><option>Đổi thiết bị Internet</option><option>Chặn/mở thuê bao Internet</option><option>Thay đổi địa chỉ lắp đặt</option><option>Thanh toán cước/gạch nợ</option><option>Chấm dứt thuê bao Internet</option><option>Đóng cước trước</option><option>Đổi chương trình khuyến mại</option></optgroup></select></div>
         <div class="bk-row"><div class="fld" style="display:none"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Giờ hẹn hôm nay</label><select id="slotSel" required></select></div></div>
         <div class="two"><div class="fld"><label>Họ và tên</label><input required placeholder="Nguyễn Văn A" /></div><div class="fld"><label>Số điện thoại</label><input required type="tel" placeholder="09xx xxx xxx" /></div></div>
@@ -855,6 +869,7 @@
     sel.innerHTML=list.map(function(o){return '<option'+(o.s==='full'?' disabled':'')+(o.t===keep?' selected':'')+'>'+o.t+statusLbl[o.s]+'</option>';}).join('');
   }
   document.getElementById('dayChips').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;dayIdx=+b.getAttribute('data-i');renderBooking();});
+  document.getElementById('svcChips').addEventListener('click',function(e){var b=e.target.closest('.svc-chip');if(!b)return;var svc=b.getAttribute('data-svc');document.getElementById('svcSel').value=svc;document.querySelectorAll('.svc-chip').forEach(function(c){c.classList.toggle('on',c===b);});});
   renderBooking();setInterval(renderBooking,60000);
   function submitBooking(e){e.preventDefault();var d=DAYS[dayIdx];var svc=document.getElementById('svcSel').value;var slot=document.getElementById('slotSel').value.split(' ·')[0];window.location.href='modal-success.html?svc='+encodeURIComponent(svc)+'&time='+encodeURIComponent(d.full+' · '+slot);return false;}
 
