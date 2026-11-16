@@ -602,7 +602,7 @@
           <button type="button" class="svc-chip" data-svc="Chuyển trả trước → trả sau">Chuyển trả trước → trả sau</button>
         </div>
         <div class="fld"><label for="svcSel">Bạn cần làm gì?</label><select id="svcSel" required><optgroup label="Di động"><option>Đổi SIM chính chủ</option><option>Mua SIM</option><option>Chuẩn hóa thông tin</option><option>Chuyển trả trước → trả sau</option><option>Chuyển trả sau → trả trước</option><option>Thay đổi giấy tờ</option><option>Chuyển chủ quyền trả trước</option><option>Chuyển chủ quyền trả sau</option><option>Chặn/mở thuê bao</option><option>Thay đổi gói cước</option><option>Đăng ký thông tin</option><option>Thay đổi thông tin hợp đồng</option><option>Chấm dứt thuê bao</option><option>Chuyển mạng giữ số</option><option>Mua thiết bị</option></optgroup><optgroup label="Internet &amp; Truyền hình"><option>Chuyển đổi công nghệ</option><option>Chuyển đổi gói cước</option><option>Đổi thiết bị Internet</option><option>Chặn/mở thuê bao Internet</option><option>Thay đổi địa chỉ lắp đặt</option><option>Thanh toán cước/gạch nợ</option><option>Chấm dứt thuê bao Internet</option><option>Đóng cước trước</option><option>Đổi chương trình khuyến mại</option></optgroup></select></div>
-        <div class="bk-row" style="margin-bottom:18px"><div class="fld" style="display:none"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix" id="timeDatePrefix"><span style="font-size:13px;font-weight:800">Hôm nay</span><span id="timeDateNum" style="display:block;font-size:11px;font-weight:500;color:var(--muted);margin-top:1px"></span></span><select id="slotSel" required></select></div></div></div>
+        <div class="bk-row" style="margin-bottom:18px"><div class="fld" style="display:none"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix" id="timeDatePrefix"><span style="font-size:11px;font-weight:600;color:var(--muted);display:block;margin-bottom:2px">Thời gian đặt hẹn</span><span id="timeDateNum" style="font-size:13px;font-weight:700;color:var(--ink)"></span></span><select id="slotSel" required></select></div></div></div>
         <div class="two"><div class="fld"><label>Họ và tên</label><input required placeholder="Nguyễn Văn A" /></div><div class="fld"><label>Số điện thoại</label><input required type="tel" placeholder="09xx xxx xxx" /></div></div>
         <button type="submit" id="bkSubmit" class="btn btn-primary" style="width:100%;margin-top:20px">Xác nhận đặt lịch</button>
         <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:12px">Đây là bản demo — chưa có lịch hẹn nào được gửi đi thật.</p>
@@ -856,7 +856,7 @@
   thumbs.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){thumbs.querySelector('.active').classList.remove('active');b.classList.add('active');galMain.style.opacity=0;setTimeout(function(){galMain.src=b.querySelector('img').src;galMain.style.opacity=1;},180);galCap.innerHTML=b.getAttribute('data-cap');});});
 
   // Đặt lịch: chọn 1 trong 3 ngày (hôm nay + 2 ngày tới), giờ theo múi giờ Việt Nam, khung 30 phút 08:00–19:30; hôm nay chỉ hiện giờ chưa qua
-  var OPEN_MIN=8*60,LAST_SLOT_MIN=19*60+30,STEP=30,DAYS_AHEAD=1,dayIdx=0;
+  var OPEN_MIN=8*60,LAST_SLOT_MIN=19*60+45,STEP=15,DAYS_AHEAD=1,dayIdx=0;
   function vnNow(){var p={};new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return p;}
   var VN_DAYS=['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'],VN_SHORT=['CN','T2','T3','T4','T5','T6','T7'];
   function pad(n){return (n<10?'0':'')+n;}
@@ -867,7 +867,7 @@
   var DAYS=[];
   function renderBooking(){
     var p=vnNow(),nowMin=(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10);DAYS=dayList(p);
-    var dn=document.getElementById('timeDateNum');if(dn)dn.textContent=p.day+'/'+p.month;
+    var dn=document.getElementById('timeDateNum');if(dn)dn.textContent='Hôm nay · '+p.day+'/'+p.month;
     var td=document.querySelector('.hrs li.today span');if(td)td.textContent='Hôm nay ('+VN_DAYS[DAYS[0].wd]+')';
     var todayFull=!freeSlots(0,nowMin).length;
     document.getElementById('dayChips').innerHTML=DAYS.map(function(d,i){var off=i===0&&todayFull;return '<button type="button" data-i="'+i+'"'+(i===dayIdx?' class="on"':'')+(off?' disabled title="Hôm nay đã hết giờ nhận lịch"':'')+'><b>'+d.name+'</b><small>'+(off?'Hết giờ':d.date)+'</small></button>';}).join('');
