@@ -152,7 +152,9 @@
   .gal-thumbs img{width:100%;height:100%;object-fit:cover}
   .gal-thumbs button.active{border-color:var(--red)}
   .gal-thumbs button:hover{transform:translateY(-2px)}
-  .stat-strip{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
+  .stat-strip{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+  .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#16a34a;margin-left:4px;vertical-align:middle;animation:blink-dot 1.6s ease-in-out infinite}
+  @keyframes blink-dot{0%,100%{opacity:1}50%{opacity:.25}}
   .stat-strip .cell{padding:18px 22px;border-right:1px solid var(--line)}
   .stat-strip .cell:last-child{border-right:none}
   .stat-strip .k{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:7px}
@@ -439,9 +441,9 @@
     .cat-grid{grid-template-columns:repeat(2,1fr)}
     .hero h1{font-size:26px}
     .stat-strip{grid-template-columns:1fr 1fr}
-    .stat-strip .cell:nth-child(2){border-right:none}
+    .stat-strip .cell:nth-child(2),.stat-strip .cell:nth-child(4){border-right:none}
     .stat-strip .cell:nth-child(1),.stat-strip .cell:nth-child(2){border-bottom:1px solid var(--line)}
-    .stat-strip .cell:nth-child(3){grid-column:1/-1}
+    .stat-strip .cell:nth-child(3){border-right:1px solid var(--line)}
     .bk-side,.map-box{position:static}
   }
   @media(max-width:600px){
@@ -575,7 +577,8 @@
     <div class="stat-strip reveal">
       <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Giờ giao dịch</div><div class="v">08:00 <small>– 20:00</small></div></div>
       <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V7l6-4v18M9 21V11l6-4v14M15 21v-7l6-4v11"/></svg>Ngày mở cửa</div><div class="v">Cả tuần <small>T2 – CN</small></div></div>
-      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Chờ trung bình</div><div class="v">~<span data-count="6">6</span> <small>phút</small></div><div style="font-size:12px;color:var(--muted);margin-top:3px"><span data-count="8">8</span> lượt đang chờ</div></div>
+      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Chờ trung bình</div><div class="v">~<span data-count="6">6</span> <small>phút</small></div></div>
+      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Đang chờ<span class="live-dot"></span></div><div class="v"><span id="queueCount">8</span> <small>người</small></div></div>
     </div>
   </div>
 
@@ -603,10 +606,11 @@
           <button type="button" class="svc-chip" data-svc="Chuyển trả trước → trả sau">Chuyển trả trước → trả sau</button>
         </div>
         <div class="fld"><label for="svcSel">Bạn cần làm gì?</label><select id="svcSel" required><optgroup label="Di động"><option>Đổi SIM chính chủ</option><option>Mua SIM</option><option>Chuẩn hóa thông tin</option><option>Chuyển trả trước → trả sau</option><option>Chuyển trả sau → trả trước</option><option>Thay đổi giấy tờ</option><option>Chuyển chủ quyền trả trước</option><option>Chuyển chủ quyền trả sau</option><option>Chặn/mở thuê bao</option><option>Thay đổi gói cước</option><option>Đăng ký thông tin</option><option>Thay đổi thông tin hợp đồng</option><option>Chấm dứt thuê bao</option><option>Chuyển mạng giữ số</option><option>Mua thiết bị</option></optgroup><optgroup label="Internet &amp; Truyền hình"><option>Chuyển đổi công nghệ</option><option>Chuyển đổi gói cước</option><option>Đổi thiết bị Internet</option><option>Chặn/mở thuê bao Internet</option><option>Thay đổi địa chỉ lắp đặt</option><option>Thanh toán cước/gạch nợ</option><option>Chấm dứt thuê bao Internet</option><option>Đóng cước trước</option><option>Đổi chương trình khuyến mại</option></optgroup></select></div>
-        <div class="bk-row" style="margin-bottom:18px"><div class="fld" style="display:none"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix" id="timeDatePrefix"><span id="timeDateNum" style="font-size:13px;font-weight:600;color:var(--ink)"></span></span><select id="slotSel" required></select></div></div></div>
+        <div class="bk-row" style="margin-bottom:18px"><div class="fld"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix" id="timeDatePrefix"><span id="timeDateNum" style="font-size:13px;font-weight:600;color:var(--ink)"></span></span><select id="slotSel" required></select></div></div></div>
         <div class="two"><div class="fld"><label>Họ và tên</label><input required placeholder="Nguyễn Văn A" /></div><div class="fld"><label>Số điện thoại</label><input required type="tel" placeholder="09xx xxx xxx" /></div></div>
         <button type="submit" id="bkSubmit" class="btn btn-primary" style="width:100%;margin-top:20px">Xác nhận đặt lịch</button>
         <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:12px">Đây là bản demo — chưa có lịch hẹn nào được gửi đi thật.</p>
+        <div style="text-align:center;margin-top:14px"><a href="tra-cuu.html" style="font-size:13px;font-weight:600;color:var(--muted);text-decoration:none">Đã đặt lịch hẹn? <span style="color:var(--red)">Tra cứu lịch →</span></a></div>
       </form>
       <div class="bk-side reveal d1">
         <div class="bk-illus">
@@ -857,18 +861,18 @@
   thumbs.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){thumbs.querySelector('.active').classList.remove('active');b.classList.add('active');galMain.style.opacity=0;setTimeout(function(){galMain.src=b.querySelector('img').src;galMain.style.opacity=1;},180);galCap.innerHTML=b.getAttribute('data-cap');});});
 
   // Đặt lịch: chọn 1 trong 3 ngày (hôm nay + 2 ngày tới), giờ theo múi giờ Việt Nam, khung 30 phút 08:00–19:30; hôm nay chỉ hiện giờ chưa qua
-  var OPEN_MIN=8*60,LAST_SLOT_MIN=19*60+45,STEP=15,DAYS_AHEAD=1,dayIdx=0;
+  var OPEN_MIN=8*60,LAST_SLOT_MIN=19*60+45,STEP=15,DAYS_AHEAD=3,dayIdx=0;
   function vnNow(){var p={};new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return p;}
   var VN_DAYS=['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'],VN_SHORT=['CN','T2','T3','T4','T5','T6','T7'];
   function pad(n){return (n<10?'0':'')+n;}
-  function dayList(p){var base=Date.UTC(+p.year,+p.month-1,+p.day),out=[];for(var i=0;i<DAYS_AHEAD;i++){var d=new Date(base+i*864e5),wd=d.getUTCDay();out.push({name:i===0?'Hôm nay':i===1?'Ngày mai':VN_DAYS[wd],date:VN_SHORT[wd]+' '+pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1),full:VN_DAYS[wd]+' '+pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1),wd:wd});}return out;}
+  function dayList(p){var base=Date.UTC(+p.year,+p.month-1,+p.day),out=[];for(var i=0;i<DAYS_AHEAD;i++){var d=new Date(base+i*864e5),wd=d.getUTCDay();out.push({name:i===0?'Hôm nay':i===1?'Ngày mai':VN_DAYS[wd],date:VN_SHORT[wd]+' '+pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1),full:VN_DAYS[wd]+' '+pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1),ddmm:pad(d.getUTCDate())+'/'+pad(d.getUTCMonth()+1),wd:wd});}return out;}
   function slotStatus(m){if(m>=11*60&&m<=13*60)return'full';if((m>=10*60&&m<11*60)||(m>13*60&&m<=14*60))return'almost';return'free';}
   var statusLbl={free:' · Còn chỗ',almost:' · Sắp hết',full:' · Hết chỗ'};
   function freeSlots(i,nowMin){var out=[];for(var m=OPEN_MIN;m<=LAST_SLOT_MIN;m+=STEP){if(i===0&&m<=nowMin)continue;out.push({t:pad(Math.floor(m/60))+':'+pad(m%60),s:slotStatus(m)});}return out;}
   var DAYS=[];
   function renderBooking(){
     var p=vnNow(),nowMin=(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10);DAYS=dayList(p);
-    var dn=document.getElementById('timeDateNum');if(dn)dn.textContent='Hôm nay · '+p.day+'/'+p.month;
+    var dn=document.getElementById('timeDateNum');if(dn)dn.textContent=DAYS[dayIdx].name+' · '+DAYS[dayIdx].ddmm;
     var td=document.querySelector('.hrs li.today span');if(td)td.textContent='Hôm nay ('+VN_DAYS[DAYS[0].wd]+')';
     var todayFull=!freeSlots(0,nowMin).length;
     document.getElementById('dayChips').innerHTML=DAYS.map(function(d,i){var off=i===0&&todayFull;return '<button type="button" data-i="'+i+'"'+(i===dayIdx?' class="on"':'')+(off?' disabled title="Hôm nay đã hết giờ nhận lịch"':'')+'><b>'+d.name+'</b><small>'+(off?'Hết giờ':d.date)+'</small></button>';}).join('');
@@ -887,6 +891,24 @@
     sel.classList.remove('flash');void sel.offsetWidth;sel.classList.add('flash');
     document.getElementById('booking').scrollIntoView({behavior:'smooth'});
   });});
+
+  // Live queue counter — số người đang chờ, cập nhật ngẫu nhiên mỗi 2.5–5s
+  (function liveQ(){
+    var el=document.getElementById('queueCount');if(!el)return;
+    var n=8;
+    function tick(){
+      var d=(Math.random()<.45)?(Math.random()<.5?1:-1):0;
+      n=Math.max(1,Math.min(20,n+d));
+      if(d!==0){
+        el.style.transition='color .25s';
+        el.style.color='var(--red)';
+        el.textContent=n;
+        setTimeout(function(){el.style.color='';},500);
+      }
+      setTimeout(tick,2500+Math.random()*2500);
+    }
+    setTimeout(tick,3000);
+  })();
 
   // nearby map jump
   var storeQ=encodeURIComponent('Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội, Starcity, 23 Đ. Lê Văn Lương, Thanh Xuân, Hà Nội');
