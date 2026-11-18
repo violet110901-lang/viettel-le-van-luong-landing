@@ -252,8 +252,10 @@
   }
 
   function doReschedule(){
-    alert('Để đổi lịch, hệ thống sẽ hủy lịch cũ và chuyển bạn đến trang đặt lịch mới.');
-    window.location.href = 'index.html#booking';
+    var dvs = document.querySelectorAll('.detail-row .dv');
+    var svc = dvs[1] ? dvs[1].textContent.trim() : '';
+    var time = dvs[2] ? dvs[2].textContent.trim() : '';
+    window.location.href = 'modal-reschedule.html?svc='+encodeURIComponent(svc)+'&time='+encodeURIComponent(time)+'&code=ABCD1234';
   }
 
   // Enter để tra cứu
