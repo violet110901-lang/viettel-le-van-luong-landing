@@ -207,6 +207,16 @@
     </div>
     <h3>Không tìm thấy lịch hẹn</h3>
     <p>Vui lòng kiểm tra lại mã đặt lịch hoặc số điện thoại và thử lại.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
+      <button class="btn btn-ghost" onclick="document.getElementById('emptyState').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Tra cứu lại
+      </button>
+      <a href="index.html#booking" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Đặt lịch hẹn
+      </a>
+    </div>
   </div>
 
 </div>
@@ -262,9 +272,13 @@
   // Enter để tra cứu
   document.addEventListener('keydown', e => { if(e.key==='Enter') doSearch(); });
 
-  // preview=1: auto hiển thị kết quả mock cho flow diagram
-  if(new URLSearchParams(location.search).get('preview')==='1'){
+  // preview params cho flow diagram
+  var _pv = new URLSearchParams(location.search).get('preview');
+  if(_pv === '1' || _pv === 'found'){
     document.getElementById('inputCode').value='ABCD1234';
+    doSearch();
+  } else if(_pv === 'notfound'){
+    document.getElementById('inputCode').value='XXXXX999';
     doSearch();
   }
 </script>
