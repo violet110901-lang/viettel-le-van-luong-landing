@@ -67,27 +67,21 @@
 </div>
 
 <div class="stage-row">
-  <div class="section-label" style="margin-top:0;padding-top:0;border-top:none;margin-bottom:8px;width:100%">Màn sau đặt lịch</div>
+  <div class="section-label" style="margin-top:0;padding-top:0;border-top:none;margin-bottom:8px;width:100%">Luồng chính · Đặt lịch → Đổi lịch → Hủy lịch</div>
 
   <div class="device">
     <div class="dlabel">✅ Đặt lịch thành công <span>· modal-success</span></div>
     <div class="phone"><iframe src="modal-success.html" title="Màn thành công" loading="lazy"></iframe></div>
   </div>
 
-  <div class="device">
-    <div class="dlabel">🎫 Số thứ tự <span>· modal-activate</span></div>
-    <div class="phone"><iframe src="modal-activate.html" title="Màn kích hoạt STT" loading="lazy"></iframe></div>
-  </div>
-
-  <div class="device">
-    <div class="dlabel">🔍 Tra cứu lịch hẹn <span>· tra-cuu</span></div>
-    <div class="phone"><iframe src="tra-cuu.html" title="Trang tra cứu" loading="lazy"></iframe></div>
-  </div>
+  <div class="device" style="align-self:center;font-size:28px;color:var(--muted);padding-bottom:40px">→</div>
 
   <div class="device">
     <div class="dlabel">📅 Đổi lịch hẹn <span>· modal-reschedule</span></div>
     <div class="phone"><iframe src="modal-reschedule.html" title="Màn đổi lịch" loading="lazy"></iframe></div>
   </div>
+
+  <div class="device" style="align-self:center;font-size:28px;color:var(--muted);padding-bottom:40px">→</div>
 
   <div class="device">
     <div class="dlabel">🚫 Hủy lịch thành công <span>· modal-cancel</span></div>
@@ -95,6 +89,21 @@
   </div>
 </div>
 
-<p class="hint">Hàng trên: trang chính (index.html) — desktop + mobile. Hàng dưới: 5 màn sau đặt lịch. Cuộn trong từng khung để xem đầy đủ.</p>
+<div class="stage-row" style="margin-top:0">
+  <div class="section-label" style="margin-top:0;padding-top:0;border-top:none;margin-bottom:8px;width:100%">Màn độc lập</div>
+
+  <div class="device">
+    <div class="dlabel">🎫 Số thứ tự <span>· modal-activate</span></div>
+    <div style="font-size:11.5px;color:var(--muted);text-align:center;margin-bottom:8px;max-width:260px;line-height:1.4">⚡ Kích hoạt có điều kiện — hiện khi khách đến cửa hàng scan QR hoặc nhân viên kích hoạt STT</div>
+    <div class="phone"><iframe src="modal-activate.html" title="Màn kích hoạt STT" loading="lazy"></iframe></div>
+  </div>
+
+  <div class="device">
+    <div class="dlabel">🔍 Tra cứu lịch hẹn <span>· tra-cuu</span></div>
+    <div class="phone"><iframe src="tra-cuu.html" title="Trang tra cứu" loading="lazy"></iframe></div>
+  </div>
+</div>
+
+<p class="hint">Hàng 1: trang chính desktop + mobile · Hàng 2: luồng Đặt → Đổi → Hủy · Hàng 3: màn độc lập. Cuộn trong từng khung để xem đầy đủ.</p>
 </body>
 </html>

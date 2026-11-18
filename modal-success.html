@@ -193,9 +193,8 @@
   }
 
   function confirmCancel(){
-    if(confirm('Bạn có chắc muốn hủy lịch hẹn ABCD1234 lúc 14:30 ngày 14/11/2026?')){
-      alert('Lịch hẹn đã được hủy thành công.');
-    }
+    var p=new URLSearchParams(location.search);
+    window.location.href='modal-cancel.html?svc='+encodeURIComponent(p.get('svc')||'Đổi SIM chính chủ')+'&time='+encodeURIComponent(p.get('time')||'14:30 · Thứ 6, 14/11/2026')+'&code=ABCD1234';
   }
 </script>
 </body>
