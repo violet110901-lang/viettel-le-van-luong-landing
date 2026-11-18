@@ -328,6 +328,11 @@
   .sum-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:14px}
   .sum-row span{color:#a0a0a0}.sum-row b{font-weight:600}
   .sum-help{margin-top:18px;font-size:13px;color:#bdbdbd;line-height:1.55}.sum-help b{color:#fff}
+  .live-queue-widget{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:14px 20px;text-align:center;margin-bottom:16px}
+  .lqw-header{font-size:11.5px;font-weight:700;color:#166534;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:8px}
+  .lqw-num{font-size:44px;font-weight:800;color:#16a34a;line-height:1;letter-spacing:-.04em;transition:transform .2s,color .25s}
+  .lqw-num.pop{transform:scale(1.14)}
+  .lqw-footer{font-size:12px;color:#4ade80;margin-top:5px;font-weight:600}
   .bk-benefits{margin-top:16px;display:grid;gap:9px}
   .bk-benefits div{display:flex;gap:10px;font-size:13.5px;color:var(--ink-2)}
   .bk-benefits .ck{color:#16a34a;font-weight:700;flex:none}
@@ -615,6 +620,11 @@
         <div class="bk-illus">
           <img class="tammi-ava big-t" src="assets/tammi/main.png" alt="Tammi chào bạn" loading="lazy">
           <p class="hi">Để lại thông tin, cửa hàng sẽ <b>gọi xác nhận trong 15 phút</b> và giữ quầy sẵn cho bạn nhé!</p>
+        </div>
+        <div class="live-queue-widget">
+          <div class="lqw-header"><span class="live-dot" style="width:8px;height:8px;margin:0"></span>Đang chờ tại cửa hàng</div>
+          <div class="lqw-num" id="queueCount2">8</div>
+          <div class="lqw-footer">người · cập nhật liên tục</div>
         </div>
         <div class="bk-benefits">
           <div><span class="ck">✓</span> Cửa hàng giữ quầy 15 phút kể từ giờ hẹn</div>
@@ -907,16 +917,20 @@
 
   // Live queue counter — số người đang chờ, cập nhật ngẫu nhiên mỗi 2.5–5s
   (function liveQ(){
-    var el=document.getElementById('queueCount');if(!el)return;
+    var el=document.getElementById('queueCount');
+    var el2=document.getElementById('queueCount2');
+    if(!el&&!el2)return;
     var n=8;
     function tick(){
       var d=(Math.random()<.45)?(Math.random()<.5?1:-1):0;
       n=Math.max(1,Math.min(20,n+d));
       if(d!==0){
-        el.style.transition='color .25s';
-        el.style.color='var(--red)';
-        el.textContent=n;
-        setTimeout(function(){el.style.color='';},500);
+        if(el){el.style.transition='color .25s';el.style.color='var(--red)';el.textContent=n;setTimeout(function(){el.style.color='';},500);}
+        if(el2){
+          el2.style.transition='color .25s';el2.style.color='var(--red)';el2.textContent=n;
+          el2.classList.add('pop');
+          setTimeout(function(){el2.style.color='';el2.classList.remove('pop');},320);
+        }
       }
       setTimeout(tick,2500+Math.random()*2500);
     }
