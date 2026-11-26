@@ -515,7 +515,7 @@
   }
   /* Desktop inline booking result */
   @media(min-width:768px){
-    #bkForm,#bkResult,#tcPanel{grid-column:1;grid-row:1}
+    #bkForm,#bkResult,#tcPanel{grid-column:1;grid-row:1;min-height:700px}
     .bk-side{grid-column:2;grid-row:1}
   }
   #tcPanel{flex-direction:column;overflow-y:auto;gap:0}
@@ -636,11 +636,11 @@
         <!-- Thành công -->
         <div class="dk-state" id="dkSuccess">
           <div style="text-align:center;padding:4px 0 20px">
-            <div style="width:52px;height:52px;border-radius:50%;background:#dcfce7;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px">
+            <div id="dkSuccessIcon" style="width:52px;height:52px;border-radius:50%;background:#dcfce7;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px">
               <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            <h3 style="font-size:20px;font-weight:800;margin-bottom:4px">Đặt lịch thành công!</h3>
-            <p style="font-size:13.5px;color:var(--muted)">Cửa hàng sẽ gọi xác nhận trong 15 phút.</p>
+            <h3 id="dkSuccessTitle" style="font-size:20px;font-weight:800;margin-bottom:4px">Đặt lịch thành công!</h3>
+            <p id="dkSuccessSub" style="font-size:13.5px;color:var(--muted)">Cửa hàng sẽ gọi xác nhận trong 15 phút.</p>
           </div>
           <div style="background:#fff5f7;border:1.5px solid #fecdd3;border-radius:14px;padding:16px 20px;text-align:center;margin-bottom:18px">
             <div style="font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Mã đặt lịch</div>
@@ -653,7 +653,11 @@
             <div class="dk-info-row"><span class="l">Cửa hàng</span><span class="v">Viettel Telecom Lê Văn Lương Hà Nội</span></div>
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
-            <a href="https://maps.app.goo.gl/qVs4Lp6UrsgHif4v8" target="_blank" class="btn btn-primary">
+            <button id="dkActivateBtn" class="btn btn-primary" onclick="dkShowActivate()" style="display:none">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Xác nhận đến — nhận số thứ tự
+            </button>
+            <a href="https://maps.app.goo.gl/qVs4Lp6UrsgHif4v8" target="_blank" id="dkDirectionBtn" class="btn btn-primary">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
               Chỉ đường đến cửa hàng
             </a>
@@ -669,9 +673,41 @@
             </div>
             <button class="btn btn-ghost" onclick="dkReset()" style="color:var(--muted);font-size:13.5px">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-              Đặt lịch hẹn mới
+              <span id="dkResetLbl">Đặt lịch hẹn mới</span>
             </button>
           </div>
+        </div>
+
+        <!-- Xác nhận đến - STT inline -->
+        <div class="dk-state" id="dkActivate">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+            <button onclick="dkShowState('dkSuccess')" style="background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;color:var(--muted)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            </button>
+            <h3 style="font-size:18px;font-weight:800;margin:0">Số thứ tự của bạn</h3>
+          </div>
+          <div style="background:var(--red);border-radius:16px;padding:28px 20px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden">
+            <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;position:relative">Số thứ tự</div>
+            <div style="font-size:84px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.04em;position:relative">047</div>
+            <div style="font-size:12.5px;color:rgba(255,255,255,.85);margin-top:8px;position:relative">Vui lòng đến quầy khi tới lượt</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+            <div style="background:var(--bg-soft);border-radius:12px;padding:12px 14px;text-align:center">
+              <div style="font-size:11px;color:var(--muted);font-weight:500;margin-bottom:4px">Đang phục vụ</div>
+              <div style="font-size:18px;font-weight:800;color:var(--red)">040</div>
+              <div style="font-size:11px;color:var(--faint);margin-top:2px">còn ~7 lượt</div>
+            </div>
+            <div style="background:var(--bg-soft);border-radius:12px;padding:12px 14px;text-align:center">
+              <div style="font-size:11px;color:var(--muted);font-weight:500;margin-bottom:4px">Phục vụ dự kiến</div>
+              <div style="font-size:18px;font-weight:800">~14:35</div>
+              <div style="font-size:11px;color:var(--faint);margin-top:2px">~5 phút nữa</div>
+            </div>
+          </div>
+          <div style="background:var(--bg-soft);border-radius:12px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <span style="font-size:13px;color:var(--muted)">Hiệu lực còn</span>
+            <span id="dkActivateCountdown" style="font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.04em">01:58:12</span>
+          </div>
+          <p style="font-size:12px;color:var(--faint);text-align:center;line-height:1.5">Số thứ tự có hiệu lực 2 giờ. Vui lòng đến đúng giờ.</p>
         </div>
 
         <!-- Đổi lịch -->
@@ -759,26 +795,7 @@
             Tra cứu
           </button>
           <p id="tcEmptyLine" style="display:none;color:var(--red);font-size:13.5px;font-weight:600;text-align:center;padding:4px 0 12px">Không tìm thấy lịch hẹn.</p>
-        </div>
-        <div id="tcResult" style="display:none;border-top:1px solid var(--line)">
-          <div style="padding:14px 24px;display:flex;align-items:center;gap:10px">
-            <span id="tcStatusPill" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:#e9f9ef;color:#16a34a"><span style="width:7px;height:7px;border-radius:50%;background:#16a34a;flex:none"></span>Đã đặt lịch</span>
-            <span id="tcResultCode" style="margin-left:auto;font-size:14px;font-weight:800;color:var(--red);letter-spacing:.08em">ABCD1234</span>
-          </div>
-          <div id="tcDetailRows"></div>
-          <div style="padding:16px 24px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)">
-            <a href="modal-activate.html" id="tcBtnActivate" class="btn btn-primary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              Xác nhận đến — nhận số thứ tự
-            </a>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <button class="btn btn-ghost" onclick="tcGoReschedule()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Đổi lịch</button>
-              <button class="btn btn-danger" onclick="tcDoCancel()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Hủy lịch</button>
-            </div>
-          </div>
-        </div>
-        <div style="padding:12px 24px 24px">
-          <button class="btn btn-ghost" onclick="tcClose()" style="width:100%;font-size:13.5px;color:var(--muted)">
+          <button class="btn btn-ghost" onclick="tcClose()" style="width:100%;font-size:13.5px;color:var(--muted);margin-top:8px">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             Quay lại đặt lịch
           </button>
@@ -1088,10 +1105,13 @@
     var timeStr=d.full+' · '+slot;var code=genCode();
     _dkData={svc:svc,time:timeStr,code:code};
     if(window.innerWidth>=768){
+      _fromLookup=false;
       document.getElementById('dkCode').textContent=code;
       document.getElementById('dkSvc').textContent=svc;
       document.getElementById('dkTime').textContent=timeStr;
+      updateSuccessMode();
       document.getElementById('bkForm').style.display='none';
+      document.getElementById('tcPanel').style.display='none';
       document.getElementById('bkResult').style.display='flex';
       dkShowState('dkSuccess');
       document.getElementById('booking').scrollIntoView({behavior:'smooth',block:'start'});
@@ -1100,7 +1120,8 @@
     }
     return false;
   }
-  function dkShowState(id){['dkSuccess','dkReschedule','dkRescheduleDone','dkCancel','dkCancelDone'].forEach(function(s){document.getElementById(s).style.display=s===id?'block':'none';});}
+  function dkShowState(id){['dkSuccess','dkReschedule','dkRescheduleDone','dkCancel','dkCancelDone','dkActivate'].forEach(function(s){var el=document.getElementById(s);if(el)el.style.display=s===id?'block':'none';});}
+  function dkShowActivate(){dkShowState('dkActivate');}
   function dkRenderSlots(){var p=vnNow(),nowMin=(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10);var list=freeSlots(dkDayIdx,nowMin);document.getElementById('dkSlotSel').innerHTML=list.map(function(o){return '<option'+(o.s==='full'?' disabled':'')+'>'+o.t+statusLbl[o.s]+'</option>';}).join('');}
   function dkShowReschedule(){
     document.getElementById('dkOldTime').textContent=_dkData.time;dkDayIdx=0;
@@ -1111,7 +1132,43 @@
   function dkConfirmReschedule(){var d=DAYS[dkDayIdx];var slot=document.getElementById('dkSlotSel').value.split(' ·')[0];var newTime=d.full+' · '+slot;_dkData.time=newTime;document.getElementById('dkTime').textContent=newTime;document.getElementById('dkNewTime').textContent=newTime;dkShowState('dkRescheduleDone');}
   function dkShowCancel(){document.getElementById('dkCancelCode').textContent=_dkData.code;document.getElementById('dkCancelTime').textContent=_dkData.time;dkShowState('dkCancel');}
   function dkConfirmCancel(){dkShowState('dkCancelDone');}
-  function dkReset(){document.getElementById('bkResult').style.display='none';var f=document.getElementById('bkForm');f.style.display='flex';f.style.flexDirection='column';f.style.justifyContent='center';document.getElementById('booking').scrollIntoView({behavior:'smooth',block:'start'});}
+  function dkReset(){
+    document.getElementById('bkResult').style.display='none';
+    if(_fromLookup){
+      // Từ tra cứu → quay về form tra cứu, giữ panel tra cứu
+      document.getElementById('tcPanel').style.display='flex';
+      document.getElementById('tcInputCode').value='';
+      var btn=document.getElementById('tcToggleBtn');if(btn)btn.innerHTML=_tcBtnHtmlActive;
+    } else {
+      var f=document.getElementById('bkForm');f.style.display='flex';f.style.flexDirection='column';f.style.justifyContent='center';
+    }
+    _fromLookup=false;updateSuccessMode();
+    document.getElementById('booking').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  var _fromLookup=false;
+  function updateSuccessMode(){
+    var icon=document.getElementById('dkSuccessIcon');
+    var title=document.getElementById('dkSuccessTitle');
+    var sub=document.getElementById('dkSuccessSub');
+    var actBtn=document.getElementById('dkActivateBtn');
+    var dirBtn=document.getElementById('dkDirectionBtn');
+    var resetLbl=document.getElementById('dkResetLbl');
+    if(_fromLookup){
+      if(icon){icon.style.background='#fff5f7';icon.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>';}
+      if(title)title.textContent='Lịch hẹn của bạn';
+      if(sub)sub.textContent='Xuất trình mã này khi đến cửa hàng.';
+      if(actBtn)actBtn.style.display='flex';
+      if(dirBtn)dirBtn.className='btn btn-ghost';
+      if(resetLbl)resetLbl.textContent='Tra cứu lịch khác';
+    } else {
+      if(icon){icon.style.background='#dcfce7';icon.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polyline points="20 6 9 17 4 12"/></svg>';}
+      if(title)title.textContent='Đặt lịch thành công!';
+      if(sub)sub.textContent='Cửa hàng sẽ gọi xác nhận trong 15 phút.';
+      if(actBtn)actBtn.style.display='none';
+      if(dirBtn)dirBtn.className='btn btn-primary';
+      if(resetLbl)resetLbl.textContent='Đặt lịch hẹn mới';
+    }
+  }
 
   // Hỗ trợ online: bấm câu hỏi để sổ danh sách; chọn nghiệp vụ thì chuyển tới form đặt lịch, chọn sẵn nghiệp vụ đó
   function toggleHs(){var box=document.getElementById('hsBox'),open=box.classList.toggle('open');document.getElementById('hsAsk').setAttribute('aria-expanded',open);}
@@ -1206,6 +1263,8 @@
   updateDensity();setInterval(updateDensity,60000);
 
   // ---- Tra cứu inline (desktop) ----
+  var _tcBtnHtmlDefault='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Tra cứu lịch hẹn';
+  var _tcBtnHtmlActive='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="16" height="16"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Quay lại đặt lịch';
   function tcToggle(preCode){
     if(window.innerWidth<768){window.location.href='tra-cuu.html';return;}
     var panel=document.getElementById('tcPanel');
@@ -1217,15 +1276,14 @@
       panel.style.display='flex';
       if(preCode){document.getElementById('tcInputCode').value=preCode;tcSearch();}
       document.getElementById('booking').scrollIntoView({behavior:'smooth',block:'start'});
-      var btn=document.getElementById('tcToggleBtn');if(btn)btn.textContent='← Đặt lịch';
+      var btn=document.getElementById('tcToggleBtn');if(btn)btn.innerHTML=_tcBtnHtmlActive;
     } else {tcClose();}
   }
   function tcClose(){
     document.getElementById('tcPanel').style.display='none';
     var f=document.getElementById('bkForm');
     if(f){f.style.display='flex';f.style.flexDirection='column';}
-    var btn=document.getElementById('tcToggleBtn');if(btn)btn.textContent='Tra cứu lịch hẹn →';
-    document.getElementById('tcResult').style.display='none';
+    var btn=document.getElementById('tcToggleBtn');if(btn)btn.innerHTML=_tcBtnHtmlDefault;
     document.getElementById('tcEmptyLine').style.display='none';
   }
   function tcSideSearch(){
@@ -1246,28 +1304,25 @@
     var phone=phoneEl?phoneEl.value.trim():'';
     var isCode=document.getElementById('tcFormPhone').style.display==='none';
     var val=isCode?code:phone;
-    document.getElementById('tcResult').style.display='none';
     document.getElementById('tcEmptyLine').style.display='none';
     if(!val)return;
     setTimeout(function(){
       if(val==='ABCD1234'||val==='0987654321'){
-        document.getElementById('tcResultCode').textContent='ABCD1234';
-        document.getElementById('tcDetailRows').innerHTML='<div style="padding:12px 24px;font-size:13.5px;border-bottom:1px solid var(--line);display:flex;gap:8px"><span style="color:var(--muted);flex:0 0 90px;font-size:12.5px">Nghiệp vụ</span><span style="font-weight:600;flex:1">Đổi SIM chính chủ</span></div><div style="padding:12px 24px;font-size:13.5px;display:flex;gap:8px"><span style="color:var(--muted);flex:0 0 90px;font-size:12.5px">Thời gian</span><span style="font-weight:600;flex:1">14:30 · Thứ 6, 14/11/2026</span></div>';
-        document.getElementById('tcResult').style.display='block';
+        // Chuyển sang bkResult inline (dkSuccess) - dùng chung flow với đặt lịch mới
+        _dkData={svc:'Đổi SIM chính chủ',time:'14:30 · Thứ 6, 14/11/2026',code:'ABCD1234'};
+        _fromLookup=true;
+        document.getElementById('dkCode').textContent=_dkData.code;
+        document.getElementById('dkSvc').textContent=_dkData.svc;
+        document.getElementById('dkTime').textContent=_dkData.time;
+        updateSuccessMode();
+        document.getElementById('tcPanel').style.display='none';
+        document.getElementById('bkResult').style.display='flex';
+        dkShowState('dkSuccess');
+        document.getElementById('booking').scrollIntoView({behavior:'smooth',block:'start'});
       } else {
         document.getElementById('tcEmptyLine').style.display='block';
       }
     },400);
-  }
-  function tcGoReschedule(){
-    window.location.href='modal-reschedule.html?svc='+encodeURIComponent('Đổi SIM chính chủ')+'&time='+encodeURIComponent('14:30 · Thứ 6, 14/11/2026')+'&code=ABCD1234';
-  }
-  function tcDoCancel(){
-    if(confirm('Bạn có chắc muốn hủy lịch hẹn ABCD1234?')){
-      var sp=document.getElementById('tcStatusPill');
-      if(sp){sp.style.background='#fef2f2';sp.style.color='#ef4444';sp.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:#ef4444;flex:none"></span>Đã hủy';}
-      var ab=document.getElementById('tcBtnActivate');if(ab)ab.style.display='none';
-    }
   }
 
 </script>
