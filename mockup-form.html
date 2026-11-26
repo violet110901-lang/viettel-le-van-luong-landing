@@ -23,7 +23,7 @@
   .flow-sub{font-size:13.5px;color:var(--muted);margin-bottom:22px;line-height:1.55;max-width:1000px}
 
   .row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;padding:8px 0 18px}
-  .arrow{align-self:center;font-size:30px;color:var(--muted);padding:220px 0 0}
+  .arrow{align-self:center;font-size:30px;color:var(--muted);padding:320px 0 0}
 
   .step{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto}
   .step-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-size:13px;flex:none}
@@ -31,10 +31,10 @@
   .step-title{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
   .step-title small{display:block;font-size:11.5px;font-weight:500;color:var(--muted);margin-top:2px;letter-spacing:.01em}
 
-  /* Khung section form (chỉ #booking) */
-  .form-frame{width:780px;border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(16,16,30,.14);background:#fff;border:1px solid var(--line);position:relative}
-  .frame-wrap{width:780px;height:490px;overflow:hidden;position:relative;background:#fff}
-  .frame-wrap iframe{width:1200px;height:750px;border:0;transform:scale(.65);transform-origin:top left;background:#fff}
+  /* Khung panel section form (chỉ 1 màn cô đọng) */
+  .form-frame{width:560px;border-radius:18px;overflow:hidden;background:#fff;position:relative}
+  .frame-wrap{width:560px;height:700px;overflow:hidden;position:relative;background:#fff;border-radius:18px}
+  .frame-wrap iframe{width:820px;height:960px;border:0;transform:scale(.683);transform-origin:top left;background:#fff}
   .step-link{font-size:11.5px;font-weight:600;color:var(--muted);margin-top:4px}
   .step-link a{color:var(--red);text-decoration:none;border-bottom:1px dashed rgba(238,0,51,.4)}
   .step-link a:hover{border-style:solid}
@@ -46,6 +46,7 @@
   @media(max-width:860px){
     .form-frame,.frame-wrap{width:92vw}
     .frame-wrap iframe{transform:scale(.48)}
+    .arrow{padding:140px 0 0;align-self:center;transform:rotate(90deg)}
   }
 </style>
 </head>
