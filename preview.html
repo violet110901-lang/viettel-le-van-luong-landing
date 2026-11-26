@@ -67,7 +67,7 @@
 </div>
 
 <div class="stage-row">
-  <div class="section-label" style="margin-top:0;padding-top:0;border-top:none;margin-bottom:8px;width:100%">Luồng chính · Đặt lịch → Đổi lịch → Hủy lịch</div>
+  <div class="section-label" style="margin-top:0;padding-top:0;border-top:none;margin-bottom:8px;width:100%">Luồng đổi lịch · Đặt thành công → Xem lịch → Chọn lịch mới → Đổi thành công</div>
 
   <div class="device">
     <div class="dlabel">✅ Đặt lịch thành công <span>· modal-success</span></div>
@@ -77,8 +77,31 @@
   <div class="device" style="align-self:center;font-size:28px;color:var(--muted);padding-bottom:40px">→</div>
 
   <div class="device">
-    <div class="dlabel">📅 Đổi lịch hẹn <span>· modal-reschedule</span></div>
-    <div class="phone"><iframe src="modal-reschedule.html" title="Màn đổi lịch" loading="lazy"></iframe></div>
+    <div class="dlabel">📋 Xem lịch cũ <span>· modal-reschedule (step 1)</span></div>
+    <div class="phone"><iframe src="modal-reschedule.html" title="Màn xem lịch cũ" loading="lazy"></iframe></div>
+  </div>
+
+  <div class="device" style="align-self:center;font-size:28px;color:var(--muted);padding-bottom:40px">→</div>
+
+  <div class="device">
+    <div class="dlabel">📅 Chọn lịch mới <span>· modal-reschedule (step 2)</span></div>
+    <div class="phone"><iframe src="modal-reschedule.html?preview=form" title="Màn chọn lịch mới" loading="lazy"></iframe></div>
+  </div>
+
+  <div class="device" style="align-self:center;font-size:28px;color:var(--muted);padding-bottom:40px">→</div>
+
+  <div class="device">
+    <div class="dlabel">🎉 Đổi lịch thành công <span>· modal-reschedule (step 3)</span></div>
+    <div class="phone"><iframe src="modal-reschedule.html?preview=done" title="Màn đổi lịch thành công" loading="lazy"></iframe></div>
+  </div>
+</div>
+
+<div class="stage-row" style="margin-top:0">
+  <div class="section-label" style="margin-top:0;padding-top:0;border-top:none;margin-bottom:8px;width:100%">Luồng hủy lịch · Xem lịch cũ → Hủy thay vì đổi</div>
+
+  <div class="device">
+    <div class="dlabel">📋 Xem lịch cũ <span>· modal-reschedule (step 1)</span></div>
+    <div class="phone"><iframe src="modal-reschedule.html" title="Màn xem lịch cũ" loading="lazy"></iframe></div>
   </div>
 
   <div class="device" style="align-self:center;font-size:28px;color:var(--muted);padding-bottom:40px">→</div>
@@ -129,6 +152,6 @@
   </div>
 </div>
 
-<p class="hint">Hàng 1: trang chính desktop + mobile · Hàng 2: luồng Đặt → Đổi → Hủy · Hàng 3: màn độc lập. Cuộn trong từng khung để xem đầy đủ.</p>
+<p class="hint">Hàng 1: trang chính desktop + mobile · Hàng 2: luồng đổi lịch 4 bước · Hàng 3: luồng hủy lịch · Hàng 4–5: luồng tra cứu (thành công / không tìm thấy). Cuộn trong từng khung để xem đầy đủ.</p>
 </body>
 </html>

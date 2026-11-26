@@ -34,9 +34,14 @@
   .reschedule-head p{font-size:13.5px;color:var(--muted);max-width:36ch;margin:0 auto;line-height:1.5}
 
   /* Success header */
-  .success-head{background:var(--green-soft);padding:28px 24px 24px;text-align:center;border-bottom:1px solid #d1f2dc;display:none}
-  .success-icon{width:56px;height:56px;border-radius:50%;background:var(--green);display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
-  .success-head h2{font-size:20px;font-weight:800;color:var(--green);margin-bottom:6px}
+  .success-head{background:linear-gradient(180deg,#f0fdf4 0%,#ffffff 100%);padding:32px 24px 26px;text-align:center;border-bottom:1px solid #d1f2dc;display:none}
+  .success-ring{position:relative;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px;width:72px;height:72px}
+  .success-ring::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,.22) 0%,rgba(22,163,74,0) 70%)}
+  .success-ring::after{content:"";position:absolute;inset:8px;border-radius:50%;border:1.5px dashed rgba(22,163,74,.35);animation:spinRing 20s linear infinite}
+  .success-icon{position:relative;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(22,163,74,.3),0 0 0 4px #fff,0 0 0 5px rgba(22,163,74,.2)}
+  .success-icon svg{width:26px;height:26px;color:#fff}
+  @keyframes spinRing{to{transform:rotate(360deg)}}
+  .success-head h2{font-size:21px;font-weight:800;color:var(--green);margin-bottom:6px;letter-spacing:-.02em}
   .success-head p{font-size:13.5px;color:var(--muted);max-width:36ch;margin:0 auto;line-height:1.5}
 
   /* Info rows */
@@ -99,8 +104,10 @@
 
   <!-- Header: thành công -->
   <div class="success-head" id="headSuccess">
-    <div class="success-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="success-ring">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
+      </div>
     </div>
     <h2>Đổi lịch thành công!</h2>
     <p>Lịch hẹn mới đã được xác nhận.</p>
@@ -280,6 +287,10 @@
       var cb = document.getElementById('cancelBtn');
       if(cb) cb.href = 'modal-cancel.html?svc='+encodeURIComponent(p.get('svc')||'')+'&time='+encodeURIComponent(p.get('time')||'')+'&code='+encodeURIComponent(c);
     }
+    // preview param cho flow diagram: form (chọn lịch mới) | done (thành công)
+    var pv = p.get('preview');
+    if(pv === 'form'){ showForm(); }
+    else if(pv === 'done'){ showForm(); confirmReschedule(); }
   })();
 </script>
 </body>
