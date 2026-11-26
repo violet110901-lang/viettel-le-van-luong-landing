@@ -17,13 +17,13 @@
   .page-head h1 small{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-top:3px;letter-spacing:0}
   .page-head .tag{margin-left:auto;font-size:12px;font-weight:600;color:var(--muted);background:#fff;border:1px solid var(--line);padding:6px 12px;border-radius:999px}
 
-  .flow{max-width:1600px;margin:0 auto}
+  .flow{max-width:1800px;margin:0 auto}
   .flow-title{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin:36px 0 6px}
   .flow-title:first-of-type{margin-top:0}
-  .flow-sub{font-size:13.5px;color:var(--muted);margin-bottom:22px;line-height:1.55}
+  .flow-sub{font-size:13.5px;color:var(--muted);margin-bottom:22px;line-height:1.55;max-width:1000px}
 
-  .row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;padding:8px 0 10px}
-  .arrow{align-self:center;font-size:30px;color:var(--muted);padding:260px 0 0}
+  .row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;padding:8px 0 18px}
+  .arrow{align-self:center;font-size:30px;color:var(--muted);padding:220px 0 0}
 
   .step{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto}
   .step-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-size:13px;flex:none}
@@ -31,22 +31,21 @@
   .step-title{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
   .step-title small{display:block;font-size:11.5px;font-weight:500;color:var(--muted);margin-top:2px;letter-spacing:.01em}
 
-  /* Browser mockup */
-  .browser{width:760px;border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(16,16,30,.14);background:#fff;border:1px solid var(--line)}
-  .bbar{height:38px;background:#f4f4f6;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 12px}
-  .bbar i{width:10px;height:10px;border-radius:50%;display:block}
-  .bbar .r{background:#ff5f57}.bbar .y{background:#febc2e}.bbar .g{background:#28c840}
-  .bbar .url{margin-left:12px;flex:1;background:#fff;border:1px solid var(--line);border-radius:6px;font-size:11px;color:var(--muted);padding:5px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .frame-wrap{width:760px;height:620px;overflow:hidden;position:relative;background:#fff}
-  .frame-wrap iframe{width:1280px;height:2400px;border:0;transform:scale(.594);transform-origin:top left;background:#fff}
+  /* Khung section form (chỉ #booking) */
+  .form-frame{width:780px;border-radius:14px;overflow:hidden;box-shadow:0 20px 50px rgba(16,16,30,.14);background:#fff;border:1px solid var(--line);position:relative}
+  .frame-wrap{width:780px;height:490px;overflow:hidden;position:relative;background:#fff}
+  .frame-wrap iframe{width:1200px;height:750px;border:0;transform:scale(.65);transform-origin:top left;background:#fff}
+  .step-link{font-size:11.5px;font-weight:600;color:var(--muted);margin-top:4px}
+  .step-link a{color:var(--red);text-decoration:none;border-bottom:1px dashed rgba(238,0,51,.4)}
+  .step-link a:hover{border-style:solid}
 
-  .hint{max-width:1600px;margin:40px auto 0;font-size:12.5px;color:var(--muted);line-height:1.6;padding:20px;background:#fff;border:1px solid var(--line);border-radius:12px}
+  .hint{max-width:1800px;margin:40px auto 0;font-size:12.5px;color:var(--muted);line-height:1.6;padding:20px;background:#fff;border:1px solid var(--line);border-radius:12px}
   .hint b{color:var(--ink)}
   .hint code{font-family:'SF Mono',Menlo,monospace;font-size:12px;background:var(--bg);padding:2px 7px;border-radius:5px}
 
   @media(max-width:860px){
-    .browser,.frame-wrap{width:92vw}
-    .frame-wrap iframe{width:1280px;transform:scale(.4)}
+    .form-frame,.frame-wrap{width:92vw}
+    .frame-wrap iframe{transform:scale(.48)}
   }
 </style>
 </head>
@@ -54,7 +53,7 @@
 
 <div class="page-head">
   <div class="mark">V</div>
-  <h1>Mockup luồng section form<small>Viettel Telecom · Cửa hàng Lê Văn Lương · Desktop</small></h1>
+  <h1>Mockup luồng section form<small>Viettel Telecom · Cửa hàng Lê Văn Lương · Desktop — chỉ section form</small></h1>
   <div class="tag">10 bước · 2 luồng chính</div>
 </div>
 
@@ -67,60 +66,48 @@
   <div class="row">
     <div class="step">
       <div class="step-head"><span class="step-num">1</span><div class="step-title">Form đặt lịch<small>trạng thái mặc định</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">violet110901-lang.github.io/viettel-le-van-luong-landing/</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=form#booking" title="Form đặt lịch" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=form&onlyform=1" title="Form đặt lịch" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=form&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
 
     <div class="arrow">→</div>
 
     <div class="step">
       <div class="step-head"><span class="step-num">2</span><div class="step-title">Đặt lịch thành công<small>icon tick xanh · mã mới</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=success</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=success#booking" title="Đặt thành công" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=success&onlyform=1" title="Đặt thành công" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=success&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
   </div>
 
   <div class="row">
     <div class="step">
       <div class="step-head"><span class="step-num">3</span><div class="step-title">Đổi lịch hẹn<small>form chọn ngày / giờ mới</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=reschedule</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=reschedule#booking" title="Đổi lịch" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=reschedule&onlyform=1" title="Đổi lịch" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=reschedule&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
 
     <div class="arrow">→</div>
 
     <div class="step">
       <div class="step-head"><span class="step-num">4</span><div class="step-title">Đổi lịch thành công<small>lịch mới được ghi nhận</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=reschedule-done</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=reschedule-done#booking" title="Đổi thành công" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=reschedule-done&onlyform=1" title="Đổi thành công" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=reschedule-done&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
   </div>
 
   <div class="row">
     <div class="step">
       <div class="step-head"><span class="step-num">5</span><div class="step-title">Hủy lịch hẹn<small>xác nhận hủy · 2 nút chọn</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=cancel</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=cancel#booking" title="Hủy lịch" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=cancel&onlyform=1" title="Hủy lịch" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=cancel&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
 
     <div class="arrow">→</div>
 
     <div class="step">
       <div class="step-head"><span class="step-num">6</span><div class="step-title">Hủy lịch thành công<small>icon X đỏ · có thể đặt mới</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=cancel-done</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=cancel-done#booking" title="Hủy xong" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=cancel-done&onlyform=1" title="Hủy xong" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=cancel-done&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
   </div>
 
@@ -131,48 +118,40 @@
   <div class="row">
     <div class="step">
       <div class="step-head"><span class="step-num">7</span><div class="step-title">Form tra cứu<small>nhập mã / SĐT</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=lookup</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=lookup#booking" title="Form tra cứu" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=lookup&onlyform=1" title="Form tra cứu" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=lookup&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
 
     <div class="arrow">→</div>
 
     <div class="step">
       <div class="step-head"><span class="step-num">8</span><div class="step-title">Không tìm thấy<small>1 dòng chữ đỏ ngay dưới nút</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=lookup-notfound</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=lookup-notfound#booking" title="Tra cứu không thấy" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=lookup-notfound&onlyform=1" title="Tra cứu không thấy" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=lookup-notfound&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
   </div>
 
   <div class="row">
     <div class="step">
-      <div class="step-head"><span class="step-num">9</span><div class="step-title">Tìm thấy lịch hẹn<small>icon lịch đỏ · có 3 nút thao tác</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=lookup-found</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=lookup-found#booking" title="Tra cứu thấy" loading="lazy"></iframe></div>
-      </div>
+      <div class="step-head"><span class="step-num">9</span><div class="step-title">Tìm thấy lịch hẹn<small>icon lịch đỏ · 3 nút thao tác</small></div></div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=lookup-found&onlyform=1" title="Tra cứu thấy" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=lookup-found&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
 
     <div class="arrow">→</div>
 
     <div class="step">
       <div class="step-head"><span class="step-num">10</span><div class="step-title">Xác nhận đến — STT<small>số thứ tự inline</small></div></div>
-      <div class="browser">
-        <div class="bbar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="url">…/landing/?formstate=activate</span></div>
-        <div class="frame-wrap"><iframe src="index.html?formstate=activate#booking" title="Số thứ tự" loading="lazy"></iframe></div>
-      </div>
+      <div class="form-frame"><div class="frame-wrap"><iframe src="index.html?formstate=activate&onlyform=1" title="Số thứ tự" loading="lazy"></iframe></div></div>
+      <div class="step-link"><a href="index.html?formstate=activate&onlyform=1" target="_blank">Mở riêng ↗</a></div>
     </div>
   </div>
 
 </div>
 
 <div class="hint">
-  <b>Dùng để chụp Figma:</b> mỗi khung là 1 ảnh của section form ở một trạng thái. URL <code>index.html?formstate=XXX#booking</code> tự động nhảy đến đúng state và scroll đến section form. Chị chụp từng khung rồi dán vào Figma; dev dựa vào đó dựng UI cho từng bước.<br>
-  <b>Mã state:</b> <code>form</code> · <code>success</code> · <code>reschedule</code> · <code>reschedule-done</code> · <code>cancel</code> · <code>cancel-done</code> · <code>lookup</code> · <code>lookup-notfound</code> · <code>lookup-found</code> · <code>activate</code>.
+  <b>Cách dùng:</b> mỗi khung chỉ hiển thị section form (đã ẩn header, hero, các section khác). Chị chụp từng khung dán Figma; hoặc bấm <b>Mở riêng ↗</b> để xem full và chụp chất lượng cao hơn.<br>
+  <b>Mã state cho URL:</b> <code>form</code> · <code>success</code> · <code>reschedule</code> · <code>reschedule-done</code> · <code>cancel</code> · <code>cancel-done</code> · <code>lookup</code> · <code>lookup-notfound</code> · <code>lookup-found</code> · <code>activate</code>. Pattern: <code>index.html?formstate=XXX&onlyform=1</code>.
 </div>
 
 </body>

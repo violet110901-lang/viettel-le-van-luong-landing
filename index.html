@@ -519,6 +519,12 @@
     .bk-side{grid-column:2;grid-row:1}
   }
   #tcPanel{flex-direction:column;overflow-y:auto;gap:0}
+
+  /* Mode onlyform cho mockup-form.html: chỉ hiện section #booking, ẩn hết phần còn lại */
+  body.onlyform header,body.onlyform .hero,body.onlyform .sec:not(#booking),body.onlyform footer,body.onlyform .tammi-fab,body.onlyform .mbar{display:none !important}
+  body.onlyform{padding-bottom:0 !important;background:#fff}
+  body.onlyform #booking{padding:24px 0;scroll-margin-top:0}
+  body.onlyform #booking .sec-head{margin-bottom:18px}
   .dk-state{display:none}
   .dk-state.active{display:block}
   #bkResult{flex-direction:column;justify-content:flex-start;overflow-y:auto;gap:0}
@@ -1328,6 +1334,7 @@
   // ---- Mockup state (dùng cho mockup-form.html, auto trigger 1 state qua URL param) ----
   (function initMockup(){
     var p=new URLSearchParams(location.search);
+    if(p.get('onlyform')==='1')document.body.classList.add('onlyform');
     var s=p.get('formstate');
     if(!s)return;
     var DEMO={svc:'Đổi SIM chính chủ',time:'14:30 · Thứ 6, 14/11/2026',code:'ABCD1234'};
