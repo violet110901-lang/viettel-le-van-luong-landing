@@ -532,6 +532,11 @@
   body.onlyform #booking .book-grid{grid-template-columns:1fr !important;max-width:600px;margin:0 auto}
   body.onlyform #booking .bk-side{display:none !important}
   body.onlyform #booking .bk-panel{min-height:auto !important;box-shadow:0 20px 50px rgba(16,16,30,.12)}
+
+  /* Mode fullsection cho preview-desktop.html: hiện CẢ section #booking (có bk-side + sec-head đầy đủ) */
+  body.fullsection header,body.fullsection .hero,body.fullsection .sec:not(#booking),body.fullsection footer,body.fullsection .tammi-fab,body.fullsection .mbar{display:none !important}
+  body.fullsection{padding-bottom:0 !important;background:#f5f5f5}
+  body.fullsection #booking{padding:32px 0 36px;scroll-margin-top:0;background:#f5f5f5}
   .dk-state{display:none}
   .dk-state.active{display:block}
   #bkResult{flex-direction:column;justify-content:flex-start;overflow-y:auto;gap:0}
@@ -1342,6 +1347,7 @@
   (function initMockup(){
     var p=new URLSearchParams(location.search);
     if(p.get('onlyform')==='1')document.body.classList.add('onlyform');
+    if(p.get('fullsection')==='1')document.body.classList.add('fullsection');
     var s=p.get('formstate');
     if(!s)return;
     var DEMO={svc:'Đổi SIM chính chủ',time:'14:30 · Thứ 6, 14/11/2026',code:'ABCD1234'};

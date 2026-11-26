@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Preview Mobile — Viettel Telecom Lê Văn Lương</title>
+<style>
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Regular.otf') format('opentype');font-weight:400 500;font-display:swap}
+  @font-face{font-family:'FS PF BeauSans Pro';src:url('assets/fonts/FSPFBeauSansPro-Bold.otf') format('opentype');font-weight:600 900;font-display:swap}
+  :root{--red:#EE0033;--ink:#0b0b10;--muted:#71717f;--line:#e6e6ea;--bg:#f4f5f8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'FS PF BeauSans Pro',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;padding:32px 22px 60px}
+  a{color:inherit;text-decoration:none}
+
+  .page-head{max-width:1800px;margin:0 auto 32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--line)}
+  .page-head .mark{width:44px;height:44px;border-radius:12px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:800;font-size:20px}
+  .page-head h1{font-size:22px;font-weight:800;letter-spacing:-.02em}
+  .page-head h1 small{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-top:3px;letter-spacing:0}
+  .page-head .tag{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .page-head .tag a{font-size:13px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);padding:9px 16px;border-radius:999px;transition:.15s}
+  .page-head .tag a.on{background:var(--red);color:#fff;border-color:var(--red)}
+  .page-head .tag a:hover{border-color:var(--red)}
+
+  .container{max-width:1800px;margin:0 auto}
+  .section-title{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:28px 0 8px;display:flex;align-items:center;gap:10px}
+  .section-title::before{content:"";width:4px;height:22px;background:var(--red);border-radius:2px}
+  .section-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.55;max-width:1100px}
+
+  /* Phone mockup */
+  .phone{width:394px;padding:13px;background:#0d0d12;border-radius:40px;box-shadow:0 24px 60px rgba(16,16,30,.22);position:relative;flex:none}
+  .phone::before{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:120px;height:22px;background:#0d0d12;border-radius:0 0 14px 14px;z-index:2}
+  .phone iframe{width:100%;height:770px;border:0;border-radius:28px;background:#fff;display:block}
+
+  /* Trang chính mobile */
+  .main-row{display:flex;justify-content:flex-start;padding:8px 0 10px}
+
+  /* Luồng mobile */
+  .flow-title{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin:36px 0 6px}
+  .flow-sub{font-size:13.5px;color:var(--muted);margin-bottom:22px;line-height:1.55;max-width:1100px}
+  .row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;padding:8px 0 18px}
+  .arrow{align-self:center;font-size:30px;color:var(--muted);padding:380px 0 0;flex:none}
+  .step{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto}
+  .step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-size:13.5px;flex:none}
+  .step-head{display:flex;align-items:center;gap:10px}
+  .step-title{font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+  .step-title small{display:block;font-size:11.5px;font-weight:500;color:var(--muted);margin-top:2px;letter-spacing:.01em}
+  .step-link{font-size:11.5px;font-weight:600;color:var(--muted);margin-top:4px}
+  .step-link a{color:var(--red);text-decoration:none;border-bottom:1px dashed rgba(238,0,51,.4)}
+  .step-link a:hover{border-style:solid}
+
+  .hint{max-width:1800px;margin:40px auto 0;font-size:12.5px;color:var(--muted);line-height:1.6;padding:20px;background:#fff;border:1px solid var(--line);border-radius:12px}
+  .hint b{color:var(--ink)}
+  .hint code{font-family:'SF Mono',Menlo,monospace;font-size:12px;background:var(--bg);padding:2px 7px;border-radius:5px}
+
+  @media(max-width:860px){
+    .phone{width:92vw}
+    .arrow{padding:200px 0 0;transform:rotate(90deg)}
+  }
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <div class="mark">V</div>
+  <h1>Preview Mobile<small>Viettel Telecom · Cửa hàng Lê Văn Lương Hà Nội</small></h1>
+  <div class="tag">
+    <a href="preview-desktop.html">💻 Desktop</a>
+    <a href="preview-mobile.html" class="on">📱 Mobile</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ============ TRANG CHÍNH MOBILE ============ -->
+  <h2 class="section-title">Trang chính</h2>
+  <p class="section-sub">Landing page bản mobile (viewport ~394px). Cuộn trong khung phone để xem đầy đủ: hero → thông tin cửa hàng → đặt lịch hẹn → hỗ trợ online → trước khi đến → cửa hàng gần đây → hỗ trợ.</p>
+  <div class="main-row">
+    <div class="phone"><iframe src="index.html" title="Trang chính mobile" loading="lazy"></iframe></div>
+  </div>
+
+  <!-- ============ LUỒNG MOBILE ============ -->
+  <h2 class="section-title" style="margin-top:48px">Luồng nghiệp vụ form</h2>
+  <p class="section-sub">Mobile dùng các màn modal/trang riêng thay cho inline desktop: sau khi submit form đặt lịch, khách chuyển sang màn "Đặt lịch thành công"; từ đó có thể Đổi lịch (3 bước), Hủy lịch, hoặc Tra cứu lịch hẹn.</p>
+
+  <!-- Luồng A: Đặt lịch -->
+  <div class="flow-title">Luồng A · Đặt lịch mới → Đổi lịch → Hủy lịch → Đặt lại lịch</div>
+  <p class="flow-sub">Khách đặt lịch thành công nhận mã; vào màn Đổi lịch xem thông tin cũ, bấm "Chọn lịch mới" → chọn ngày giờ mới → xác nhận. Hoặc chọn Hủy lịch thay vì đổi.</p>
+
+  <div class="row">
+    <div class="step">
+      <div class="step-head"><span class="step-num">1</span><div class="step-title">Đặt lịch thành công<small>modal-success</small></div></div>
+      <div class="phone"><iframe src="modal-success.html" title="Đặt thành công" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="modal-success.html" target="_blank">Mở riêng ↗</a></div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-head"><span class="step-num">2</span><div class="step-title">Xem lịch cũ<small>modal-reschedule · step 1</small></div></div>
+      <div class="phone"><iframe src="modal-reschedule.html" title="Xem lịch cũ" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="modal-reschedule.html" target="_blank">Mở riêng ↗</a></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="step">
+      <div class="step-head"><span class="step-num">3</span><div class="step-title">Chọn lịch mới<small>modal-reschedule · step 2</small></div></div>
+      <div class="phone"><iframe src="modal-reschedule.html?preview=form" title="Chọn lịch mới" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="modal-reschedule.html?preview=form" target="_blank">Mở riêng ↗</a></div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-head"><span class="step-num">4</span><div class="step-title">Đổi lịch thành công<small>modal-reschedule · step 3</small></div></div>
+      <div class="phone"><iframe src="modal-reschedule.html?preview=done" title="Đổi thành công" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="modal-reschedule.html?preview=done" target="_blank">Mở riêng ↗</a></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="step">
+      <div class="step-head"><span class="step-num">5</span><div class="step-title">Hủy lịch thành công<small>modal-cancel</small></div></div>
+      <div class="phone"><iframe src="modal-cancel.html" title="Hủy xong" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="modal-cancel.html" target="_blank">Mở riêng ↗</a></div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-head"><span class="step-num">6</span><div class="step-title">Đặt lại lịch<small>về trang chính, section form</small></div></div>
+      <div class="phone"><iframe src="index.html#booking" title="Đặt lại lịch" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="index.html#booking" target="_blank">Mở riêng ↗</a></div>
+    </div>
+  </div>
+
+  <!-- Luồng B: Tra cứu -->
+  <div class="flow-title">Luồng B · Tra cứu lịch hẹn → Có lịch / Không có lịch</div>
+  <p class="flow-sub">Mobile mở trang tra cứu riêng. Nhập mã → nếu có kết quả hiện card thông tin lịch + 3 nút Xác nhận đến / Đổi lịch / Hủy; nếu không có hiện 1 dòng chữ đỏ ngay dưới nút Tra cứu.</p>
+
+  <div class="row">
+    <div class="step">
+      <div class="step-head"><span class="step-num">7</span><div class="step-title">Form tra cứu<small>tra-cuu · nhập mã</small></div></div>
+      <div class="phone"><iframe src="tra-cuu.html" title="Form tra cứu" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="tra-cuu.html" target="_blank">Mở riêng ↗</a></div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-head"><span class="step-num">8</span><div class="step-title">Tra cứu có lịch<small>tra-cuu?preview=found</small></div></div>
+      <div class="phone"><iframe src="tra-cuu.html?preview=found" title="Có lịch" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="tra-cuu.html?preview=found" target="_blank">Mở riêng ↗</a></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="step">
+      <div class="step-head"><span class="step-num">9</span><div class="step-title">Tra cứu không có lịch<small>tra-cuu?preview=notfound</small></div></div>
+      <div class="phone"><iframe src="tra-cuu.html?preview=notfound" title="Không có lịch" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="tra-cuu.html?preview=notfound" target="_blank">Mở riêng ↗</a></div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-head"><span class="step-num">10</span><div class="step-title">Xác nhận đến — STT<small>modal-activate</small></div></div>
+      <div class="phone"><iframe src="modal-activate.html" title="Số thứ tự" loading="lazy"></iframe></div>
+      <div class="step-link"><a href="modal-activate.html" target="_blank">Mở riêng ↗</a></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="hint">
+  <b>Mobile dùng các màn riêng thay cho inline</b> (vì màn nhỏ không đủ chỗ swap panel như desktop): modal-success, modal-reschedule (3 state qua <code>?preview=form</code> / <code>?preview=done</code>), modal-cancel, tra-cuu (có/không lịch qua <code>?preview=found</code> / <code>?preview=notfound</code>), modal-activate. Bấm <b>Mở riêng ↗</b> để xem từng màn full-size.
+</div>
+
+</body>
+</html>
