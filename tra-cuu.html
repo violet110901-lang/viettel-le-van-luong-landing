@@ -151,6 +151,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       Tra cứu
     </button>
+    <p id="emptyLine" style="display:none;color:var(--red);font-size:13.5px;font-weight:600;text-align:center;padding:12px 0 2px">Không tìm thấy lịch hẹn với mã vừa nhập.</p>
   </div>
 
   <!-- Kết quả: có lịch hẹn -->
@@ -196,14 +197,6 @@
     </div>
   </div>
 
-  <!-- Kết quả: không tìm thấy -->
-  <div class="empty-state" id="emptyState">
-    <div class="empty-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    </div>
-    <h3 style="color:var(--red)">Không tìm thấy lịch hẹn</h3>
-    <p>Vui lòng kiểm tra lại mã đặt lịch hoặc số điện thoại và thử lại.</p>
-  </div>
 
 </div>
 
@@ -222,7 +215,7 @@
     const val = isCode ? code : phone;
 
     document.getElementById('resultCard').classList.remove('show');
-    document.getElementById('emptyState').classList.remove('show');
+    document.getElementById('emptyLine').style.display='none';
 
     if(!val){ return; }
 
@@ -233,8 +226,7 @@
         document.getElementById('resultCard').classList.add('show');
         document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'nearest'});
       } else {
-        document.getElementById('emptyState').classList.add('show');
-        document.getElementById('emptyState').scrollIntoView({behavior:'smooth',block:'nearest'});
+        document.getElementById('emptyLine').style.display='block';
       }
     }, 400);
   }

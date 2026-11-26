@@ -515,9 +515,10 @@
   }
   /* Desktop inline booking result */
   @media(min-width:768px){
-    #bkForm,#bkResult{grid-column:1;grid-row:1}
+    #bkForm,#bkResult,#tcPanel{grid-column:1;grid-row:1}
     .bk-side{grid-column:2;grid-row:1}
   }
+  #tcPanel{flex-direction:column;overflow-y:auto;gap:0}
   .dk-state{display:none}
   .dk-state.active{display:block}
   #bkResult{flex-direction:column;justify-content:flex-start;overflow-y:auto;gap:0}
@@ -592,10 +593,10 @@
 
   <div class="wrap">
     <div class="stat-strip reveal">
-      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Đang chờ<span class="live-dot"></span></div><div class="v"><span id="queueCount">8</span> <small>người</small></div></div>
+      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Mật độ khách hàng</div><div class="v" style="font-size:14px"><span id="densityPill" style="display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0"><span id="densityDot" style="width:7px;height:7px;border-radius:50%;background:#16a34a;flex:none"></span><span id="densityLabel">Hiện tại: Vắng</span></span><div style="font-size:11px;color:var(--faint);font-weight:500;margin-top:4px" id="densityTime">Cập nhật lúc 10:25</div></div></div>
       <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Giờ giao dịch</div><div class="v">08:00 <small>– 20:00</small></div></div>
       <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V7l6-4v18M9 21V11l6-4v14M15 21v-7l6-4v11"/></svg>Ngày mở cửa</div><div class="v">Cả tuần <small>T2 – CN</small></div></div>
-      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Chờ trung bình</div><div class="v">~<span data-count="6">6</span> <small>phút</small></div></div>
+      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Chờ trung bình<span class="live-dot"></span></div><div class="v">~<span data-count="6">6</span> <small>phút</small><div style="font-size:12px;color:var(--muted);font-weight:500;margin-top:3px"><span id="queueCount">8</span> lượt đang chờ</div></div></div>
     </div>
   </div>
 
@@ -609,11 +610,7 @@
         <img class="tammi-ava sm" src="assets/tammi/wave.png" alt="Tammi" loading="lazy">
         <div class="ht"><h2>Đặt lịch hẹn</h2><p class="lead">Chọn nghiệp vụ &amp; giờ hẹn, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
       </div>
-      <div class="side"><span class="eyebrow"><span class="idx">01 / 03</span></span></div>
-    </div>
-    <div style="display:flex;border-bottom:2px solid var(--line);margin-bottom:28px;gap:0">
-      <span style="padding:11px 20px;font-size:14.5px;font-weight:700;color:var(--red);border-bottom:3px solid var(--red);margin-bottom:-2px;cursor:default;line-height:1.4">Đặt lịch hẹn</span>
-      <a href="tra-cuu.html" style="padding:11px 20px;font-size:14.5px;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .15s;line-height:1.4">Tra cứu lịch hẹn</a>
+      <div class="side" style="display:flex;align-items:center;gap:12px"><span class="eyebrow"><span class="idx">01 / 03</span></span><button id="tcToggleBtn" class="btn btn-ghost btn-sm" onclick="tcToggle()">Tra cứu lịch hẹn →</button></div>
     </div>
     <div class="book-grid">
       <form class="bk-panel reveal" id="bkForm" onsubmit="return submitBooking(event)">
@@ -627,7 +624,7 @@
           <button type="button" class="svc-chip" data-svc="Chuyển trả trước → trả sau">Chuyển trả trước → trả sau</button>
         </div>
         <div class="fld"><label for="svcSel">Bạn cần làm gì?</label><select id="svcSel" required><optgroup label="Di động"><option>Đổi SIM chính chủ</option><option>Mua SIM</option><option>Chuẩn hóa thông tin</option><option>Chuyển trả trước → trả sau</option><option>Chuyển trả sau → trả trước</option><option>Thay đổi giấy tờ</option><option>Chuyển chủ quyền trả trước</option><option>Chuyển chủ quyền trả sau</option><option>Chặn/mở thuê bao</option><option>Thay đổi gói cước</option><option>Đăng ký thông tin</option><option>Thay đổi thông tin hợp đồng</option><option>Chấm dứt thuê bao</option><option>Chuyển mạng giữ số</option><option>Mua thiết bị</option></optgroup><optgroup label="Internet &amp; Truyền hình"><option>Chuyển đổi công nghệ</option><option>Chuyển đổi gói cước</option><option>Đổi thiết bị Internet</option><option>Chặn/mở thuê bao Internet</option><option>Thay đổi địa chỉ lắp đặt</option><option>Thanh toán cước/gạch nợ</option><option>Chấm dứt thuê bao Internet</option><option>Đóng cước trước</option><option>Đổi chương trình khuyến mại</option></optgroup></select></div>
-        <div class="bk-row" style="margin-bottom:18px"><div class="fld"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix" id="timeDatePrefix"><span id="timeDateNum" style="font-size:13px;font-weight:600;color:var(--ink)"></span></span><select id="slotSel" required></select></div></div></div>
+        <div class="bk-row" style="margin-bottom:18px"><div class="fld"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix" id="timeDatePrefix"><span id="timeDateNum" style="font-size:13px;font-weight:600;color:var(--ink)"></span></span><select id="slotSel" required></select></div><div id="slotBadge" style="display:none;margin-top:8px;align-items:center;gap:5px;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid #bbf7d0;background:#f0fdf4;color:#16a34a"></div></div></div>
         <div class="two"><div class="fld"><label>Họ và tên</label><input required placeholder="Nguyễn Văn A" /></div><div class="fld"><label>Số điện thoại</label><input required type="tel" placeholder="09xx xxx xxx" /></div></div>
         <button type="submit" id="bkSubmit" class="btn btn-primary" style="width:100%;margin-top:20px">Xác nhận đặt lịch</button>
         <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:12px">Đây là bản demo — chưa có lịch hẹn nào được gửi đi thật.</p>
@@ -741,7 +738,61 @@
 
       </div>
 
+      <!-- Panel tra cứu inline (desktop) -->
+      <div class="bk-panel" id="tcPanel" style="display:none">
+        <div style="padding:20px 24px 0">
+          <h3 style="font-size:18px;font-weight:800;margin-bottom:4px">Tra cứu lịch hẹn</h3>
+          <p style="font-size:13.5px;color:var(--muted);margin-bottom:18px">Nhập mã đặt lịch để xem và quản lý lịch hẹn.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;margin-bottom:16px">
+            <button id="tcTabCode" style="padding:10px;font-size:13.5px;font-weight:600;background:var(--red);color:#fff;border:none;cursor:pointer;font-family:inherit" onclick="tcSwitchTab('code')">Mã đặt lịch</button>
+            <button id="tcTabPhone" style="padding:10px;font-size:13.5px;font-weight:600;background:#fff;color:var(--muted);border:none;cursor:pointer;font-family:inherit" onclick="tcSwitchTab('phone')">Số điện thoại</button>
+          </div>
+          <div id="tcFormCode">
+            <input id="tcInputCode" type="text" style="width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;color:var(--ink);outline:none;margin-bottom:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:700" placeholder="ABCD1234" maxlength="8" oninput="this.value=this.value.toUpperCase()">
+          </div>
+          <div id="tcFormPhone" style="display:none">
+            <input id="tcInputPhone" type="tel" style="width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;outline:none;margin-bottom:10px" placeholder="Số điện thoại Viettel">
+            <input id="tcInputOtp" type="text" style="width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;outline:none;margin-bottom:12px" placeholder="Mã OTP">
+          </div>
+          <button onclick="tcSearch()" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;border:none;font-family:inherit;background:var(--red);color:#fff;margin-bottom:16px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Tra cứu
+          </button>
+          <p id="tcEmptyLine" style="display:none;color:var(--red);font-size:13.5px;font-weight:600;text-align:center;padding:4px 0 12px">Không tìm thấy lịch hẹn.</p>
+        </div>
+        <div id="tcResult" style="display:none;border-top:1px solid var(--line)">
+          <div style="padding:14px 24px;display:flex;align-items:center;gap:10px">
+            <span id="tcStatusPill" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:#e9f9ef;color:#16a34a"><span style="width:7px;height:7px;border-radius:50%;background:#16a34a;flex:none"></span>Đã đặt lịch</span>
+            <span id="tcResultCode" style="margin-left:auto;font-size:14px;font-weight:800;color:var(--red);letter-spacing:.08em">ABCD1234</span>
+          </div>
+          <div id="tcDetailRows"></div>
+          <div style="padding:16px 24px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line)">
+            <a href="modal-activate.html" id="tcBtnActivate" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Xác nhận đến — nhận số thứ tự
+            </a>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <button class="btn btn-ghost" onclick="tcGoReschedule()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Đổi lịch</button>
+              <button class="btn btn-danger" onclick="tcDoCancel()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Hủy lịch</button>
+            </div>
+          </div>
+        </div>
+        <div style="padding:12px 24px 24px">
+          <button class="btn btn-ghost" onclick="tcClose()" style="width:100%;font-size:13.5px;color:var(--muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Quay lại đặt lịch
+          </button>
+        </div>
+      </div>
+
       <div class="bk-side reveal d1">
+        <div style="background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:16px 18px;margin-bottom:14px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Tra cứu lịch hẹn</div>
+          <div style="display:flex;gap:8px">
+            <input id="tcSideCode" type="text" style="flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line-2);border-radius:10px;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;outline:none;text-transform:uppercase;letter-spacing:.08em;font-weight:600" placeholder="Mã đặt lịch" maxlength="8" oninput="this.value=this.value.toUpperCase()">
+            <button onclick="tcSideSearch()" style="padding:10px 14px;border-radius:10px;border:none;font-family:inherit;font-size:13.5px;font-weight:700;background:var(--red);color:#fff;cursor:pointer;white-space:nowrap">Tra cứu</button>
+          </div>
+        </div>
         <div class="live-queue-widget">
           <div class="lqw-header"><span class="live-dot" style="width:8px;height:8px;margin:0"></span>Đang chờ tại cửa hàng</div>
           <div class="lqw-num" id="queueCount2">8</div>
@@ -1097,6 +1148,103 @@
   var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(!en.isIntersecting)return;var el=en.target;el.classList.add('show');if(el.querySelectorAll)el.querySelectorAll('[data-count]').forEach(countUp);if(el.matches&&el.matches('[data-count]'))countUp(el);if(el.id==='peak')el.querySelectorAll('.bar').forEach(function(b){b.style.height=b.getAttribute('data-h')+'%'});io.unobserve(el);});},{rootMargin:'0px 0px -8% 0px',threshold:.12});
   document.querySelectorAll('.reveal,[data-count],#peak').forEach(function(el){io.observe(el)});
   document.querySelectorAll('.hero [data-count]').forEach(countUp);
+
+  // ---- Slot badge ----
+  function updateSlotBadge(){
+    var sel=document.getElementById('slotSel');
+    var txt=sel&&sel.selectedOptions[0]?sel.selectedOptions[0].textContent:'';
+    var badge=document.getElementById('slotBadge');
+    if(!badge)return;
+    if(txt.indexOf('Sắp hết')>-1){
+      badge.style.display='inline-flex';badge.textContent='Sắp hết';badge.style.background='#fff7ed';badge.style.color='#d97706';badge.style.borderColor='#fde68a';
+    } else if(txt.indexOf('Hết chỗ')>-1){
+      badge.style.display='inline-flex';badge.textContent='Hết chỗ';badge.style.background='#f5f5f5';badge.style.color='#a0a0a0';badge.style.borderColor='#dedede';
+    } else if(txt.indexOf('Còn chỗ')>-1){
+      badge.style.display='inline-flex';badge.textContent='Còn chỗ';badge.style.background='#f0fdf4';badge.style.color='#16a34a';badge.style.borderColor='#bbf7d0';
+    } else {badge.style.display='none';}
+  }
+  document.getElementById('slotSel').addEventListener('change',updateSlotBadge);
+  setTimeout(updateSlotBadge,100);
+
+  // ---- Mật độ khách hàng ----
+  function updateDensity(){
+    var now=new Date();var h=now.getHours();
+    var status='Vắng',dotC='#16a34a',bg='#f0fdf4',border='#bbf7d0',textC='#16a34a';
+    if(h>=10&&h<12){status='Đông';dotC='#ef4444';bg='#fef2f2';border='#fecaca';textC='#ef4444';}
+    else if((h>=9&&h<10)||(h>=12&&h<14)){status='Trung bình';dotC='#f59e0b';bg='#fff7ed';border='#fde68a';textC='#d97706';}
+    var pill=document.getElementById('densityPill');var dot=document.getElementById('densityDot');
+    var lbl=document.getElementById('densityLabel');var time=document.getElementById('densityTime');
+    if(pill){pill.style.background=bg;pill.style.color=textC;pill.style.borderColor=border;}
+    if(dot)dot.style.background=dotC;
+    if(lbl)lbl.textContent='Hiện tại: '+status;
+    if(time)time.textContent='Cập nhật lúc '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+  }
+  updateDensity();setInterval(updateDensity,60000);
+
+  // ---- Tra cứu inline (desktop) ----
+  function tcToggle(preCode){
+    if(window.innerWidth<768){window.location.href='tra-cuu.html';return;}
+    var panel=document.getElementById('tcPanel');
+    var form=document.getElementById('bkForm');
+    var result=document.getElementById('bkResult');
+    if(panel.style.display==='none'||!panel.style.display){
+      if(form)form.style.display='none';
+      if(result)result.style.display='none';
+      panel.style.display='flex';
+      if(preCode){document.getElementById('tcInputCode').value=preCode;tcSearch();}
+      document.getElementById('booking').scrollIntoView({behavior:'smooth',block:'start'});
+      var btn=document.getElementById('tcToggleBtn');if(btn)btn.textContent='← Đặt lịch';
+    } else {tcClose();}
+  }
+  function tcClose(){
+    document.getElementById('tcPanel').style.display='none';
+    var f=document.getElementById('bkForm');
+    if(f){f.style.display='flex';f.style.flexDirection='column';}
+    var btn=document.getElementById('tcToggleBtn');if(btn)btn.textContent='Tra cứu lịch hẹn →';
+    document.getElementById('tcResult').style.display='none';
+    document.getElementById('tcEmptyLine').style.display='none';
+  }
+  function tcSideSearch(){
+    var code=document.getElementById('tcSideCode').value.trim();
+    if(window.innerWidth<768){window.location.href='tra-cuu.html'+(code?'?code='+encodeURIComponent(code):'');return;}
+    tcToggle(code||undefined);
+  }
+  function tcSwitchTab(t){
+    var cB=document.getElementById('tcTabCode'),pB=document.getElementById('tcTabPhone');
+    cB.style.background=t==='code'?'var(--red)':'#fff';cB.style.color=t==='code'?'#fff':'var(--muted)';
+    pB.style.background=t==='phone'?'var(--red)':'#fff';pB.style.color=t==='phone'?'#fff':'var(--muted)';
+    document.getElementById('tcFormCode').style.display=t==='code'?'block':'none';
+    document.getElementById('tcFormPhone').style.display=t==='phone'?'block':'none';
+  }
+  function tcSearch(){
+    var code=document.getElementById('tcInputCode').value.trim().toUpperCase();
+    var phoneEl=document.getElementById('tcInputPhone');
+    var phone=phoneEl?phoneEl.value.trim():'';
+    var isCode=document.getElementById('tcFormPhone').style.display==='none';
+    var val=isCode?code:phone;
+    document.getElementById('tcResult').style.display='none';
+    document.getElementById('tcEmptyLine').style.display='none';
+    if(!val)return;
+    setTimeout(function(){
+      if(val==='ABCD1234'||val==='0987654321'){
+        document.getElementById('tcResultCode').textContent='ABCD1234';
+        document.getElementById('tcDetailRows').innerHTML='<div style="padding:12px 24px;font-size:13.5px;border-bottom:1px solid var(--line);display:flex;gap:8px"><span style="color:var(--muted);flex:0 0 90px;font-size:12.5px">Nghiệp vụ</span><span style="font-weight:600;flex:1">Đổi SIM chính chủ</span></div><div style="padding:12px 24px;font-size:13.5px;display:flex;gap:8px"><span style="color:var(--muted);flex:0 0 90px;font-size:12.5px">Thời gian</span><span style="font-weight:600;flex:1">14:30 · Thứ 6, 14/11/2026</span></div>';
+        document.getElementById('tcResult').style.display='block';
+      } else {
+        document.getElementById('tcEmptyLine').style.display='block';
+      }
+    },400);
+  }
+  function tcGoReschedule(){
+    window.location.href='modal-reschedule.html?svc='+encodeURIComponent('Đổi SIM chính chủ')+'&time='+encodeURIComponent('14:30 · Thứ 6, 14/11/2026')+'&code=ABCD1234';
+  }
+  function tcDoCancel(){
+    if(confirm('Bạn có chắc muốn hủy lịch hẹn ABCD1234?')){
+      var sp=document.getElementById('tcStatusPill');
+      if(sp){sp.style.background='#fef2f2';sp.style.color='#ef4444';sp.innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:#ef4444;flex:none"></span>Đã hủy';}
+      var ab=document.getElementById('tcBtnActivate');if(ab)ab.style.display='none';
+    }
+  }
 
 </script>
 </body>

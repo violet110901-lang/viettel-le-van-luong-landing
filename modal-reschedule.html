@@ -14,6 +14,7 @@
     --ink:#000000;--ink-2:#3a3a3a;--muted:#6e6e6e;--faint:#a0a0a0;
     --line:#ebebeb;--line-2:#dedede;
     --bg:#ffffff;--bg-soft:#f5f5f5;
+    --green:#16a34a;--green-soft:#e9f9ef;
     --radius:18px;
     --shadow-lg:0 24px 60px rgba(0,0,0,.14);
   }
@@ -25,12 +26,20 @@
 
   .modal-card{width:100%;max-width:480px;background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);overflow:hidden}
 
+  /* Header */
   .reschedule-head{background:#fff8e6;padding:28px 24px 24px;text-align:center;border-bottom:1px solid #fde68a}
   .reschedule-icon{width:56px;height:56px;border-radius:50%;background:#f59e0b;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
   .reschedule-icon svg{width:28px;height:28px;color:#fff}
   .reschedule-head h2{font-size:20px;font-weight:800;color:#92400e;margin-bottom:6px}
   .reschedule-head p{font-size:13.5px;color:var(--muted);max-width:36ch;margin:0 auto;line-height:1.5}
 
+  /* Success header */
+  .success-head{background:var(--green-soft);padding:28px 24px 24px;text-align:center;border-bottom:1px solid #d1f2dc;display:none}
+  .success-icon{width:56px;height:56px;border-radius:50%;background:var(--green);display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .success-head h2{font-size:20px;font-weight:800;color:var(--green);margin-bottom:6px}
+  .success-head p{font-size:13.5px;color:var(--muted);max-width:36ch;margin:0 auto;line-height:1.5}
+
+  /* Info rows */
   .info-section{padding:20px 24px;border-bottom:1px solid var(--line)}
   .info-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:14px}
   .info-row:not(:last-child){border-bottom:1px dashed var(--line-2)}
@@ -38,15 +47,33 @@
   .info-row .val{color:var(--ink);font-weight:600;flex:1;line-height:1.45}
   .info-row .val.old{text-decoration:line-through;color:var(--faint)}
 
+  /* Notice */
   .notice-section{padding:16px 24px;border-bottom:1px solid var(--line);background:#fffbeb;display:flex;gap:12px;align-items:flex-start}
   .notice-section svg{width:16px;height:16px;color:#f59e0b;flex:none;margin-top:2px}
   .notice-section p{font-size:13px;color:var(--ink-2);line-height:1.5}
 
+  /* Form section */
+  .form-section{padding:20px 24px;border-bottom:1px solid var(--line);display:none}
+  .form-section.active{display:block}
+  .form-section h3{font-size:15px;font-weight:700;margin-bottom:16px}
+  .fld{margin-bottom:14px}
+  .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px;letter-spacing:.02em}
+  .fld select{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff;transition:.15s;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e6e' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:18px;padding-right:36px}
+  .fld select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(238,0,51,.08)}
+
+  /* Code display */
+  .code-box{background:#fff5f7;border:1.5px solid #fecdd3;border-radius:14px;padding:14px 18px;text-align:center;margin-bottom:16px}
+  .code-box .code-label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .code-box .code-val{font-size:26px;font-weight:800;letter-spacing:.12em;color:var(--red);line-height:1}
+
+  /* Buttons */
   .btn-section{padding:20px 24px;display:flex;flex-direction:column;gap:10px}
   .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:600;font-size:14.5px;cursor:pointer;border:1px solid transparent;font-family:inherit;text-decoration:none;transition:.15s;line-height:1}
   .btn svg{width:16px;height:16px;flex:none}
   .btn-primary{background:var(--red);color:#fff}
   .btn-primary:hover{box-shadow:0 8px 20px rgba(238,0,51,.3);transform:translateY(-1px)}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-green:hover{box-shadow:0 8px 20px rgba(22,163,74,.3);transform:translateY(-1px)}
   .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-2)}
   .btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
   .btn-danger{background:#fff;color:#ef4444;border-color:#fecaca}
@@ -61,15 +88,26 @@
 
 <div class="modal-card">
 
-  <div class="reschedule-head">
+  <!-- Header: đổi lịch (mặc định) -->
+  <div class="reschedule-head" id="headReschedule">
     <div class="reschedule-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
     </div>
     <h2>Đổi lịch hẹn</h2>
-    <p>Lịch hẹn cũ sẽ bị hủy. Quý khách sẽ đặt lịch mới cho cùng nghiệp vụ.</p>
+    <p>Chọn ngày và giờ mới. Lịch cũ sẽ bị hủy khi bạn xác nhận.</p>
   </div>
 
-  <div class="info-section">
+  <!-- Header: thành công -->
+  <div class="success-head" id="headSuccess">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Đổi lịch thành công!</h2>
+    <p>Lịch hẹn mới đã được xác nhận.</p>
+  </div>
+
+  <!-- Thông tin lịch cũ -->
+  <div class="info-section" id="infoSection">
     <div class="info-row">
       <span class="lbl">Cửa hàng</span>
       <span class="val">Viettel Telecom Cửa hàng Lê Văn Lương Hà Nội</span>
@@ -88,16 +126,43 @@
     </div>
   </div>
 
-  <div class="notice-section">
+  <!-- Lưu ý (ẩn khi thành công) -->
+  <div class="notice-section" id="noticeSection">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <p>Mã <strong id="codeRef">ABCD1234</strong> sẽ bị vô hiệu hóa sau khi bạn đặt lịch mới. Lịch mới sẽ có mã khác.</p>
+    <p>Mã <strong id="codeRef">ABCD1234</strong> sẽ bị vô hiệu hóa. Lịch mới sẽ có mã khác.</p>
   </div>
 
-  <div class="btn-section">
-    <a href="index.html#booking" class="btn btn-primary" id="newBookingBtn">
+  <!-- Form chọn lịch mới -->
+  <div class="form-section" id="formSection">
+    <h3>Chọn lịch mới</h3>
+    <div class="fld">
+      <label for="newDay">Ngày hẹn</label>
+      <select id="newDay"></select>
+    </div>
+    <div class="fld">
+      <label for="newSlot">Giờ hẹn</label>
+      <select id="newSlot"></select>
+    </div>
+  </div>
+
+  <!-- Thông tin lịch mới (hiện sau khi thành công) -->
+  <div class="info-section" id="newInfoSection" style="display:none">
+    <div class="info-row">
+      <span class="lbl">Lịch mới</span>
+      <span class="val" id="newTimeVal" style="color:var(--green);font-weight:700">—</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl">Mã mới</span>
+      <span class="val" id="newCodeVal" style="color:var(--red);letter-spacing:.08em">—</span>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="btn-section" id="btnState1">
+    <button class="btn btn-primary" onclick="showForm()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Đặt lịch mới
-    </a>
+      Chọn lịch mới
+    </button>
     <a href="modal-cancel.html" class="btn btn-danger" id="cancelBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
       Hủy lịch thay vì đổi
@@ -108,22 +173,113 @@
     </a>
   </div>
 
+  <div class="btn-section" id="btnState2" style="display:none">
+    <button class="btn btn-primary" onclick="confirmReschedule()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Xác nhận đổi lịch
+    </button>
+    <button class="btn btn-ghost" onclick="hideForm()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Quay lại
+    </button>
+  </div>
+
+  <div class="btn-section" id="btnState3" style="display:none">
+    <a href="https://maps.app.goo.gl/qVs4Lp6UrsgHif4v8" target="_blank" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      Chỉ đường đến cửa hàng
+    </a>
+    <a href="index.html" class="btn btn-ghost">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Về trang chủ
+    </a>
+  </div>
+
 </div>
 
 <script>
-  (function(){
-    var p=new URLSearchParams(location.search);
-    if(p.get('svc')){document.getElementById('infoSvc').textContent=p.get('svc');}
-    if(p.get('time')){document.getElementById('infoTime').textContent=p.get('time');}
-    if(p.get('code')){
-      var c=p.get('code');
-      document.getElementById('infoCode').textContent=c;
-      document.getElementById('codeRef').textContent=c;
+  // Tạo danh sách ngày (hôm nay + 6 ngày tới, bỏ CN)
+  var DAYS_VI = ['CN','T2','T3','T4','T5','T6','T7'];
+  var MONTHS_VI = ['tháng 1','tháng 2','tháng 3','tháng 4','tháng 5','tháng 6','tháng 7','tháng 8','tháng 9','tháng 10','tháng 11','tháng 12'];
+  function buildDays(){
+    var sel = document.getElementById('newDay');
+    var d = new Date();
+    var added = 0;
+    while(added < 7){
+      d.setDate(d.getDate() + 1);
+      if(d.getDay() === 0){ continue; } // bỏ CN
+      var dow = DAYS_VI[d.getDay()];
+      var label = dow + ', ' + d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+      sel.add(new Option(label, label));
+      added++;
     }
-    var nb=document.getElementById('newBookingBtn');
-    if(nb&&p.get('svc'))nb.href='index.html?presvc='+encodeURIComponent(p.get('svc'))+'#booking';
-    var cb=document.getElementById('cancelBtn');
-    if(cb)cb.href='modal-cancel.html?svc='+encodeURIComponent(p.get('svc')||'')+'&time='+encodeURIComponent(p.get('time')||'')+'&code='+encodeURIComponent(p.get('code')||'ABCD1234');
+  }
+  function buildSlots(){
+    var sel = document.getElementById('newSlot');
+    var slots = ['08:30','09:00','09:30','10:00','10:30','11:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30'];
+    slots.forEach(function(s){ sel.add(new Option(s, s)); });
+  }
+
+  function genCode(){
+    var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',r='';
+    for(var i=0;i<8;i++) r+=c[Math.floor(Math.random()*c.length)];
+    return r;
+  }
+
+  function showForm(){
+    document.getElementById('formSection').classList.add('active');
+    document.getElementById('btnState1').style.display='none';
+    document.getElementById('btnState2').style.display='flex';
+    document.getElementById('noticeSection').style.display='none';
+  }
+
+  function hideForm(){
+    document.getElementById('formSection').classList.remove('active');
+    document.getElementById('btnState1').style.display='flex';
+    document.getElementById('btnState2').style.display='none';
+    document.getElementById('noticeSection').style.display='flex';
+  }
+
+  function confirmReschedule(){
+    var day = document.getElementById('newDay').value;
+    var slot = document.getElementById('newSlot').value;
+    var newTime = day + ' · ' + slot;
+    var newCode = genCode();
+
+    // Cập nhật màn thành công
+    document.getElementById('newTimeVal').textContent = newTime;
+    document.getElementById('newCodeVal').textContent = newCode;
+
+    // Chuyển header
+    document.getElementById('headReschedule').style.display='none';
+    document.getElementById('headSuccess').style.display='block';
+
+    // Ẩn form + notice, hiện info mới
+    document.getElementById('formSection').classList.remove('active');
+    document.getElementById('noticeSection').style.display='none';
+    document.getElementById('newInfoSection').style.display='block';
+
+    // Chuyển buttons
+    document.getElementById('btnState2').style.display='none';
+    document.getElementById('btnState3').style.display='flex';
+
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  // Khởi tạo
+  (function(){
+    buildDays();
+    buildSlots();
+    var p = new URLSearchParams(location.search);
+    if(p.get('svc')) document.getElementById('infoSvc').textContent = p.get('svc');
+    if(p.get('time')) document.getElementById('infoTime').textContent = p.get('time');
+    if(p.get('code')){
+      var c = p.get('code');
+      document.getElementById('infoCode').textContent = c;
+      document.getElementById('codeRef').textContent = c;
+      var cb = document.getElementById('cancelBtn');
+      if(cb) cb.href = 'modal-cancel.html?svc='+encodeURIComponent(p.get('svc')||'')+'&time='+encodeURIComponent(p.get('time')||'')+'&code='+encodeURIComponent(c);
+    }
   })();
 </script>
 </body>
