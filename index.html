@@ -599,6 +599,10 @@
       </div>
       <div class="side"><span class="eyebrow"><span class="idx">01 / 03</span></span></div>
     </div>
+    <div style="display:flex;border-bottom:2px solid var(--line);margin-bottom:28px;gap:0">
+      <span style="padding:11px 20px;font-size:14.5px;font-weight:700;color:var(--red);border-bottom:3px solid var(--red);margin-bottom:-2px;cursor:default;line-height:1.4">Đặt lịch hẹn</span>
+      <a href="tra-cuu.html" style="padding:11px 20px;font-size:14.5px;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .15s;line-height:1.4">Tra cứu lịch hẹn</a>
+    </div>
     <div class="book-grid">
       <form class="bk-panel reveal" id="bkForm" onsubmit="return submitBooking(event)">
         <div class="svc-chips" id="svcChips">
@@ -617,40 +621,26 @@
         <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:12px">Đây là bản demo — chưa có lịch hẹn nào được gửi đi thật.</p>
       </form>
       <div class="bk-side reveal d1">
-        <div class="bk-illus">
-          <img class="tammi-ava big-t" src="assets/tammi/main.png" alt="Tammi chào bạn" loading="lazy">
-          <p class="hi">Để lại thông tin, cửa hàng sẽ <b>gọi xác nhận trong 15 phút</b> và giữ quầy sẵn cho bạn nhé!</p>
-        </div>
         <div class="live-queue-widget">
           <div class="lqw-header"><span class="live-dot" style="width:8px;height:8px;margin:0"></span>Đang chờ tại cửa hàng</div>
           <div class="lqw-num" id="queueCount2">8</div>
           <div class="lqw-footer">người · cập nhật liên tục</div>
         </div>
-        <div class="bk-benefits">
-          <div><span class="ck">✓</span> Cửa hàng giữ quầy 15 phút kể từ giờ hẹn</div>
-          <div><span class="ck">✓</span> Không phải lấy số chờ thông thường</div>
-          <div><span class="ck">✓</span> Nhân viên chuẩn bị sẵn hồ sơ &amp; giấy tờ</div>
-          <div><span class="ck">✓</span> Ưu tiên xử lý kỹ thuật &amp; bảo hành</div>
+        <div class="bk-benefits" style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px">Giấy tờ cần mang</div>
+          <div><span class="ck">✓</span> CCCD / CMND còn hạn (bản gốc)</div>
+          <div><span class="ck">✓</span> SIM đang dùng (nếu đổi SIM, chuẩn hóa thông tin)</div>
+          <div><span class="ck">✓</span> Hợp đồng / biên lai (nếu có khiếu nại)</div>
+          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:6px;margin-bottom:2px">Lưu ý khi đến</div>
+          <div><span class="ck">✓</span> Có mặt trước giờ hẹn 5–10 phút</div>
+          <div><span class="ck">✓</span> Mang điện thoại để xác minh OTP</div>
+          <div><span class="ck">✓</span> Người dưới 18 tuổi cần có người giám hộ đi kèm</div>
         </div>
         <p class="bk-hotline">Cần hỗ trợ gấp? Gọi <b>1800 8098</b> miễn phí mọi mạng, hoặc <b>198</b> từ thuê bao Viettel.</p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ============ STRIP TRA CỨU LỊCH HẸN ============ -->
-<div style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding-top:24px;padding-bottom:24px">
-    <div>
-      <div style="font-size:20px;font-weight:700;color:var(--ink)">Đã đặt lịch hẹn?</div>
-      <div style="font-size:13px;color:var(--muted);margin-top:3px">Xem thông tin, đổi lịch hoặc hủy lịch của bạn</div>
-    </div>
-    <a href="tra-cuu.html" class="btn btn-primary btn-sm" style="white-space:nowrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Tra cứu lịch hẹn
-    </a>
-  </div>
-</div>
 
 <!-- ============ HỖ TRỢ ONLINE ============ -->
 <section class="sec alt" id="services">

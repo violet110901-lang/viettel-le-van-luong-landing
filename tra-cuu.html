@@ -110,10 +110,6 @@
 
 <header>
   <div class="nav">
-    <button class="nav-back" onclick="history.back()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Quay lại
-    </button>
     <span class="nav-title">Tra cứu lịch hẹn</span>
     <img src="assets/viettel-logo.png" alt="Viettel Telecom" style="height:30px;width:auto;display:block;margin-left:auto">
   </div>
@@ -205,18 +201,8 @@
     <div class="empty-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </div>
-    <h3>Không tìm thấy lịch hẹn</h3>
+    <h3 style="color:var(--red)">Không tìm thấy lịch hẹn</h3>
     <p>Vui lòng kiểm tra lại mã đặt lịch hoặc số điện thoại và thử lại.</p>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
-      <button class="btn btn-ghost" onclick="document.getElementById('emptyState').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'})">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        Tra cứu lại
-      </button>
-      <a href="index.html#booking" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Đặt lịch hẹn
-      </a>
-    </div>
   </div>
 
 </div>
