@@ -1325,6 +1325,40 @@
     },400);
   }
 
+  // ---- Mockup state (dùng cho mockup-form.html, auto trigger 1 state qua URL param) ----
+  (function initMockup(){
+    var p=new URLSearchParams(location.search);
+    var s=p.get('formstate');
+    if(!s)return;
+    var DEMO={svc:'Đổi SIM chính chủ',time:'14:30 · Thứ 6, 14/11/2026',code:'ABCD1234'};
+    function fillDk(data){
+      _dkData=data;
+      document.getElementById('dkCode').textContent=data.code;
+      document.getElementById('dkSvc').textContent=data.svc;
+      document.getElementById('dkTime').textContent=data.time;
+    }
+    function showResult(stateId){
+      document.getElementById('bkForm').style.display='none';
+      document.getElementById('tcPanel').style.display='none';
+      document.getElementById('bkResult').style.display='flex';
+      dkShowState(stateId);
+    }
+    setTimeout(function(){
+      if(s==='form'){ /* mặc định */ }
+      else if(s==='success'){ _fromLookup=false;fillDk(DEMO);updateSuccessMode();showResult('dkSuccess'); }
+      else if(s==='reschedule'){ _fromLookup=false;fillDk(DEMO);updateSuccessMode();showResult('dkSuccess');dkShowReschedule(); }
+      else if(s==='reschedule-done'){ _fromLookup=false;fillDk(DEMO);updateSuccessMode();showResult('dkSuccess');dkShowReschedule();var sel=document.getElementById('dkSlotSel');if(sel&&sel.options.length){sel.selectedIndex=4;}dkConfirmReschedule(); }
+      else if(s==='cancel'){ _fromLookup=false;fillDk(DEMO);updateSuccessMode();showResult('dkSuccess');dkShowCancel(); }
+      else if(s==='cancel-done'){ _fromLookup=false;fillDk(DEMO);updateSuccessMode();showResult('dkSuccess');dkShowCancel();dkConfirmCancel(); }
+      else if(s==='lookup'){ tcToggle(); }
+      else if(s==='lookup-notfound'){ tcToggle();document.getElementById('tcInputCode').value='XXXX9999';tcSearch(); }
+      else if(s==='lookup-found'){ _fromLookup=true;fillDk(DEMO);updateSuccessMode();showResult('dkSuccess'); }
+      else if(s==='activate'){ _fromLookup=true;fillDk(DEMO);updateSuccessMode();showResult('dkSuccess');dkShowActivate(); }
+      // Scroll vào section booking
+      document.getElementById('booking').scrollIntoView({block:'start'});
+    },200);
+  })();
+
 </script>
 </body>
 </html>
