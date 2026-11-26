@@ -606,11 +606,11 @@
 <section class="sec" id="booking">
   <div class="wrap">
     <div class="sec-head">
-      <div class="t reveal">
+      <div class="t reveal" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
         <img class="tammi-ava sm" src="assets/tammi/wave.png" alt="Tammi" loading="lazy">
-        <div class="ht"><h2>Đặt lịch hẹn</h2><p class="lead">Chọn nghiệp vụ &amp; giờ hẹn, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
+        <div class="ht"><h2 style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">Đặt lịch hẹn<button id="tcToggleBtn" onclick="tcToggle()" style="display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--red);background:#fff;border:1.5px solid var(--red);padding:9px 18px;border-radius:999px;cursor:pointer;transition:.15s;letter-spacing:-.01em" onmouseover="this.style.background='var(--red)';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--red)'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Tra cứu lịch hẹn</button></h2><p class="lead">Chọn nghiệp vụ &amp; giờ hẹn, cửa hàng giữ quầy cho bạn 15 phút.</p></div>
       </div>
-      <div class="side" style="display:flex;align-items:center;gap:12px"><span class="eyebrow"><span class="idx">01 / 03</span></span><button id="tcToggleBtn" class="btn btn-ghost btn-sm" onclick="tcToggle()">Tra cứu lịch hẹn →</button></div>
+      <div class="side"><span class="eyebrow"><span class="idx">01 / 03</span></span></div>
     </div>
     <div class="book-grid">
       <form class="bk-panel reveal" id="bkForm" onsubmit="return submitBooking(event)">
@@ -624,7 +624,7 @@
           <button type="button" class="svc-chip" data-svc="Chuyển trả trước → trả sau">Chuyển trả trước → trả sau</button>
         </div>
         <div class="fld"><label for="svcSel">Bạn cần làm gì?</label><select id="svcSel" required><optgroup label="Di động"><option>Đổi SIM chính chủ</option><option>Mua SIM</option><option>Chuẩn hóa thông tin</option><option>Chuyển trả trước → trả sau</option><option>Chuyển trả sau → trả trước</option><option>Thay đổi giấy tờ</option><option>Chuyển chủ quyền trả trước</option><option>Chuyển chủ quyền trả sau</option><option>Chặn/mở thuê bao</option><option>Thay đổi gói cước</option><option>Đăng ký thông tin</option><option>Thay đổi thông tin hợp đồng</option><option>Chấm dứt thuê bao</option><option>Chuyển mạng giữ số</option><option>Mua thiết bị</option></optgroup><optgroup label="Internet &amp; Truyền hình"><option>Chuyển đổi công nghệ</option><option>Chuyển đổi gói cước</option><option>Đổi thiết bị Internet</option><option>Chặn/mở thuê bao Internet</option><option>Thay đổi địa chỉ lắp đặt</option><option>Thanh toán cước/gạch nợ</option><option>Chấm dứt thuê bao Internet</option><option>Đóng cước trước</option><option>Đổi chương trình khuyến mại</option></optgroup></select></div>
-        <div class="bk-row" style="margin-bottom:18px"><div class="fld"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div class="time-box"><span class="time-prefix" id="timeDatePrefix"><span id="timeDateNum" style="font-size:13px;font-weight:600;color:var(--ink)"></span></span><select id="slotSel" required></select></div><div id="slotBadge" style="display:none;margin-top:8px;align-items:center;gap:5px;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid #bbf7d0;background:#f0fdf4;color:#16a34a"></div></div></div>
+        <div class="bk-row" style="margin-bottom:18px"><div class="fld"><label>Ngày hẹn</label><div class="days" id="dayChips"></div></div><div class="fld"><label for="slotSel">Thời gian hẹn</label><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><div class="time-box" style="flex:0 1 auto;min-width:0"><span class="time-prefix" id="timeDatePrefix"><span id="timeDateNum" style="font-size:13px;font-weight:600;color:var(--ink)"></span></span><select id="slotSel" required style="width:auto"></select></div><div id="slotBadge" style="display:none;align-items:center;gap:5px;font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid #bbf7d0;background:#f0fdf4;color:#16a34a"></div></div></div></div>
         <div class="two"><div class="fld"><label>Họ và tên</label><input required placeholder="Nguyễn Văn A" /></div><div class="fld"><label>Số điện thoại</label><input required type="tel" placeholder="09xx xxx xxx" /></div></div>
         <button type="submit" id="bkSubmit" class="btn btn-primary" style="width:100%;margin-top:20px">Xác nhận đặt lịch</button>
         <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:12px">Đây là bản demo — chưa có lịch hẹn nào được gửi đi thật.</p>
@@ -786,28 +786,39 @@
       </div>
 
       <div class="bk-side reveal d1">
-        <div style="background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:16px 18px;margin-bottom:14px">
-          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Tra cứu lịch hẹn</div>
-          <div style="display:flex;gap:8px">
-            <input id="tcSideCode" type="text" style="flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line-2);border-radius:10px;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;outline:none;text-transform:uppercase;letter-spacing:.08em;font-weight:600" placeholder="Mã đặt lịch" maxlength="8" oninput="this.value=this.value.toUpperCase()">
-            <button onclick="tcSideSearch()" style="padding:10px 14px;border-radius:10px;border:none;font-family:inherit;font-size:13.5px;font-weight:700;background:var(--red);color:#fff;cursor:pointer;white-space:nowrap">Tra cứu</button>
+        <!-- Mật độ khách hàng -->
+        <div style="background:linear-gradient(180deg,#f0fdf4 0%,#ffffff 100%);border:1px solid #bbf7d0;border-radius:16px;padding:18px 20px;text-align:center;margin-bottom:14px" id="densityCard2">
+          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Mật độ khách hàng</div>
+          <div id="densityPill2" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:800;padding:9px 20px;border-radius:999px;background:#fff;color:#16a34a;border:1.5px solid #bbf7d0;box-shadow:0 2px 6px rgba(22,163,74,.08)">
+            <span id="densityDot2" style="width:9px;height:9px;border-radius:50%;background:#16a34a;flex:none;box-shadow:0 0 0 3px rgba(22,163,74,.2)"></span>
+            <span id="densityLabel2">Hiện tại: Vắng</span>
+          </div>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:10px" id="densityTime2">Cập nhật lúc 10:25</div>
+        </div>
+
+        <!-- Card chuẩn bị -->
+        <div style="background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03)">
+          <div style="font-size:11px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:7px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Giấy tờ cần mang
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px">
+            <div style="display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);line-height:1.5"><span style="color:#16a34a;font-weight:800;flex:none">✓</span><span>CCCD / CMND còn hạn (bản gốc)</span></div>
+            <div style="display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);line-height:1.5"><span style="color:#16a34a;font-weight:800;flex:none">✓</span><span>SIM đang dùng (nếu đổi SIM, chuẩn hóa thông tin)</span></div>
+            <div style="display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);line-height:1.5"><span style="color:#16a34a;font-weight:800;flex:none">✓</span><span>Hợp đồng / biên lai (nếu có khiếu nại)</span></div>
+          </div>
+          <div style="height:1px;background:var(--line);margin-bottom:14px"></div>
+          <div style="font-size:11px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:7px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Lưu ý khi đến
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);line-height:1.5"><span style="color:#16a34a;font-weight:800;flex:none">✓</span><span>Có mặt trước giờ hẹn 5–10 phút</span></div>
+            <div style="display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);line-height:1.5"><span style="color:#16a34a;font-weight:800;flex:none">✓</span><span>Mang điện thoại để xác minh OTP</span></div>
+            <div style="display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);line-height:1.5"><span style="color:#16a34a;font-weight:800;flex:none">✓</span><span>Người dưới 18 tuổi cần có người giám hộ đi kèm</span></div>
           </div>
         </div>
-        <div class="live-queue-widget">
-          <div class="lqw-header"><span class="live-dot" style="width:8px;height:8px;margin:0"></span>Đang chờ tại cửa hàng</div>
-          <div class="lqw-num" id="queueCount2">8</div>
-          <div class="lqw-footer">người · cập nhật liên tục</div>
-        </div>
-        <div class="bk-benefits" style="display:flex;flex-direction:column;gap:14px">
-          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px">Giấy tờ cần mang</div>
-          <div><span class="ck">✓</span> CCCD / CMND còn hạn (bản gốc)</div>
-          <div><span class="ck">✓</span> SIM đang dùng (nếu đổi SIM, chuẩn hóa thông tin)</div>
-          <div><span class="ck">✓</span> Hợp đồng / biên lai (nếu có khiếu nại)</div>
-          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:6px;margin-bottom:2px">Lưu ý khi đến</div>
-          <div><span class="ck">✓</span> Có mặt trước giờ hẹn 5–10 phút</div>
-          <div><span class="ck">✓</span> Mang điện thoại để xác minh OTP</div>
-          <div><span class="ck">✓</span> Người dưới 18 tuổi cần có người giám hộ đi kèm</div>
-        </div>
+
         <p class="bk-hotline">Cần hỗ trợ gấp? Gọi <b>1800 8098</b> miễn phí mọi mạng, hoặc <b>198</b> từ thuê bao Viettel.</p>
       </div>
     </div>
@@ -1062,7 +1073,8 @@
     var todayFull=!freeSlots(0,nowMin).length;
     document.getElementById('dayChips').innerHTML=DAYS.map(function(d,i){var off=i===0&&todayFull;return '<button type="button" data-i="'+i+'"'+(i===dayIdx?' class="on"':'')+(off?' disabled title="Hôm nay đã hết giờ nhận lịch"':'')+'><b>'+d.name+'</b><small>'+(off?'Hết giờ':d.date)+'</small></button>';}).join('');
     var sel=document.getElementById('slotSel'),keep=sel.value.split(' ·')[0],list=freeSlots(dayIdx,nowMin);
-    sel.innerHTML=list.map(function(o){return '<option'+(o.s==='full'?' disabled':'')+(o.t===keep?' selected':'')+'>'+o.t+statusLbl[o.s]+'</option>';}).join('');
+    sel.innerHTML=list.map(function(o){return '<option'+(o.s==='full'?' disabled':'')+(o.t===keep?' selected':'')+' data-status="'+o.s+'">'+o.t+'</option>';}).join('');
+    if(typeof updateSlotBadge==='function')updateSlotBadge();
   }
   document.getElementById('dayChips').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;dayIdx=+b.getAttribute('data-i');renderBooking();});
   document.getElementById('svcChips').addEventListener('click',function(e){var b=e.target.closest('.svc-chip');if(!b)return;var svc=b.getAttribute('data-svc');document.getElementById('svcSel').value=svc;document.querySelectorAll('.svc-chip').forEach(function(c){c.classList.toggle('on',c===b);});});
@@ -1149,35 +1161,47 @@
   document.querySelectorAll('.reveal,[data-count],#peak').forEach(function(el){io.observe(el)});
   document.querySelectorAll('.hero [data-count]').forEach(countUp);
 
-  // ---- Slot badge ----
+  // ---- Slot badge (đọc data-status từ option đang chọn) ----
   function updateSlotBadge(){
     var sel=document.getElementById('slotSel');
-    var txt=sel&&sel.selectedOptions[0]?sel.selectedOptions[0].textContent:'';
+    var opt=sel&&sel.selectedOptions[0];
     var badge=document.getElementById('slotBadge');
-    if(!badge)return;
-    if(txt.indexOf('Sắp hết')>-1){
+    if(!badge||!opt)return;
+    var s=opt.getAttribute('data-status')||'free';
+    if(s==='almost'){
       badge.style.display='inline-flex';badge.textContent='Sắp hết';badge.style.background='#fff7ed';badge.style.color='#d97706';badge.style.borderColor='#fde68a';
-    } else if(txt.indexOf('Hết chỗ')>-1){
+    } else if(s==='full'){
       badge.style.display='inline-flex';badge.textContent='Hết chỗ';badge.style.background='#f5f5f5';badge.style.color='#a0a0a0';badge.style.borderColor='#dedede';
-    } else if(txt.indexOf('Còn chỗ')>-1){
+    } else {
       badge.style.display='inline-flex';badge.textContent='Còn chỗ';badge.style.background='#f0fdf4';badge.style.color='#16a34a';badge.style.borderColor='#bbf7d0';
-    } else {badge.style.display='none';}
+    }
   }
   document.getElementById('slotSel').addEventListener('change',updateSlotBadge);
   setTimeout(updateSlotBadge,100);
 
-  // ---- Mật độ khách hàng ----
+  // ---- Mật độ khách hàng (stat strip + bk-side) ----
   function updateDensity(){
     var now=new Date();var h=now.getHours();
-    var status='Vắng',dotC='#16a34a',bg='#f0fdf4',border='#bbf7d0',textC='#16a34a';
-    if(h>=10&&h<12){status='Đông';dotC='#ef4444';bg='#fef2f2';border='#fecaca';textC='#ef4444';}
-    else if((h>=9&&h<10)||(h>=12&&h<14)){status='Trung bình';dotC='#f59e0b';bg='#fff7ed';border='#fde68a';textC='#d97706';}
+    var status='Vắng',dotC='#16a34a',bg='#f0fdf4',border='#bbf7d0',textC='#16a34a',cardBg='linear-gradient(180deg,#f0fdf4 0%,#ffffff 100%)';
+    if(h>=10&&h<12){status='Đông';dotC='#ef4444';bg='#fef2f2';border='#fecaca';textC='#ef4444';cardBg='linear-gradient(180deg,#fef2f2 0%,#ffffff 100%)';}
+    else if((h>=9&&h<10)||(h>=12&&h<14)){status='Trung bình';dotC='#f59e0b';bg='#fff7ed';border='#fde68a';textC='#d97706';cardBg='linear-gradient(180deg,#fff7ed 0%,#ffffff 100%)';}
+    var tStr='Cập nhật lúc '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+    // Stat strip
     var pill=document.getElementById('densityPill');var dot=document.getElementById('densityDot');
     var lbl=document.getElementById('densityLabel');var time=document.getElementById('densityTime');
     if(pill){pill.style.background=bg;pill.style.color=textC;pill.style.borderColor=border;}
     if(dot)dot.style.background=dotC;
     if(lbl)lbl.textContent='Hiện tại: '+status;
-    if(time)time.textContent='Cập nhật lúc '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+    if(time)time.textContent=tStr;
+    // bk-side card
+    var card2=document.getElementById('densityCard2');var pill2=document.getElementById('densityPill2');
+    var dot2=document.getElementById('densityDot2');var lbl2=document.getElementById('densityLabel2');
+    var time2=document.getElementById('densityTime2');
+    if(card2){card2.style.background=cardBg;card2.style.borderColor=border;}
+    if(pill2){pill2.style.color=textC;pill2.style.borderColor=border;pill2.style.boxShadow='0 2px 6px '+textC+'20';}
+    if(dot2){dot2.style.background=dotC;dot2.style.boxShadow='0 0 0 3px '+dotC+'33';}
+    if(lbl2)lbl2.textContent='Hiện tại: '+status;
+    if(time2)time2.textContent=tStr;
   }
   updateDensity();setInterval(updateDensity,60000);
 
