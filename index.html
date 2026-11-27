@@ -152,7 +152,7 @@
   .gal-thumbs img{width:100%;height:100%;object-fit:cover}
   .gal-thumbs button.active{border-color:var(--red)}
   .gal-thumbs button:hover{transform:translateY(-2px)}
-  .stat-strip{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+  .stat-strip{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
   .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#16a34a;margin-left:4px;vertical-align:middle;animation:blink-dot 1.6s ease-in-out infinite}
   @keyframes blink-dot{0%,100%{opacity:1}50%{opacity:.25}}
   .stat-strip .cell{padding:18px 22px;border-right:1px solid var(--line)}
@@ -445,10 +445,9 @@
     .before3{grid-template-columns:1fr}
     .cat-grid{grid-template-columns:repeat(2,1fr)}
     .hero h1{font-size:26px}
-    .stat-strip{grid-template-columns:1fr 1fr}
-    .stat-strip .cell:nth-child(2),.stat-strip .cell:nth-child(4){border-right:none}
-    .stat-strip .cell:nth-child(1),.stat-strip .cell:nth-child(2){border-bottom:1px solid var(--line)}
-    .stat-strip .cell:nth-child(3){border-right:1px solid var(--line)}
+    .stat-strip{grid-template-columns:1fr}
+    .stat-strip .cell{border-right:none;border-bottom:1px solid var(--line)}
+    .stat-strip .cell:last-child{border-bottom:none}
     .bk-side,.map-box{position:static}
   }
   @media(max-width:600px){
@@ -614,7 +613,6 @@
       <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Giờ giao dịch</div><div class="v">08:00 <small>– 20:00</small></div></div>
       <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V7l6-4v18M9 21V11l6-4v14M15 21v-7l6-4v11"/></svg>Ngày mở cửa</div><div class="v">Cả tuần <small>T2 – CN</small></div></div>
       <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>Chờ trung bình<span class="live-dot"></span></div><div class="v">~<span data-count="6">6</span> <small>phút</small><div style="font-size:12px;color:var(--muted);font-weight:500;margin-top:3px"><span id="queueCount">8</span> lượt đang chờ</div></div></div>
-      <div class="cell"><div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Mật độ khách hàng</div><div class="v" style="font-size:14px"><span id="densityPill" style="display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0"><span id="densityDot" style="width:7px;height:7px;border-radius:50%;background:#16a34a;flex:none"></span><span id="densityLabel">Hiện tại: Vắng</span></span><div style="font-size:11px;color:var(--faint);font-weight:500;margin-top:4px" id="densityTime">Cập nhật lúc 10:25</div></div></div>
     </div>
   </div>
 
@@ -821,16 +819,6 @@
       </div>
 
       <div class="bk-side reveal d1">
-        <!-- Mật độ khách hàng -->
-        <div style="background:linear-gradient(180deg,#f0fdf4 0%,#ffffff 100%);border:1px solid #bbf7d0;border-radius:16px;padding:18px 20px;text-align:center;margin-bottom:14px" id="densityCard2">
-          <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Mật độ khách hàng</div>
-          <div id="densityPill2" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:800;padding:9px 20px;border-radius:999px;background:#fff;color:#16a34a;border:1.5px solid #bbf7d0;box-shadow:0 2px 6px rgba(22,163,74,.08)">
-            <span id="densityDot2" style="width:9px;height:9px;border-radius:50%;background:#16a34a;flex:none;box-shadow:0 0 0 3px rgba(22,163,74,.2)"></span>
-            <span id="densityLabel2">Hiện tại: Vắng</span>
-          </div>
-          <div style="font-size:11.5px;color:var(--muted);margin-top:10px" id="densityTime2">Cập nhật lúc 10:25</div>
-        </div>
-
         <!-- Card chuẩn bị -->
         <div style="background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03)">
           <div style="font-size:11px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:7px">
@@ -873,7 +861,7 @@
     <div class="svc-groups">
       <div class="svc-row reveal">
         <div class="g-label"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><h4>Di động</h4></div>
-        <div class="g-btns"><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/goi-data-1/" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20v-3M9 20v-7M14 20V9M19 20V5"/></svg></span><span>Gói cước</span></a><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/dich-vu-quoc-te" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg></span><span>Dịch vụ quốc tế</span></a><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/sim-so/" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l4 4v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><rect x="8.5" y="12" width="7" height="6" rx="1"/><path d="M12 12v6M8.5 15h7"/></svg></span><span>Sim số</span></a></div>
+        <div class="g-btns"><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/goi-data-1/" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20v-3M9 20v-7M14 20V9M19 20V5"/></svg></span><span>Gói cước</span></a><a class="svc-tab" href="https://vietteltelecom.vn/vx/di-dong/sim-so/" target="_blank" rel="noopener"><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l4 4v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><rect x="8.5" y="12" width="7" height="6" rx="1"/><path d="M12 12v6M8.5 15h7"/></svg></span><span>Sim số</span></a></div>
       </div>
       <div class="svc-row reveal">
         <div class="g-label"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M8.5 16.4a6 6 0 0 1 7 0M12 20h.01"/></svg></span><h4>Internet · TV360 · Camera</h4></div>
@@ -1254,31 +1242,6 @@
   document.getElementById('slotSel').addEventListener('change',updateSlotBadge);
   setTimeout(updateSlotBadge,100);
 
-  // ---- Mật độ khách hàng (stat strip + bk-side) ----
-  function updateDensity(){
-    var now=new Date();var h=now.getHours();
-    var status='Vắng',dotC='#16a34a',bg='#f0fdf4',border='#bbf7d0',textC='#16a34a',cardBg='linear-gradient(180deg,#f0fdf4 0%,#ffffff 100%)';
-    if(h>=10&&h<12){status='Đông';dotC='#ef4444';bg='#fef2f2';border='#fecaca';textC='#ef4444';cardBg='linear-gradient(180deg,#fef2f2 0%,#ffffff 100%)';}
-    else if((h>=9&&h<10)||(h>=12&&h<14)){status='Trung bình';dotC='#f59e0b';bg='#fff7ed';border='#fde68a';textC='#d97706';cardBg='linear-gradient(180deg,#fff7ed 0%,#ffffff 100%)';}
-    var tStr='Cập nhật lúc '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
-    // Stat strip
-    var pill=document.getElementById('densityPill');var dot=document.getElementById('densityDot');
-    var lbl=document.getElementById('densityLabel');var time=document.getElementById('densityTime');
-    if(pill){pill.style.background=bg;pill.style.color=textC;pill.style.borderColor=border;}
-    if(dot)dot.style.background=dotC;
-    if(lbl)lbl.textContent='Hiện tại: '+status;
-    if(time)time.textContent=tStr;
-    // bk-side card
-    var card2=document.getElementById('densityCard2');var pill2=document.getElementById('densityPill2');
-    var dot2=document.getElementById('densityDot2');var lbl2=document.getElementById('densityLabel2');
-    var time2=document.getElementById('densityTime2');
-    if(card2){card2.style.background=cardBg;card2.style.borderColor=border;}
-    if(pill2){pill2.style.color=textC;pill2.style.borderColor=border;pill2.style.boxShadow='0 2px 6px '+textC+'20';}
-    if(dot2){dot2.style.background=dotC;dot2.style.boxShadow='0 0 0 3px '+dotC+'33';}
-    if(lbl2)lbl2.textContent='Hiện tại: '+status;
-    if(time2)time2.textContent=tStr;
-  }
-  updateDensity();setInterval(updateDensity,60000);
 
   // ---- Tra cứu inline (desktop) ----
   var _tcBtnHtmlDefault='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Tra cứu lịch hẹn';
